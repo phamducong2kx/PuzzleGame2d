@@ -114,7 +114,7 @@ public class CointBurst : MonoBehaviour
                 .SetEase(Ease.InBack)
                 .OnComplete(() =>
                 {
-                    Debug.Log("gia tri cua uitartget.position x va y lan luot  là " + uiTarget.position.x + " va " + uiTarget.position.y);
+                    //  Debug.Log("gia tri cua uitartget.position x va y lan luot  là " + uiTarget.position.x + " va " + uiTarget.position.y);
                     plusCoint?.Invoke();
                     //cho gameObject nay deactive ,= despawn object nay , cat vao trong pool
                     ObjectPooler.Instance.Despawn(cointPrefab, cointx.gameObject);

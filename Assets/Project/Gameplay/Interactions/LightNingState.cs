@@ -67,11 +67,11 @@ public class LightNingState : ISKillState
     {
         ++solantapPlank;
         if (solantapPlank > 1) return;
-        //kich hoat su kien lightningKSill
 
+        //phat event lightningKSill
         GameConfigManager.Instance.skillLogic.InvokeLightNingSkill(plank);
 
-        //duyetj danh sacsh casc hole của plank
+        //duyet danh sahcs cac hole cua plank
         foreach (var hole in plank.holes)
         {
             //tim bolt current hien tai cua no
@@ -80,19 +80,32 @@ public class LightNingState : ISKillState
             {
                 plank.RemoveBoltConnection(boltCurrent);
                 boltCurrent.plankHoles.Remove(hole);
-
             }
 
-
-
         }
+
         //cho plank co hasFallen = true
         if (plank.hasFallen == false) plank.hasFallen = true;
+        Vector3 pos = plank.transform.position;
+        pos.y = -40;
+        plank.transform.position = pos;
+
+        plank.SetStaticRigibody();
+
         //sau do dua thang nay ve poool
-        var prefabPlank = ObjectPooler.Instance.GetPrefabObject(plank.gameObject);
-        ObjectPooler.Instance.Despawn(prefabPlank, plank.gameObject);
+        // var prefabPlank = ObjectPooler.Instance.GetPrefabObject(plank.gameObject);
+        //ko dua no ve poool nua ma  cho no toa do y = -40
 
-
+        // ObjectPooler.Instance.Despawn(prefabPlank, plank.gameObject);
+        // if (prefabPlank == LevelLoader.Instance.plankPrefab)
+        // {
+        //     Debug.Log("2 thang prefab nay la 1");
+        // }
+        //   var x = ObjectPooler.Instance.poolDict[prefabPlank];
+        //   if (x != null)
+        //  {
+        //      Debug.Log("so luong plank trong queue la " + x.Count);
+        //  }
         await Task.Delay(1000);
 
 

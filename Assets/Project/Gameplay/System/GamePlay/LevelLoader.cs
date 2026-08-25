@@ -3,6 +3,7 @@ using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Video;
 
 //class nay de sinh ra cac prefab
 public class LevelLoader : MonoBehaviour
@@ -59,6 +60,17 @@ public class LevelLoader : MonoBehaviour
         SpawnBackground(currentLevelData.bgData);
         SpawnPlanks(currentLevelData.listPlankData);
         SpawnBolts(currentLevelData.listBoltData);
+
+        var x = ObjectPooler.Instance.poolDict[plankPrefab];
+        if (x != null)
+        {
+            Debug.Log("so luong plank trong queue la " + x.Count);
+        }
+        if (spawnedPlanks[0] == spawnedPlanks[1])
+        {
+            Debug.Log("ca 2 cung tham chieu toi 1 doi tuong");
+
+        }
     }
     private void SpawnBackground(BackgroundData bgData)
     {
@@ -113,8 +125,17 @@ public class LevelLoader : MonoBehaviour
 
         if (plankDatas == null || plankPrefab == null) return;
 
+        //dem so luong plank trong  quêu 
+
+        //var x = ObjectPooler.Instance.poolDict[plankPrefab];
+        //if (x != null)
+        //{
+        //    Debug.Log("so luong plank trong queue la " + x.Count);
+        //}
+
         foreach (var plankData in plankDatas)
         {
+
             if (string.IsNullOrEmpty(plankData.plankId)) continue;
 
             //tạo object plank từ prefab , rồi đưa vòa pool
@@ -137,6 +158,7 @@ public class LevelLoader : MonoBehaviour
             //id plank
             plank.plankId = plankData.plankId;
 
+            Debug.Log("id cua plank la " + plank.plankId);
             // Sorting Group
             var sortingGroup = plankObj.GetComponent<SortingGroup>();
             if (sortingGroup == null)
@@ -184,6 +206,9 @@ public class LevelLoader : MonoBehaviour
                 plank.holes.Add(hole);
             }
         }
+
+        //slosnah xem 2 plank co khac nhau ko
+
     }
     private void SpawnBolts(List<BoltData> boltDatas)
     {
@@ -224,6 +249,7 @@ public class LevelLoader : MonoBehaviour
         {
             //  if (plank != null) Destroy(plank.gameObject);
             //dua plank ve bool
+
             ObjectPooler.Instance.Despawn(plankPrefab, plank.gameObject);
             //dua hole trong plank ve pool
             foreach (var hole in plank.holes)

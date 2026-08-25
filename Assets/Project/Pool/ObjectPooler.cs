@@ -117,14 +117,15 @@ public class ObjectPooler : MonoBehaviour
     public void Despawn(GameObject prefab, GameObject obj)
     {
         obj.SetActive(false);
-        if (poolDict.ContainsKey(prefab))
+        if (poolDict.ContainsKey(prefab) || !poolDict[prefab].Contains(obj))
         {
             poolDict[prefab].Enqueue(obj);
+            //  Debug.Log("ok key prefab nay co ton tai trong day");
         }
 
         if (parentPoolDict.ContainsKey(prefab))
         {
-            Debug.Log("no da duoc dua voa pool du t ko co goi despawn ?? chăc chan la co gọi");
+            // Debug.Log("no da duoc dua voa pool du t ko co goi despawn ?? chăc chan la co gọi");
             obj.transform.SetParent(parentPoolDict[prefab], false);
             // obj.transform.localScale = Vector3.one;
         }
