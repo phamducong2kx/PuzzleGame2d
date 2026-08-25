@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f39c0cae5420ea44bb8cf515eb78bed, type: 3}
+  m_Name: LightNingSkill
+  m_EditorClassIdentifier: 
+  idItem: light_index
+  Cooldown: 5
+  price: 0
+  selectTiming: 1
+  desscribeSkill: "Skill n\xE0y s\u1EBD t\u1EA1o ra 1 tia s\xE9t b\u1EAFn v\xE0o
+    1 th\xE0nh g\u1ED7 khi\u1EBFn n\xF3 b\u1ECB v\u1EE1 ra ngay l\u1EADp t\u1EE9c"
