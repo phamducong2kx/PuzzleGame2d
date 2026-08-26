@@ -13,7 +13,7 @@ public class SnapScrolling : MonoBehaviour, IEndDragHandler, IDragHandler
     [Header("UI Elements")]
 
     [SerializeField] private RectTransform contentPanel;
-    public List<Transform> chapters;
+    public List<ChapterICon> chapters;
 
 
     [SerializeField] private float snapSpeed = 10f; // Tốc độ hút vào tâm
@@ -22,18 +22,77 @@ public class SnapScrolling : MonoBehaviour, IEndDragHandler, IDragHandler
     public int targetChapterIndex = 0;
 
     private bool isDragging = false;
+    private RectTransform rectTransform;
+    private Vector2 targetPosition;
 
-
-    void Start()
+    private void Awake()
     {
+        rectTransform = GetComponent<RectTransform>();
 
     }
+    void Start()
+    {
+        targetPosition = contentPanel.anchoredPosition;
+    }
+
 
 
     void Update()
     {
+        if (!isDragging)
+        {
+            //cos index chapter rôi, tìm klhoarng cách ngắn nhất từ viewport tới chapter đó
+            Vector2 distance = rectTransform.InverseTransformPoint(chapters[targetChapterIndex].transform.position);
+
+            //tinh dc vị trí targetPositoon : là vị trí mà contetnPannel sẽ chạy tới
+            targetPosition = new Vector2(contentPanel.anchoredPosition.x - distance.x, contentPanel.anchoredPosition.y);
+
+            //mooix frame vị trí của content sẽ bị nhích 1 đoạn snawpSpeed * time.Deltatime
+            contentPanel.anchoredPosition = Vector2.MoveTowards(
+             contentPanel.anchoredPosition,
+             targetPosition,
+             snapSpeed * Time.deltaTime);
 
 
+
+        }
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        isDragging = false;
+        float minDist = float.MaxValue;
+
+        for (int i = 0; i < chapters.Count; i++)
+        {
+            // 1. Tọa độ của chapter so với Viewport
+            Vector3 chapterLocalPos = rectTransform.InverseTransformPoint(chapters[i].transform.position);
+
+            if (minDist > Mathf.Abs(chapterLocalPos.x))
+            {
+                minDist = Mathf.Abs(chapterLocalPos.x);
+                targetChapterIndex = i;
+            }
+        }
+        OnChangeChapter(chapters[targetChapterIndex].chapterID);
+    }
+
+
+
+
+
+
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        isDragging = true;
+    }
+
+
+
+
+    void Update2()
+    {
         if (!isDragging)
         {
             //toa do globla cua viewport
@@ -50,56 +109,6 @@ public class SnapScrolling : MonoBehaviour, IEndDragHandler, IDragHandler
             contentPanel.localPosition = currentPos;
         }
     }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        isDragging = true;
-    }
-
-    // Hàm này tự động kích hoạt NGAY KHI người dùng vừa thả tay ra
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        isDragging = false;
-
-
-        //toa do glaobla x cua viewport
-        var currentX_viewport = gameObject.transform.position.x;
-
-        //kahia bao max
-        float minDistance = float.MaxValue;
-        float distance = 0;
-
-        //tim khoang cahc ngan nhat tu tam viewport toi tam cua ca item
-        for (int i = 0; i < chapters.Count; i++)
-        {
-            distance = Mathf.Abs(chapters[i].position.x - currentX_viewport);
-
-            if (distance <= minDistance)
-            {
-                minDistance = distance;
-                targetChapterIndex = i;
-
-            }
-            //refresh danh sach level data va 2 nut hien thi previous and next
-
-
-
-        }
-        //tim chapter tuong ung voi targetChapterindex
-        var chapter = chapters[targetChapterIndex].GetComponent<ChapterICon>();
-        if (chapter == null)
-        {
-            Debug.LogError("Chapter == null , loi");
-        }
-        else
-        {
-            OnChangeChapter(chapter.chapterID);
-        }
-
-
-
-    }
-
     private void OnChangeChapter(int chapterID)
     {
         //thay doi cai nut 
@@ -116,14 +125,15 @@ public class SnapScrolling : MonoBehaviour, IEndDragHandler, IDragHandler
         for (int i = 0; i < chapters.Count; ++i)
         {
             //lay component chapter
-            var chapter = chapters[i].GetComponent<ChapterICon>();
-            if (chapter.chapterID == chapterId)
+
+            if (chapters[i].chapterID == chapterId)
             {
                 targetChapterIndex = i;
                 return;
             }
 
         }
+
 
     }
 
@@ -132,7 +142,7 @@ public class SnapScrolling : MonoBehaviour, IEndDragHandler, IDragHandler
         var list = contentPanel.GetComponentsInChildren<ChapterICon>();
         foreach (var x in list)
         {
-            chapters.Add(x.transform);
+            chapters.Add(x);
         }
     }
 }

@@ -19,6 +19,7 @@ public class LevelMenu : MonoBehaviour
     public Button goRight;
     public Button goLeft;
     public SnapScrolling snapScroliing;
+    public List<LevelButton> ListLevelButton = new List<LevelButton>();
 
 
 
@@ -27,7 +28,7 @@ public class LevelMenu : MonoBehaviour
     private void Awake()
     {
         // Debug.Log("khoi tao level select");
-        Generate_LevelButton();
+        //  Generate_LevelButton();
         Generate_Chapter();
         SetUpReturnButton();
     }
@@ -53,17 +54,14 @@ public class LevelMenu : MonoBehaviour
     }
 
     //taoj trước 10 button có sẵn
-    private void Generate_LevelButton()
-    {
-        for (int i = 1; i <= 10; ++i)
-        {
-            //khoi tao 1 chapter tu prefab
-            var LevelButton = Instantiate(buttonPrefab, gridPannelItem);
+    //private void Generate_LevelButton()
+    //{
+    //    for (int i = 1; i <= 10; ++i)
+    //    {
 
-
-
-        }
-    }
+    //        var LevelButton = Instantiate(buttonPrefab, gridPannelItem);
+    //    }
+    //}
 
     //gen ra danh sách các chapter và levelData tương ứng
     private void Generate_Chapter()
@@ -72,13 +70,15 @@ public class LevelMenu : MonoBehaviour
         int currentWorldID = SaveManager.Data.currentWorld;
 
 
-        //tim chapter cao nhat  cua world hien tai
+        //tim chapter cao nhat cua world hien tai
         int highestChapterID = GameConfigManager.Instance.levelDatabaseLogic.GetChapterHighestOfCurrentWorld(currentWorldID);
+
         //  Debug.Log("chapter cao nhat o world hien tai la " + highestChapterID);
         //tim so chapter co trong world nay
         int numberOfChapter = GameConfigManager.Instance.levelDatabaseLogic.GetNumberOfChapter(currentWorldID);
 
         //  Debug.Log("so luong chapter la " + numberOfChapter);
+
         //id chaoter bat dau la :
         int idChapterBegin = (currentWorldID - 1) * 5;
         //  Debug.Log("idchapterbegin la  " + idChapterBegin);
@@ -94,47 +94,30 @@ public class LevelMenu : MonoBehaviour
             // Debug.Log("khoi tao thamh cong 1 button chapter ");
         }
 
-        //set up chapter cao nhat world nay lam trung tam
+        //set up dua cac cahpter vao 1 mang
         snapScroliing.SetUPListItem();
-        //snapScroliing.SetupChapter_Center(highestChapterID);
 
-        //// set up logic cho 2 nut dich chuyen tria phai
-
-        //SetupActiceButtonChangePage(snapScroliing.targetChapterIndex, snapScroliing.chapters.Count);
-
-
-        ////dem xem chapter cao nhat hien dang co cua world hien tai bao nhieu level;
-        //int numberLevelOfHighestChapter = UIManager.Instance.levelMapManager.levelDatabase.GetNumberOfLevel(highestChapterID, currentWorldID);
-
-
-        ////taoj danh sacsh cac levelbutotn tuong uwng cua chapter nay
-        ////levelID bat dau
-
-
-        //RefreshButtonIcon(highestChapterID);
     }
 
     private void SetUpChapterCenter()
     {
+        //world hien tại
         int currentWorldID = SaveManager.Data.currentWorld;
 
+        //chapter cao nhất theo world hiện tại: nếu word hiện tại đã choi full thì chapter cao nhất
+        //la chapter cuối , còn ko thì là chapter hiện tại đang chơi
         int highestChapterID = GameConfigManager.Instance.levelDatabaseLogic.GetChapterHighestOfCurrentWorld(currentWorldID);
         snapScroliing.SetupChapter_Center(highestChapterID);
 
         // set up logic cho 2 nut dich chuyen tria phai
 
         SetupActiceButtonChangePage(snapScroliing.targetChapterIndex, snapScroliing.chapters.Count);
-
+        RefreshButtonIcon(highestChapterID);
 
         //dem xem chapter cao nhat hien dang co cua world hien tai bao nhieu level;
-        int numberLevelOfHighestChapter = GameConfigManager.Instance.levelDatabaseLogic.GetNumberOfLevel(highestChapterID, currentWorldID);
+        // int numberLevelOfHighestChapter = GameConfigManager.Instance.levelDatabaseLogic.GetNumberOfLevel(highestChapterID, currentWorldID);
 
 
-        //taoj danh sacsh cac levelbutotn tuong uwng cua chapter nay
-        //levelID bat dau
-
-
-        RefreshButtonIcon(highestChapterID);
     }
 
 
@@ -144,7 +127,7 @@ public class LevelMenu : MonoBehaviour
         returnHomeButton.onClick.RemoveAllListeners();
         returnHomeButton.onClick.AddListener(() =>
         {
-            //chuyen ve trang home
+            //chuyen ve trang chọn các world
             GameStateManager.Instance.ChangeSate(GameStateCache.levelMapState);
 
             //set up screen
@@ -170,53 +153,70 @@ public class LevelMenu : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    //reload lại danh sách các level
+    //Lấy danh sách các level theo id chapter
     public void RefreshButtonIcon(int chapterID)
     {
+
+        //nếu danh sách cũ != 0 , thfi phải desawpn list trước đã 
+        if (ListLevelButton.Count != 0)
+        {
+            ClearListLevelButton();
+        }
+        //world hien tai
         int worldID = SaveManager.Data.currentWorld;
         //  Debug.Log("world id hien tai la " + worldID);
+
+        //so luong level trong cahpter hien tai
         int numberLevel = GameConfigManager.Instance.levelDatabaseLogic.GetNumberOfLevel(chapterID, worldID);
         //   Debug.Log($"so luong level cua chapter {chapterID} la {numberLevel}");
-        int idBegin = (chapterID - 1) * 10;
 
-
-        //dlist levefress
-        var list = SaveManager.Data.levelProgresses;
-        foreach (var x in list)
+        //chi so level bat dau
+        int idBegin = (chapterID - 1) * 10 + 1;
+        for (int i = idBegin; i < numberLevel + idBegin; ++i)
         {
-            //  Debug.Log($"level co id la {x.leveID} , trang thai unlock la {x.isUnlock}");
+            //lay ra 1 buttonlevel 
+            var buttonlevel = ObjectPooler.Instance.Spawn(buttonPrefab.gameObject, buttonPrefab.transform.position, buttonPrefab.transform.rotation);
+            //sau đó cho buttonLevel làm con của gridPannel
+            buttonlevel.transform.SetParent(gridPannelItem, false);
+            //set up cho button level do 
+            buttonlevel.GetComponent<LevelButton>().Setup(i);
+            //them vao list
+            ListLevelButton.Add(buttonlevel.GetComponent<LevelButton>());
+
         }
 
-        var listLevelButton = gridPannelItem.GetComponentsInChildren<LevelButton>(true);
+
+
+        // var listLevelButton = gridPannelItem.GetComponentsInChildren<LevelButton>(true);
         //   Debug.Log($"so luong button level cua chapter {listLevelButton.Count()}");
 
-        if (numberLevel < 10)
-        {
-            int distance = 10 - numberLevel;
-            for (int i = 0; i < distance; ++i)
-            {
-                listLevelButton[i].gameObject.SetActive(false);
-            }
-        }
-        else if (numberLevel == 10)
-        {
+        //if (numberLevel < 10)
+        //{
+        //    int distance = 10 - numberLevel;
+        //    for (int i = 0; i < distance; ++i)
+        //    {
+        //        listLevelButton[i].gameObject.SetActive(false);
+        //    }
+        //}
+        //else if (numberLevel == 10)
+        //{
 
-            for (int i = 0; i < 10; ++i)
-            {
-                listLevelButton[i].gameObject.SetActive(true);
-            }
+        //    for (int i = 0; i < 10; ++i)
+        //    {
+        //        listLevelButton[i].gameObject.SetActive(true);
+        //    }
 
-        }
-        listLevelButton = gridPannelItem.GetComponentsInChildren<LevelButton>();
+        //}
+        // listLevelButton = gridPannelItem.GetComponentsInChildren<LevelButton>();
+        //int idBegin = (chapterID - 1) * 10;
+        //  int j = 0;
 
-        int j = 0;
-
-        for (int i = idBegin + 1; i <= idBegin + numberLevel; ++i)
-        {
-            //   Debug.Log("listbutton nay co id la " + i);
-            listLevelButton[j].Setup(i);
-            ++j;
-        }
+        //   for (int i = idBegin + 1; i <= idBegin + numberLevel; ++i)
+        // {
+        //   Debug.Log("listbutton nay co id la " + i);
+        //   listLevelButton[j].Setup(i);
+        //  ++j;
+        //  }
 
     }
 
@@ -264,7 +264,7 @@ public class LevelMenu : MonoBehaviour
 
             ++snapScroliing.targetChapterIndex;
             //lay thong tin cua chapter nay
-            var chapter = snapScroliing.chapters[snapScroliing.targetChapterIndex].GetComponent<ChapterICon>();
+            var chapter = snapScroliing.chapters[snapScroliing.targetChapterIndex];
             int idCahpter = chapter.chapterID;
             //   Debug.Log("id cua chapter nay la" + idCahpter);
 
@@ -277,13 +277,25 @@ public class LevelMenu : MonoBehaviour
         {
 
             --snapScroliing.targetChapterIndex;
-            var chapter = snapScroliing.chapters[snapScroliing.targetChapterIndex].GetComponent<ChapterICon>();
+            var chapter = snapScroliing.chapters[snapScroliing.targetChapterIndex];
             int idCahpter = chapter.chapterID;
             // Debug.Log("id cua chapter nay la" + idCahpter);
             SetupActiceButtonChangePage(snapScroliing.targetChapterIndex, snapScroliing.chapters.Count);
             RefreshButtonIcon(idCahpter);
         });
     }
+
+    private void ClearListLevelButton()
+    {
+        foreach (var x in ListLevelButton)
+        {
+            PhongtothunhoAnimation.KillAnimation(x.transform);
+            ObjectPooler.Instance.Despawn(buttonPrefab.gameObject, x.gameObject);
+
+        }
+        ListLevelButton.Clear();
+    }
+
 
 
 

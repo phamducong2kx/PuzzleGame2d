@@ -37,6 +37,8 @@ public class LevelConWorld : MonoBehaviour
 
     public void SetupIcon()
     {
+        //pha dotwtwen sau do set up lai phai duoi
+        PhongtothunhoAnimation.KillAnimation(transform);
         //world cao nhat
         var worldUnlockHighest = SaveManager.Data.worldUnlockHighest;
 
@@ -45,7 +47,7 @@ public class LevelConWorld : MonoBehaviour
         {
             button.interactable = true;
             //hoat a?nh
-            PhongtothunhoAnimation.PlayEffectSmallToBig(transform, -1,1.2f);
+            PhongtothunhoAnimation.PlayEffectSmallToBig(transform, -1, 1.2f);
 
         }
         else

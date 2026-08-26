@@ -36,6 +36,7 @@ public class LevelButton : MonoBehaviour
         idLevelData = index;
         var data = SaveManager.Data;
 
+        //check xem levle nay da unlock hay chua
         if (GameConfigManager.Instance.playerDataLogic.CheckLevelUnlock(data, index))
         {
             //image unlock 
@@ -48,7 +49,8 @@ public class LevelButton : MonoBehaviour
             //hien tuong tac voi buton
             buttonLevel.interactable = true;
 
-            //unlock moi hco hien thi so sao va hien thi so sao
+
+            //unlock moi  hien thi so sao va hien thi so sao
             listStar.gameObject.SetActive(true);
             DisplayStar(index);
 
@@ -81,7 +83,7 @@ public class LevelButton : MonoBehaviour
         {
             //khong unlock thi ko hien thi so sao
             listStar.gameObject.SetActive(false);
-
+            textUnlockLevel.text = "";
             textLevel.text = "";
             imageBg.sprite = lockLevel;
             passLevel.gameObject.SetActive(false);
