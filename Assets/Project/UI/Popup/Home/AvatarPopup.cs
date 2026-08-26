@@ -10,6 +10,7 @@ public class AvatarPopup : MonoBehaviour
     public AvatarIcon avartarIcon;
     public List<AvatarIcon> listAvatarIcon = new List<AvatarIcon>();
     public Button existButton;
+    public Image iconAvatarTop;
 
 
     // Start is called before the first frame update
@@ -18,9 +19,20 @@ public class AvatarPopup : MonoBehaviour
 
         GenerateListAvatar();
         SetupButotnExxist();
+        SetUpAvatarTop();
     }
 
-    public void GenerateListAvatar()
+    private void SetUpAvatarTop()
+    {
+        //id hein tai
+        var currentIDAvatar = GameConfigManager.Instance.playerDataLogic.GetIdCurrentAvatar(SaveManager.Data);
+        //laays anh avatar theo id
+        var avatarImage = GameConfigManager.Instance.playerDataLogic.GetSpriteFormIdAvatar(currentIDAvatar);
+        //xet up icon top
+        iconAvatarTop.sprite = avatarImage;
+    }
+
+    private void GenerateListAvatar()
     {
         //list avar
         var list = GameConfigManager.Instance.playerDataLogic.avatarDatabase.listAvatarInfo;
@@ -35,15 +47,17 @@ public class AvatarPopup : MonoBehaviour
             //them vao list
             listAvatarIcon.Add(avatarObj);
         }
+
     }
 
     public void RefreshAvatar()
     {
-        var currentIDAvatar = GameConfigManager.Instance.playerDataLogic.GetIdCurrentAvatar(SaveManager.Data);
+        SetUpAvatarTop();
         for (int i = 0; i < listAvatarIcon.Count; i++)
         {
             listAvatarIcon[i].SetUpAvatar();
         }
+
     }
 
     public void SetupButotnExxist()
