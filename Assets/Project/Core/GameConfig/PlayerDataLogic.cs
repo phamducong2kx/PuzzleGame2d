@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerDataLogic : MonoBehaviour
 {
-
+    public AvatarData avatarDatabase;
     //check xme 1 level da unlock hay chua
     public bool CheckLevelUnlock(PlayerData data, int idlevel)
     {
@@ -96,7 +96,7 @@ public class PlayerDataLogic : MonoBehaviour
     }
 
     //update amoutn skill sau khi sai
-    public void UpdateAmountSkill(string idSkill ,  int numberChange)
+    public void UpdateAmountSkill(string idSkill, int numberChange)
     {
         //tim kiem skill theo id
         var skill = SaveManager.Data.listSkill.FirstOrDefault(x => x.idSkill.Equals(idSkill));
@@ -133,9 +133,26 @@ public class PlayerDataLogic : MonoBehaviour
         return data.coint;
     }
 
+    //thay avatar cho player
+    public void ChangeAvatar(PlayerData data, string idAvatar)
+    {
+        data.currentIdAvatar = idAvatar;
+        SaveManager.SaveData();
+    }
 
+    //lay idcurrent avatar
+    public string GetIdCurrentAvatar(PlayerData data)
+    {
+        return data.currentIdAvatar;
 
+    }
 
+    //tim sprite tu id avatar
+    public Sprite GetSpriteFormIdAvatar(string idAvatar)
+    {
+        var avatar = avatarDatabase.listAvatarInfo.FirstOrDefault(x => x.id.Equals(idAvatar));
+        return avatar.sprite;
+    }
 
     // Start is called before the first frame update
     void Start()

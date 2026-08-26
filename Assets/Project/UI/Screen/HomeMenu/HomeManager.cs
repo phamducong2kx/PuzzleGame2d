@@ -14,7 +14,7 @@ public class HomeManager : MonoBehaviour
     public Button shoppe;
     public DailyRewardPopup dailyRewardPopup;
     public NoticeReward noticeReward;
-
+    public AvatarPopup avatarPopup;
 
 
 
@@ -30,6 +30,7 @@ public class HomeManager : MonoBehaviour
         SetUpLevelButton();
         SetUpDailyRewardButton();
         SetUpSignNoticeDailyReward();
+        SetupAvatarButton();
     }
     public void ActiveSelf()
     {
@@ -48,6 +49,23 @@ public class HomeManager : MonoBehaviour
         buttonLevel.onClick.AddListener(() =>
         {
             GameStateManager.Instance.ChangeSate(GameStateCache.levelMapState);
+        });
+    }
+
+    private void SetupAvatarButton()
+    {
+        //tim idavatar curent
+        string idAvatarCurrent = GameConfigManager.Instance.playerDataLogic.GetIdCurrentAvatar(SaveManager.Data);
+        //tim kiem sprite theo id
+        var sprite = GameConfigManager.Instance.playerDataLogic.GetSpriteFormIdAvatar(idAvatarCurrent);
+        //gan sprite cho avatar
+        var image = buttonAvatar.GetComponent<Image>();
+        image.sprite = sprite;
+
+        buttonAvatar.onClick.AddListener(() =>
+        {
+            //hien thi popupAvatar
+            avatarPopup.gameObject.SetActive(true);
         });
     }
 

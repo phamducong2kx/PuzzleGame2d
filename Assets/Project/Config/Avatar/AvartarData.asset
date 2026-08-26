@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ed61005fd6c82469a4f425f8e5655c, type: 3}
+  m_Name: AvartarData
+  m_EditorClassIdentifier: 
+  listAvatarInfo:
+  - id: 101
+    sprite: {fileID: 21300000, guid: b2495b46cc7262440888e0f271c0b970, type: 3}
+  - id: 102
+    sprite: {fileID: 21300000, guid: 94e1307786bf42a488ed2f7a06db1d12, type: 3}
+  - id: 103
+    sprite: {fileID: 21300000, guid: 9dbdefd79d239ba42adfea04e7b7e273, type: 3}
+  - id: 104
+    sprite: {fileID: 21300000, guid: 3119470c209fb2a4986e6dbe87731715, type: 3}
+  - id: 105
+    sprite: {fileID: 21300000, guid: 5d12d2a7604af28459d492aedcedd38d, type: 3}
+  - id: 106
+    sprite: {fileID: 21300000, guid: 57ee11b20cc1fc1409ed89f340616b69, type: 3}
+  - id: 107
+    sprite: {fileID: 21300000, guid: ffe8ff7e0b771d44a9065a3bba914977, type: 3}

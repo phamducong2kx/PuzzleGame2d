@@ -61,6 +61,8 @@ public class PlayerData
     //số lượng coint đang có
     public int coint;
 
+    //id avatar cua player
+    public string currentIdAvatar;
 
     //mot dictionary chua danh sacsh cacs level va da choi level do hay chua
     public List<LevelProgress> levelProgresses = new List<LevelProgress>();
@@ -85,7 +87,10 @@ public class PlayerData
         currentLevel = 1;
         highestUnlockLevel = 1;
         coint = 0;
-
+        if (currentIdAvatar == null)
+        {
+            currentIdAvatar = "101";
+        }
 
 
 
