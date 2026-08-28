@@ -2,11 +2,19 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-[CreateAssetMenu(fileName = "LevelData", menuName = "ScrewPuzzle/Level Data")]
 
 
+//public enum PlankType
+//{
+//    TypeRectangleBig,
+//    TypeRectangleSamll,
+//    TypeTriagle,
+//    TypeCicrleBig,
+//    TypeCirlceSmall
+//}
 
 //thêm menu để tạo file aset từ  class này
+[CreateAssetMenu(fileName = "LevelData", menuName = "ScrewPuzzle/Level Data")]
 public class LevelData : ScriptableObject
 {
     public int levelIndex = 1;
@@ -34,9 +42,10 @@ public class PlankData
     public string plankId;
     public Vector3 position;
     public float rotation;
+    public string hexColor;
     public List<HoleData> listPlankHole = new List<HoleData>();
     public string sortingLayerName;
-
+    public PlankType plankType;
 }
 
 [System.Serializable]

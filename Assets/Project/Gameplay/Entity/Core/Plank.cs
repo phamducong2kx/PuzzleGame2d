@@ -15,6 +15,9 @@ public class Plank : MonoBehaviour
     public string defaultSortingLayer;
     public string lightningSortingLayer;
     public SortingGroup sortingGroup;
+    public SpriteRenderer spriteRender;
+
+    public PlankType plankType;
 
 
     private void Awake()
@@ -23,7 +26,28 @@ public class Plank : MonoBehaviour
         sortingGroup = GetComponent<SortingGroup>();
         defaultSortingLayer = sortingGroup.sortingLayerName;
         lightningSortingLayer = "top";
+        spriteRender = GetComponentInChildren<SpriteRenderer>();
 
+    }
+
+    //getColor
+    public void StringToClour(string colorr)
+    {
+        //color hien tai 
+        if (ColorUtility.TryParseHtmlString(colorr, out Color a))
+        {
+            spriteRender.color = a;
+
+        }
+
+    }
+
+    public string ColorToString()
+    {
+
+        var color = spriteRender.color;
+        var colorString = $"#{ColorUtility.ToHtmlStringRGBA(color)}";
+        return colorString;
     }
 
     private void OnEnable()
@@ -78,7 +102,8 @@ public class Plank : MonoBehaviour
     {
         HingeJoint2D newJoint = gameObject.AddComponent<HingeJoint2D>();
         newJoint.connectedBody = bolt.rb;
-        newJoint.anchor = transform.InverseTransformPoint(bolt.transform.position);
+        newJoint.anchor = transform.InverseTransformPoint(hole.transform.position);
+        // newJoint.anchor = hole.transform.localPosition;
         newJoint.autoConfigureConnectedAnchor = false;
         newJoint.connectedAnchor = Vector3.zero;
 

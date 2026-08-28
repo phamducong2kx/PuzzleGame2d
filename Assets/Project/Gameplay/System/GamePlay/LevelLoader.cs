@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Numerics;
-using Unity.VisualScripting;
+
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Video;
+using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
+
 
 //class nay de sinh ra cac prefab
 public class LevelLoader : MonoBehaviour
@@ -11,8 +13,8 @@ public class LevelLoader : MonoBehaviour
 
     public static LevelLoader Instance;
 
+
     [Header("Prefabs")]
-    public GameObject plankPrefab;
     public GameObject boltPrefab;
     public GameObject backgroundPrefab;
     public GameObject holePrefab;
@@ -61,16 +63,7 @@ public class LevelLoader : MonoBehaviour
         SpawnPlanks(currentLevelData.listPlankData);
         SpawnBolts(currentLevelData.listBoltData);
 
-        var x = ObjectPooler.Instance.poolDict[plankPrefab];
-        if (x != null)
-        {
-            Debug.Log("so luong plank trong queue la " + x.Count);
-        }
-        if (spawnedPlanks[0] == spawnedPlanks[1])
-        {
-            Debug.Log("ca 2 cung tham chieu toi 1 doi tuong");
 
-        }
     }
     private void SpawnBackground(BackgroundData bgData)
     {
@@ -123,42 +116,37 @@ public class LevelLoader : MonoBehaviour
     private void SpawnPlanks(List<PlankData> plankDatas)
     {
 
-        if (plankDatas == null || plankPrefab == null) return;
-
-        //dem so luong plank trong  quêu 
-
-        //var x = ObjectPooler.Instance.poolDict[plankPrefab];
-        //if (x != null)
-        //{
-        //    Debug.Log("so luong plank trong queue la " + x.Count);
-        //}
+        if (plankDatas == null) return;
 
         foreach (var plankData in plankDatas)
         {
 
             if (string.IsNullOrEmpty(plankData.plankId)) continue;
 
-            //tạo object plank từ prefab , rồi đưa vòa pool
-            // GameObject plankObj = Instantiate(plankPrefab);
+            //tim kiem typePlank
+            var plankType = plankData.plankType;
+
+            //tim kiem prefab duwaj vao plankType
+            var plankPrefab = GameConfigManager.Instance.plankTypeLogic.GetPrefabByPlankType(plankType);
+
+            //tim kiem plank trong pooler
             var plankObj = ObjectPooler.Instance.Spawn(plankPrefab, plankData.position, UnityEngine.Quaternion.Euler(0, 0, plankData.rotation));
-
-            //setup no la static rigibody // -0.06 . 1.94 . -0.1
-
-            //vị trí
-            //plankObj.transform.position = plankData.position;
-
-            //rotation
-            //plankObj.transform.rotation = Quaternion.Euler(0, 0, plankData.rotation);
 
             //tìm kiếm componenet plank
             Plank plank = plankObj.GetComponent<Plank>();
 
+            //set up plankType
+            plank.plankType = plankType;
+
             //set up rigibody
             plank.SetDynamicRigibody();
-            //id plank
-            plank.plankId = plankData.plankId;
 
-            Debug.Log("id cua plank la " + plank.plankId);
+            //id plank
+            // plank.plankId = plankData.plankId;
+
+            //mau sac
+            plank.StringToClour(plankData.hexColor);
+
             // Sorting Group
             var sortingGroup = plankObj.GetComponent<SortingGroup>();
             if (sortingGroup == null)
@@ -181,13 +169,6 @@ public class LevelLoader : MonoBehaviour
                 // GameObject holeObj = Instantiate(holePrefab, spawnedBackground.transform);
                 holeObj.transform.SetParent(plankObj.transform);
                 holeObj.transform.localPosition = holeData.positionLocal;
-
-
-                //khởi tạo hole từ prefab
-                //  GameObject holeObj = Instantiate(holePrefab, plankObj.transform);
-
-                //vị tris local so với plank
-                //  holeObj.transform.localPosition = holeData.positionLocal;
 
                 //lấy compoenet hole
                 Hole hole = holeObj.GetComponent<Hole>();
@@ -247,10 +228,9 @@ public class LevelLoader : MonoBehaviour
 
         foreach (var plank in spawnedPlanks)
         {
-            //  if (plank != null) Destroy(plank.gameObject);
-            //dua plank ve bool
 
-            ObjectPooler.Instance.Despawn(plankPrefab, plank.gameObject);
+            var prefab = GameConfigManager.Instance.plankTypeLogic.GetPrefabByPlankType(plank.plankType);
+            ObjectPooler.Instance.Despawn(prefab, plank.gameObject);
             //dua hole trong plank ve pool
             foreach (var hole in plank.holes)
             {

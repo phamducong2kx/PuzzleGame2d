@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7621849214309911041}
   - component: {fileID: 1924820912305512171}
   m_Layer: 11
-  m_Name: ThanhGo
+  m_Name: Rectangle_big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,6 +91,12 @@ MonoBehaviour:
   holes: []
   groundY: -15
   hasFallen: 0
+  spriteRenderer: {fileID: 0}
+  defaultSortingLayer: 
+  lightningSortingLayer: 
+  sortingGroup: {fileID: 0}
+  spriteRender: {fileID: 0}
+  plankType: 0
 --- !u!61 &1924820912305512171
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -163,7 +169,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5792883, y: 0.4091484, z: 1}
+  m_LocalScale: {x: 0.5784865, y: 0.40914837, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5461094624833912061}
@@ -213,7 +219,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 14.45, y: 2.4812107}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0

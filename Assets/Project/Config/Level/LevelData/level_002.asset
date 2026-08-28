@@ -20,65 +20,121 @@ MonoBehaviour:
   thresh_time_star2: 100
   thresh_time_star1: 40
   listPlankData:
-  - plankId: p1
-    position: {x: -0.06, y: 1.94, z: -0.10341765}
-    rotation: -9.1497354e-10
+  - plankId: 4
+    position: {x: 0.020004407, y: -0.9639944, z: -0.10341765}
+    rotation: 0.00019237312
+    hexColor: '#FFF870FF'
     listPlankHole:
-    - holeId: p1_1
-      positionLocal: {x: -2.188, y: 0.009, z: 0.022822045}
-    - holeId: p1_2
-      positionLocal: {x: 1.48, y: 0.009, z: 0.022822045}
-    sortingLayerName: 1
-  - plankId: p2
-    position: {x: -2.2800002, y: -0.76000094, z: -0.10341765}
-    rotation: 270
+    - holeId: p4_1
+      positionLocal: {x: -1.69, y: 1.264, z: 0.022822045}
+    - holeId: p4_2
+      positionLocal: {x: 1.67, y: 1.264, z: 0.022822045}
+    - holeId: p4_3
+      positionLocal: {x: -1.649, y: -1.185, z: 0.022822045}
+    - holeId: p4_4
+      positionLocal: {x: 1.67, y: -1.187, z: 0.022822045}
+    sortingLayerName: 2
+    plankType: 5
+  - plankId: 3
+    position: {x: -0.017918585, y: 2.7561862, z: -0.10341765}
+    rotation: 179.60335
+    hexColor: '#22F537FF'
+    listPlankHole:
+    - holeId: p3_1
+      positionLocal: {x: 1.562, y: 0.017, z: 0.022822045}
+    - holeId: p3_2
+      positionLocal: {x: -1.47, y: -0.004, z: 0.022822045}
+    sortingLayerName: 2
+    plankType: 1
+  - plankId: 2
+    position: {x: 0.8927604, y: 3.3599985, z: -0.10341765}
+    rotation: 133.25227
+    hexColor: '#545916FF'
     listPlankHole:
     - holeId: p2_1
-      positionLocal: {x: -2.718, y: 0.024, z: -0.12}
+      positionLocal: {x: 1.325, y: -0.051, z: 0.022822045}
     - holeId: p2_2
-      positionLocal: {x: -0.91, y: 0.02, z: -0.12}
-    - holeId: p2_3
-      positionLocal: {x: 2.474, y: 0.02, z: -0.12}
+      positionLocal: {x: -0.823, y: 0.012, z: 0.022822045}
     sortingLayerName: 2
+    plankType: 1
+  - plankId: 1
+    position: {x: -0.8245693, y: 3.438173, z: -0.10341765}
+    rotation: 45.697014
+    hexColor: '#4B22F5FF'
+    listPlankHole:
+    - holeId: p1_1
+      positionLocal: {x: 1.251, y: 0.038, z: 0.022822045}
+    - holeId: p1_2
+      positionLocal: {x: -1.019, y: 0.06, z: 0.022822045}
+    sortingLayerName: 2
+    plankType: 1
   listBoltData:
-  - boltId: bolt_1
-    position: {x: -2.25, y: 1.95, z: -2}
+  - boltId: 7
+    position: {x: 1.6899999, y: -2.15, z: -2}
     listHoleId:
-    - p2_1
-    - p1_1
-    holeBackgroundId: 4
+    - p4_4
+    holeBackgroundId: 10
     sortingGroup: 5
-  - boltId: bolt_2
-    position: {x: 1.42, y: 1.95, z: -2}
+  - boltId: 6
+    position: {x: -1.63, y: -2.15, z: -2}
+    listHoleId:
+    - p4_3
+    holeBackgroundId: 9
+    sortingGroup: 5
+  - boltId: 5
+    position: {x: 1.6899999, y: 0.3, z: -2}
+    listHoleId:
+    - p4_2
+    holeBackgroundId: 8
+    sortingGroup: 5
+  - boltId: 4
+    position: {x: -1.67, y: 0.3, z: -2}
+    listHoleId:
+    - p4_1
+    holeBackgroundId: 7
+    sortingGroup: 5
+  - boltId: 3
+    position: {x: 1.45, y: 2.75, z: -2}
+    listHoleId:
+    - p2_2
+    - p3_2
+    holeBackgroundId: 6
+    sortingGroup: 5
+  - boltId: 2
+    position: {x: -1.58, y: 2.75, z: -2}
     listHoleId:
     - p1_2
+    - p3_1
     holeBackgroundId: 5
     sortingGroup: 5
-  - boltId: bolt_3
-    position: {x: -2.25, y: -3.2399998, z: -2}
+  - boltId: 1
+    position: {x: 0.022, y: 4.36, z: -2}
     listHoleId:
-    - p2_3
-    holeBackgroundId: 8
+    - p1_1
+    - p2_1
+    holeBackgroundId: 4
     sortingGroup: 5
   bgData:
     listHoleBg:
     - holeId: 1
-      positionLocal: {x: -2.8, y: 4.58, z: 0.022822045}
-    - holeId: 4
-      positionLocal: {x: -2.26, y: 1.33, z: 0.57}
-    - holeId: 6
-      positionLocal: {x: 3.31, y: 1.8, z: 0.022822045}
-    - holeId: 5
-      positionLocal: {x: 1.41, y: 1.33, z: 0.022822045}
-    - holeId: 7
-      positionLocal: {x: -2.262, y: -0.47, z: 0.022822045}
-    - holeId: 3
-      positionLocal: {x: 0.17, y: 4.58, z: 0.022822045}
+      positionLocal: {x: -1.88, y: 5.35, z: 0.022822045}
     - holeId: 2
-      positionLocal: {x: -1.25, y: 4.58, z: 0.022822045}
+      positionLocal: {x: -0.08, y: 5.35, z: 0.022822045}
+    - holeId: 3
+      positionLocal: {x: 1.68, y: 5.35, z: 0.022822045}
+    - holeId: 4
+      positionLocal: {x: 0.012, y: 3.74, z: 0.022822045}
+    - holeId: 5
+      positionLocal: {x: -1.59, y: 2.13, z: 0.022822045}
+    - holeId: 6
+      positionLocal: {x: 1.44, y: 2.13, z: 0.022822045}
+    - holeId: 7
+      positionLocal: {x: -1.68, y: -0.32, z: 0.022822045}
     - holeId: 8
-      positionLocal: {x: -2.26, y: -3.86, z: 0.82}
+      positionLocal: {x: 1.68, y: -0.32, z: 0.022822045}
     - holeId: 9
-      positionLocal: {x: 1.58, y: -3.86, z: 0.022822045}
+      positionLocal: {x: -1.64, y: -2.77, z: 0.022822045}
+    - holeId: 10
+      positionLocal: {x: 1.68, y: -2.77, z: 0.022822045}
     position: {x: 0.01, y: 0.62, z: -0.13108386}
     sortingGroupLayer: background

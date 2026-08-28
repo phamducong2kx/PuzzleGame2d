@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
+using static PlasticGui.Diff.GetDiffPlasticLinkSpec;
 
 
 public class LevelExporter : EditorWindow
@@ -199,7 +200,7 @@ public class LevelExporter : EditorWindow
         }
         else
         {
-            Debug.Log("level index == 1");
+            Debug.Log("level index == 1 , hay tao lai level moi ");
         }
 
 
@@ -226,6 +227,21 @@ public class LevelExporter : EditorWindow
         foreach (var plank in listPlank)
         {
 
+            /*
+     public class PlankData
+{
+    public string plankId;
+    public Vector3 position;
+    public Vector3 rotation;
+    public string hexColor;
+    public List<HoleData> listPlankHole = new List<HoleData>();
+    public string sortingLayerName;
+    public PlankType plankType;
+}
+
+     
+     */
+
             // khoi tao 1 plank
             var plankData = new PlankData();
 
@@ -238,11 +254,18 @@ public class LevelExporter : EditorWindow
             //gán rotation cho plank
             plankData.rotation = plank.transform.eulerAngles.z;
 
+            //màu sắc
+
+            plankData.hexColor = plank.ColorToString();
             //sử dụng sorting group  : để cho sprie mask của hole chỉ có hiệu lực trong plank này chứ ko đi ra chỗ 
-            //khác 
-            var plankObj = plank.gameObject;
-            var sortingGroupRef = plankObj.GetComponent<SortingGroup>();
+
+            //sorting goup layer
+            //var plankObj = plank.gameObject;
+            var sortingGroupRef = plank.GetComponent<SortingGroup>();
             plankData.sortingLayerName = sortingGroupRef.sortingLayerName;
+
+            //type cua plank
+            plankData.plankType = plank.plankType;
 
             // tìm kiếm  danh sách các componenet hole trong danh sách các con của plank
             var listHole_Plank = plank.GetComponentsInChildren<Hole>();
@@ -255,6 +278,9 @@ public class LevelExporter : EditorWindow
 
                 // xet id cho chole
                 holeData.holeId = holePlank.holeId;
+
+                //plank pảent
+
 
                 //xet possition cho hole
                 holeData.positionLocal = holePlank.transform.localPosition;

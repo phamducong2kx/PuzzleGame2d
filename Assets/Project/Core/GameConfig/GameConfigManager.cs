@@ -10,6 +10,7 @@ public class GameConfigManager : MonoBehaviour
     public LevelDatabaseLogic levelDatabaseLogic;
     public PlayerDataLogic playerDataLogic;
     public SkillLogic skillLogic;
+    public PlankTypeLogic plankTypeLogic;
 
     private void Awake()
     {

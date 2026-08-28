@@ -22,18 +22,9 @@ MonoBehaviour:
       listLevelData:
       - {fileID: 11400000, guid: 80ef4537831272e4fa9543156b34b976, type: 2}
       - {fileID: 11400000, guid: d3b8a002c69115041a7ab24c892f3cbf, type: 2}
-      - {fileID: 11400000, guid: 6e6a3c35a80e5d44da86d7736e5ebe82, type: 2}
-      - {fileID: 11400000, guid: 0658a670d087b8548885d157664e006e, type: 2}
-      - {fileID: 11400000, guid: 7791dcadee89bcc41ad640806cc21a78, type: 2}
-      - {fileID: 11400000, guid: 984db570c7376964ebd69a5d7a49e6d5, type: 2}
-      - {fileID: 11400000, guid: 54367ace058e33b428c7458f74935c9e, type: 2}
-      - {fileID: 11400000, guid: ccfb0d5f118c87e49980dfe00517832e, type: 2}
-      - {fileID: 11400000, guid: eaf803bdf8e08734fbeaa7db89c0b77c, type: 2}
-      - {fileID: 11400000, guid: f6e37faeb7ba875458d2b52e0e220bc6, type: 2}
     - idChapterData: 2
       chapterName: 2
-      listLevelData:
-      - {fileID: 11400000, guid: 5b9cbedbb80f2b64f815726957b063aa, type: 2}
+      listLevelData: []
   - idWorldData: 2
     worldName: thgioi2
     workBadge: {fileID: 0}
