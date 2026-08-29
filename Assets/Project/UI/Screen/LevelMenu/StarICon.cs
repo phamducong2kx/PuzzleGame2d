@@ -87,9 +87,10 @@ public class StarICon : MonoBehaviour
 
         //hien thi  time tren textPrefab, can lay so giay
         float seconds = 0;
-        if (id == 3) seconds = LevelLoader.Instance.CurrentLevelData.thresh_time_star3;
-        else if (id == 2) seconds = LevelLoader.Instance.CurrentLevelData.thresh_time_star2;
-        else if (id == 1) seconds = LevelLoader.Instance.CurrentLevelData.thresh_time_star1;
+        // if (id == 3) seconds = LevelLoader.Instance.CurrentLevelData.thresh_time_star3;
+        //else if (id == 2) seconds = LevelLoader.Instance.CurrentLevelData.thresh_time_star2;
+        //else if (id == 1) seconds = LevelLoader.Instance.CurrentLevelData.thresh_time_star1;
+        seconds = LevelLoader.Instance.CurrentLevelData.ListMocTimeStar[id - 1];
 
         //convert sang string time
         string time = UIManager.Instance.gameplayPannel.timeView.FormatString(seconds);
@@ -108,7 +109,7 @@ public class StarICon : MonoBehaviour
         //xoa hien thi time tren textPrefab
         textTime.text = "";
 
-        //chuyen mau cua ngoi sao
+        //chuyen mau cua ngoi sao thanh mau trang
         SetWhiteStar();
     }
 

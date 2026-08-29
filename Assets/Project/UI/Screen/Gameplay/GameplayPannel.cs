@@ -20,6 +20,7 @@ public class GameplayPannel : MonoBehaviour
     public SkillView skillView;
     public GameObject Square_Skill;
     public SkiillShopPopup skiillShopPopup;
+    public LossPopup lossPopup;
 
 
     //tham chiếu pausePannel
@@ -39,12 +40,15 @@ public class GameplayPannel : MonoBehaviour
         //set up time
         float timeLimit = LevelLoader.Instance.CurrentLevelData.timerLimit;
         float timeWarn = LevelLoader.Instance.CurrentLevelData.timerWanr;
-        float thres_star_1 = LevelLoader.Instance.CurrentLevelData.thresh_time_star1;
-        float thres_star_2 = LevelLoader.Instance.CurrentLevelData.thresh_time_star2;
-        float thres_star_3 = LevelLoader.Instance.CurrentLevelData.thresh_time_star3;
+        ///  float thres_star_1 = LevelLoader.Instance.CurrentLevelData.thresh_time_star1;
+        //  float thres_star_2 = LevelLoader.Instance.CurrentLevelData.thresh_time_star2;
+        //  float thres_star_3 = LevelLoader.Instance.CurrentLevelData.thresh_time_star3;
+        var listStar = LevelLoader.Instance.CurrentLevelData.ListMocTimeStar;
 
         //khoi tao time vaf time va set upo timeView
-        timeSystem.SetupTimeLevel(timeLimit, timeWarn, thres_star_3, thres_star_2, thres_star_1);
+        //   timeSystem.SetupTimeLevel(timeLimit, timeWarn, thres_star_3, thres_star_2, thres_star_1);
+
+        timeSystem.SetupTimeLevel(timeLimit, timeWarn, listStar);
 
 
         //  timeView.HandleNormalTime(timeSystem.timeRemaining);

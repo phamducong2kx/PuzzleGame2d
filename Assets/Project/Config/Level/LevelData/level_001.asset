@@ -16,9 +16,10 @@ MonoBehaviour:
   timerLimit: 180
   timerWanr: 10
   coint: 0
-  thresh_time_star3: 150
-  thresh_time_star2: 100
-  thresh_time_star1: 40
+  ListMocTimeStar:
+  - 80
+  - 100
+  - 150
   listPlankData:
   - plankId: 1
     position: {x: -0.8253631, y: 3.437375, z: -0.10341765}

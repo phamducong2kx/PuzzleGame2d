@@ -25,9 +25,10 @@ public class LevelData : ScriptableObject
 
     public int coint = 0;
 
-    public float thresh_time_star3 = 150;
-    public float thresh_time_star2 = 100;
-    public float thresh_time_star1 = 40;
+    public List<float> ListMocTimeStar = new List<float>();
+    //  public float thresh_time_star3 = 150;
+    // public float thresh_time_star2 = 100;
+    // public float thresh_time_star1 = 40;
 
     public List<PlankData> listPlankData = new List<PlankData>();
 
