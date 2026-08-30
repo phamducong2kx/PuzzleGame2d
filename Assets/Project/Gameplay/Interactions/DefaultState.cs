@@ -35,7 +35,7 @@ public class DefaultState : ISKillState
     public void OntapHole(Hole hole)
     {
         //Lấy danh sách sau khi physic.overlapCircleAll
-        var listHole = Hole.CheckBoltToHole(hole);
+        var listHole = GameManager.Instance.holeSystem.CheckConnectBoltToHole(hole);
 
         if (listHole == null) return;
 
@@ -49,7 +49,7 @@ public class DefaultState : ISKillState
                 break;
             }
         }
-        if (Hole.HandleHoleCollider(bgHole, listHole))
+        if (GameManager.Instance.holeSystem.HandleHoleCollider(bgHole, listHole, 0.04f))
         {
             //xoas danh sacsh hole cũ mà bolt đính vào 
             InputHandler.Instance.pickedBolt?.RemoveConnectToHole_OfBolt();
@@ -79,7 +79,7 @@ public class DefaultState : ISKillState
 
     public void OnExitState()
     {
-          SetUpAllBoltPickDownNormal();
+        SetUpAllBoltPickDownNormal();
     }
 
     private void PickDownNormal(Bolt bolt)
@@ -89,7 +89,7 @@ public class DefaultState : ISKillState
 
         EventManager.InvokeBoltPlaced(bolt);
 
-        
+
         bolt.spriteRenderer.transform.DOLocalMove(Vector3.zero, 0.2f).SetEase(Ease.OutQuad);
 
         // bolt.spriteRenderer.transform.localScale

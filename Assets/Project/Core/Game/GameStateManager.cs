@@ -13,6 +13,7 @@ public class GameStateManager : MonoBehaviour
 
 
     //state hiện tại;
+    [SerializeField]
     public IGameState currentGameState;
 
     private void Awake()
@@ -58,7 +59,10 @@ public class GameStateManager : MonoBehaviour
 
     }
 
-
+    private void Update()
+    {
+        Debug.Log("current game state là : " + currentGameState);
+    }
 
 
 

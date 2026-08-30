@@ -6,10 +6,12 @@ public class LevelSelectState : IGameState
 {
     public void EnterSate()
     {
-        
-        
+
+
         //reset lại time
         Time.timeScale = 1;
+        GameManager.Instance.timerSystem.isRunning = false;
+        GameManager.Instance.warningSystem.isPlaying = false;
 
         //khóa ui home
         UIManager.Instance.homeManager.HideSelf();
@@ -31,7 +33,7 @@ public class LevelSelectState : IGameState
 
     public void Existstate()
     {//thoat map hien tai
-
+        Debug.Log("1");
         UIManager.Instance.pannelLevelSelect.HideSelf();
     }
 }

@@ -84,7 +84,7 @@ public class Plank : MonoBehaviour
             EventManager.InvokePlankFallComplete(this);
 
 
-            UIManager.Instance.gameplayPannel.winLoseSystem.Evaluate();
+            GameManager.Instance.winLoseSystem.Evaluate();
         }
     }
 

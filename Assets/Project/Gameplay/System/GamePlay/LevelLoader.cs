@@ -22,7 +22,7 @@ public class LevelLoader : MonoBehaviour
 
 
     // Runtime state
-    private BackgroundPlane spawnedBackground;
+    public BackgroundPlane spawnedBackground;
     public List<Plank> spawnedPlanks = new List<Plank>();
     public List<Bolt> spawnedBolts = new List<Bolt>();
     private LevelData currentLevelData;

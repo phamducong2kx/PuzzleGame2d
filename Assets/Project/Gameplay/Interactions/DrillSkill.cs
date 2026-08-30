@@ -72,6 +72,7 @@ public class DrillSkillState : ISKillState
         //sau khi cat dut xong lien ket thi no se co rigibody va roi xuong 
         bolt.transform.localScale = Vector3.one;
         bolt.SetDynamicRigibody();
+        bolt.SetCollider();
         bolt.transform.DOKill();
         VisualSelectBolt();
         skill.activeSkill = true;
@@ -98,7 +99,8 @@ public class DrillSkillState : ISKillState
         }
 
         //time hoat dong binh thuong chay lai corotine
-        UIManager.Instance.gameplayPannel.timeSystem.isRunning = true;
+        GameManager.Instance.timerSystem.isRunning = true;
+        GameManager.Instance.warningSystem.isPlaying = true;
         Time.timeScale = 1f;
 
         //dong coroutine
@@ -119,7 +121,8 @@ public class DrillSkillState : ISKillState
         }
 
         //dong bang time luon
-        UIManager.Instance.gameplayPannel.timeSystem.isRunning = false;
+        GameManager.Instance.timerSystem.isRunning = false;
+        GameManager.Instance.warningSystem.isPlaying = false;
         // Time.timeScale = 0f;
 
         //kich hoat time star courotine

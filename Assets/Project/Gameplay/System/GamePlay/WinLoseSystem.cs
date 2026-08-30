@@ -3,12 +3,19 @@ using UnityEngine;
 
 
 
-public class WinLoseSystem
+public class WinLoseSystem : MonoBehaviour
 {
 
-    private bool _ended;
+    // private bool _ended;
 
+    private void Start()
+    {
 
+    }
+    private void Update()
+    {
+
+    }
 
     public void Evaluate()
     {
@@ -26,7 +33,7 @@ public class WinLoseSystem
         }
 
 
-        else if (UIManager.Instance.gameplayPannel.timeSystem != null && UIManager.Instance.gameplayPannel.timeSystem.timeRemaining <= 0f)
+        else if (GameManager.Instance.timerSystem != null && GameManager.Instance.timerSystem.timeRemaining <= 0f)
         {
             //chua xu li trunog hop nay
 

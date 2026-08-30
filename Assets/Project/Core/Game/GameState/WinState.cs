@@ -18,8 +18,7 @@ public class WinState : IGameState
     private IEnumerator WinRoutine()
     {
 
-        //tro ve trang thai che do choi binh thường
-        InputHandler.Instance.SetStrategy(new DefaultState());
+
 
         //clear heest object
         LevelLoader.Instance.ClearLevel();
@@ -28,7 +27,9 @@ public class WinState : IGameState
         UIManager.Instance.ActivePanelLevelComplate();
 
         //tăt logic time , tắt ui ko cần thiết
-        UIManager.Instance.gameplayPannel.timeSystem.isRunning = false;
+        GameManager.Instance.timerSystem.isRunning = false;
+        GameManager.Instance.warningSystem.isPlaying = false;
+
         UIManager.Instance.gameplayPannel.WinUI();
 
         //đưa newStar trở lại pool
@@ -42,7 +43,7 @@ public class WinState : IGameState
 
         //so sao hien tai kiem duoc;
 
-        newStar = UIManager.Instance.gameplayPannel.timeSystem.mocsao;
+        newStar = GameManager.Instance.timerSystem.mocsao;
         var data = SaveManager.Data;
         var oldStar = GameConfigManager.Instance.playerDataLogic.GetNumberStarOfLevel(data, data.currentLevel);
         var levelId = SaveManager.Data.currentLevel;
@@ -67,7 +68,8 @@ public class WinState : IGameState
             GameStateManager.Instance.StopCoroutine(winCoroutine);
         }
 
-
+        //tro ve trang thai che do choi binh thường
+        InputHandler.Instance.SetStrategy(new DefaultState());
 
         //disable cacs aniamtion
         AnimationManager.Instance.gamePlayAnimation.Hide();

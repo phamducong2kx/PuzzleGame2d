@@ -22,6 +22,7 @@ MonoBehaviour:
       listLevelData:
       - {fileID: 11400000, guid: 80ef4537831272e4fa9543156b34b976, type: 2}
       - {fileID: 11400000, guid: d3b8a002c69115041a7ab24c892f3cbf, type: 2}
+      - {fileID: 11400000, guid: 6e6a3c35a80e5d44da86d7736e5ebe82, type: 2}
     - idChapterData: 2
       chapterName: 2
       listLevelData: []

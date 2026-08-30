@@ -11,8 +11,6 @@ public class GameplayPannel : MonoBehaviour
 {
 
     public CoinView coinview;
-    public TimerSystem timeSystem;
-    public WinLoseSystem winLoseSystem;
     public TimerUiView timeView;
     public Button pauseButton;
     public TextMeshProUGUI levelText;
@@ -31,7 +29,7 @@ public class GameplayPannel : MonoBehaviour
     {
 
 
-        winLoseSystem = new WinLoseSystem();
+
 
     }
 
@@ -40,18 +38,15 @@ public class GameplayPannel : MonoBehaviour
         //set up time
         float timeLimit = LevelLoader.Instance.CurrentLevelData.timerLimit;
         float timeWarn = LevelLoader.Instance.CurrentLevelData.timerWanr;
-        ///  float thres_star_1 = LevelLoader.Instance.CurrentLevelData.thresh_time_star1;
-        //  float thres_star_2 = LevelLoader.Instance.CurrentLevelData.thresh_time_star2;
-        //  float thres_star_3 = LevelLoader.Instance.CurrentLevelData.thresh_time_star3;
+
         var listStar = LevelLoader.Instance.CurrentLevelData.ListMocTimeStar;
 
-        //khoi tao time vaf time va set upo timeView
-        //   timeSystem.SetupTimeLevel(timeLimit, timeWarn, thres_star_3, thres_star_2, thres_star_1);
-
-        timeSystem.SetupTimeLevel(timeLimit, timeWarn, listStar);
 
 
-        //  timeView.HandleNormalTime(timeSystem.timeRemaining);
+        GameManager.Instance.timerSystem.SetupTimeLevel(timeLimit, timeWarn, listStar);
+        GameManager.Instance.warningSystem.SetupWarningTime();
+
+
 
 
         //set up starview
@@ -61,6 +56,7 @@ public class GameplayPannel : MonoBehaviour
         //Khoi tao tetx cua level, cua coint
         levelText.text = $"Level {SaveManager.Data.currentLevel.ToString()}";
         coinview.text_coin.text = "0";
+        timeView.SetupText();
 
         //kich hoat ui
         timeView.gameObject.SetActive(true);
@@ -69,14 +65,17 @@ public class GameplayPannel : MonoBehaviour
         skillView.gameObject.SetActive(true);
 
         //dang ki su kien
-        timeView.RegisterTimeEvent();
-        starView.RegisterEventStarView();
-        timeSystem.RegisterEventAddTime();
 
+        SetupRegisterEvent();
 
     }
 
-
+    public void SetupRegisterEvent()
+    {
+        timeView.RegisterTimeEvent();
+        starView.RegisterEventStarView();
+        GameManager.Instance.timerSystem.RegisterEventAddTime();
+    }
 
     private void OnEnable()
     {

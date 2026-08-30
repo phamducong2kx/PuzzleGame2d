@@ -20,6 +20,7 @@ public class StarView : MonoBehaviour
     private void OnEnable()
     {
         GameConfigManager.Instance.skillLogic.AddTimeSkill += HandleAddTime;
+        // RegisterEventStarView();
     }
 
     private void HandleAddTime()
@@ -69,14 +70,14 @@ public class StarView : MonoBehaviour
     // moi object se dang ki su kien , de o day thi thuan loi hon
     public void GenerateStarIcon()
     {
-       // Debug.Log($"vi tri local cua starview la x = {transform.localPosition.x} , y ={transform.localPosition.y} , z la {transform.localPosition.z}");
-      //  Debug.Log($"vi tri tren world cua starview la x = {transform.position.x} , y ={transform.position.y} , z la {transform.position.z}");
+        // Debug.Log($"vi tri local cua starview la x = {transform.localPosition.x} , y ={transform.localPosition.y} , z la {transform.localPosition.z}");
+        //  Debug.Log($"vi tri tren world cua starview la x = {transform.position.x} , y ={transform.position.y} , z la {transform.position.z}");
         //khoi tao cacs icon newStar
         for (int i = 0; i < 3; ++i)
         {
             //lay ra tu pool ,, gan position thi luc nay starobejct co vi tri la vi tri cua pannel tren world
             var starObj = ObjectPooler.Instance.Spawn(prefabStarIcon.gameObject, transform.position, prefabStarIcon.transform.rotation);
-          //  Debug.Log($"toa do cua ngoi sao thu {i + 1} la x  = {starObj.transform.position.x} , y ={starObj.transform.position.y} , z la {starObj.transform.position.z}");
+            //  Debug.Log($"toa do cua ngoi sao thu {i + 1} la x  = {starObj.transform.position.x} , y ={starObj.transform.position.y} , z la {starObj.transform.position.z}");
 
 
             starObj.transform.SetParent(transform, false);
@@ -93,7 +94,7 @@ public class StarView : MonoBehaviour
         // 2. Bây giờ in ra mới thấy 3 tọa độ X Y Z KHÁC NHAU do GridLayoutGroup đã xếp xong
         for (int i = 0; i < listStarICon.Count; i++)
         {
-           // Debug.Log($"Vị trí ĐÚNG của ngôi sao {i + 1} sau khi xếp Grid là: {listStarICon[i].transform.position}");
+            // Debug.Log($"Vị trí ĐÚNG của ngôi sao {i + 1} sau khi xếp Grid là: {listStarICon[i].transform.position}");
         }
     }
 
@@ -112,7 +113,8 @@ public class StarView : MonoBehaviour
     {
         for (int i = 0; i < listStarICon.Count; ++i)
         {
-            UIManager.Instance.gameplayPannel.timeSystem.OnStarView += listStarICon[i].HandleStar;
+            GameManager.Instance.timerSystem.OnStarView -= listStarICon[i].HandleStar;
+            GameManager.Instance.timerSystem.OnStarView += listStarICon[i].HandleStar;
             listStarICon[i].SetYellowStar();
         }
     }

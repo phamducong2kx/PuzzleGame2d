@@ -91,30 +91,11 @@ public class LightNingState : ISKillState
         plank.transform.position = pos;
 
         plank.SetStaticRigibody();
-
-        //sau do dua thang nay ve poool
-        // var prefabPlank = ObjectPooler.Instance.GetPrefabObject(plank.gameObject);
-        //ko dua no ve poool nua ma  cho no toa do y = -40
-
-        // ObjectPooler.Instance.Despawn(prefabPlank, plank.gameObject);
-        // if (prefabPlank == LevelLoader.Instance.plankPrefab)
-        // {
-        //     Debug.Log("2 thang prefab nay la 1");
-        // }
-        //   var x = ObjectPooler.Instance.poolDict[prefabPlank];
-        //   if (x != null)
-        //  {
-        //      Debug.Log("so luong plank trong queue la " + x.Count);
-        //  }
         await Task.Delay(1000);
-
-
-
-
         VisualSelectPlank();
         skill.activeSkill = true;
         InputHandler.Instance.SetStrategy(new DefaultState());
-        UIManager.Instance.gameplayPannel.winLoseSystem.Evaluate();
+        GameManager.Instance.winLoseSystem.Evaluate();
 
 
     }
@@ -133,7 +114,8 @@ public class LightNingState : ISKillState
         }
 
         //time hoat dong binh thuong chay lai corotine
-        UIManager.Instance.gameplayPannel.timeSystem.isRunning = true;
+        GameManager.Instance.timerSystem.isRunning = true;
+        GameManager.Instance.warningSystem.isPlaying = true;
         Time.timeScale = 1f;
 
         //disactive square
@@ -155,8 +137,8 @@ public class LightNingState : ISKillState
         }
 
         //dung dem thoi gian
-        UIManager.Instance.gameplayPannel.timeSystem.isRunning = false;
-
+        GameManager.Instance.timerSystem.isRunning = false;
+        GameManager.Instance.warningSystem.isPlaying = false;
 
         //active square
         UIManager.Instance.gameplayPannel.Square_Skill.SetActive(true);

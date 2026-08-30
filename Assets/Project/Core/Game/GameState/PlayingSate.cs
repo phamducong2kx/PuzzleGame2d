@@ -29,7 +29,7 @@ public class PlayingSate : IGameState
             //
             InputHandler.Instance.pickedBolt = null;
 
-            
+
 
             //clear level cũ
             LevelLoader.Instance.ClearLevel();
@@ -45,6 +45,7 @@ public class PlayingSate : IGameState
         //hien ui gamplay  va set up level textPrefab, coin view, newStar view , time , deu nam trong setbegin cua gameplaypannel
         UIManager.Instance.gameplayPannel.ActiveSelf();
         UIManager.Instance.gameplayPannel.SetBegin();
+
 
         //hide các ui 
         UIManager.Instance.pannelLevelSelect.HideSelf();

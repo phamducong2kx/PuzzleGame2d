@@ -12,7 +12,7 @@ public class Bolt : MonoBehaviour
     public Hole backgroundHole;
     public List<Hole> plankHoles = new List<Hole>();
     public Rigidbody2D rb;
-    private CircleCollider2D col;
+    [SerializeField] private CircleCollider2D col;
     public SpriteRenderer spriteRenderer;
     public Sprite boltIdle;
     public Sprite boltPickUp;
@@ -46,6 +46,7 @@ public class Bolt : MonoBehaviour
     private void OnEnable()
     {
         //dang ki skill drillSkill : khong nen dang ki su kien
+        col.enabled = true;
     }
 
     private void HandleDrillSkill()
@@ -139,10 +140,16 @@ public class Bolt : MonoBehaviour
     {
         if (transform.position.y <= 30f)
             rb.bodyType = RigidbodyType2D.Dynamic;
+
     }
     public void SetStaticRigibody()
     {
         rb.bodyType = RigidbodyType2D.Static;
+    }
+
+    public void SetCollider()
+    {
+        col.enabled = false;
     }
 
 }

@@ -36,10 +36,12 @@ public class TimerSystem : MonoBehaviour
     }
     private void OnEnable()
     {
-
+        //  RegisterEventAddTime();
     }
     public void RegisterEventAddTime()
     {
+
+        GameConfigManager.Instance.skillLogic.AddTimeSkill -= HandleAddTime;
         GameConfigManager.Instance.skillLogic.AddTimeSkill += HandleAddTime;
     }
 
@@ -128,37 +130,7 @@ public class TimerSystem : MonoBehaviour
     }
 
 
-    private void CheckMocSao(int threshStar, float time_mocsao)
-    {
-        if (timeRemaining <= time_mocsao + 10 && isDotweeinRuning)
-        {
-            OnStarView?.Invoke(threshStar, StarState.Warning);
-            isDotweeinRuning = false;
-        }
-        if (timeRemaining < time_mocsao)
-        {
-            OnStarView?.Invoke(threshStar, StarState.Loss);
-            isDotweeinRuning = true;
-            --mocsao;
 
-        }
-    }
-
-
-
-    //set up casc giá tr? m?i cho time
-    public void SetupTimeLevel(float duration, float warnTime, float star3, float star2, float star1)
-    {
-        this.duration = duration;
-        warnThreshold = warnTime;
-        timeRemaining = duration;
-        isRunning = true;
-        MocStar_1 = star1;
-        MocStar_2 = star2;
-        MocStar_3 = star3;
-        mocsao = 3;
-        timeState = TimeState.Normal;
-    }
 
     public void SetupTimeLevel(float duration, float warnTime, List<float> listmocsao)
     {
@@ -169,5 +141,11 @@ public class TimerSystem : MonoBehaviour
         listMocSao = listmocsao;
         mocsao = listMocSao.Count;
         timeState = TimeState.Normal;
+    }
+
+    public void ReloadTime(float time)
+    {
+        isRunning = true;
+        timeRemaining = time;
     }
 }

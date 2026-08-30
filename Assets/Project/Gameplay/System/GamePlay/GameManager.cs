@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public TimerSystem timerSystem;
-
-
+    public HoleSystem holeSystem;
+    public WinLoseSystem winLoseSystem;
+    public WarningSystem warningSystem;
     public bool isRefresh;
     public bool isResume;
 
