@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "231141878259",
+    "project_id": "screwpuzzlegame-b256e",
+    "storage_bucket": "screwpuzzlegame-b256e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231141878259:android:9ed969a237af60d5d44a86",
+        "android_client_info": {
+          "package_name": "com.PhamDUcLongCompany.ScrewPuzzle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmtWyLUqYurTPv95AX-lKFq6RdbUGnXws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
