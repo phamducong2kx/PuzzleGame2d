@@ -28,9 +28,9 @@ public static class SaveManager
 
             }
             Data.levelProgresses[0].isUnlock = true;
-            Data.coint = 0;
+            // Data.coint = 0;
 
-            //load skill
+
 
 
             SaveData();
@@ -38,6 +38,7 @@ public static class SaveManager
         else
         {
             Data = new PlayerData();
+
             SaveData();
         }
     }
@@ -121,18 +122,7 @@ public static class SaveManager
 
 
 
-    public static void AddResource(ItemType type, int amount)
-    {
-        //if (type == ItemType.Coint)
-        //{
-        //    AddCoint(amount);
-        //}
-        //else if (type == ItemType.Undo) Data.undoSkill += amount;
-        //else if (type == ItemType.TimeSkill) Data.timeSkill += amount;
-        //else if (type == ItemType.LightningSkill) Data.thunderSkill += amount;
-        //else if (type == ItemType.DrillSkillState) Data.drillerSkill += amount;
-        SaveManager.SaveData();
-    }
+
 
     public static void Save_Get_dailyReward_Successfull()
     {

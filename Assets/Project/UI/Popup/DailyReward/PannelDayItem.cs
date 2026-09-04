@@ -9,7 +9,7 @@ public class PannelDayItem : MonoBehaviour
 {
 
     public TextMeshProUGUI textDay;
-    public Transform pannelItem;
+    public RectTransform pannelItem;
     private int day;
 
     // xem hom nay la ngay may

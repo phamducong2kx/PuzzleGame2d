@@ -25,7 +25,7 @@ public class AvatarPopup : MonoBehaviour
     private void SetUpAvatarTop()
     {
         //id hein tai
-        var currentIDAvatar = GameConfigManager.Instance.playerDataLogic.GetIdCurrentAvatar(SaveManager.Data);
+        var currentIDAvatar = GameConfigManager.Instance.playerDataLogic.GetCurrentIdAvatar(SaveManager.Data);
         //laays anh avatar theo id
         var avatarImage = GameConfigManager.Instance.playerDataLogic.GetSpriteFormIdAvatar(currentIDAvatar);
         //xet up icon top

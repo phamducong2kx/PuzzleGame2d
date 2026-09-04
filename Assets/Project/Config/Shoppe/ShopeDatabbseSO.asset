@@ -1,0 +1,209 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f843261586bec409b22245d07f459d, type: 3}
+  m_Name: ShopeDatabbseSO
+  m_EditorClassIdentifier: 
+  listPackgeShoppe:
+  - idPackage: 1
+    listItemId:
+    - idItem: coint_index
+      amount: 1
+    amount: 4000
+    priceDolar: 1.99
+    priceCoint: 0
+    iconOverrite: {fileID: 1334393459, guid: 07a651df27eefbd4ab88a1b132d3c319, type: 3}
+    typePacakgaeShopee: 1
+    namePackageType: "Cung C\u1EA5p Xu"
+    hasBanner: 0
+  - idPackage: 2
+    listItemId:
+    - idItem: coint_index
+      amount: 1
+    amount: 8800
+    priceDolar: 3.99
+    priceCoint: 0
+    iconOverrite: {fileID: 1334393459, guid: 07a651df27eefbd4ab88a1b132d3c319, type: 3}
+    typePacakgaeShopee: 1
+    namePackageType: "Cung C\u1EA5p Xu"
+    hasBanner: 0
+  - idPackage: 3
+    listItemId:
+    - idItem: coint_index
+      amount: 1
+    amount: 23000
+    priceDolar: 9.99
+    priceCoint: 0
+    iconOverrite: {fileID: 1334393459, guid: 07a651df27eefbd4ab88a1b132d3c319, type: 3}
+    typePacakgaeShopee: 1
+    namePackageType: "Cung C\u1EA5p Xu"
+    hasBanner: 0
+  - idPackage: 4
+    listItemId:
+    - idItem: coint_index
+      amount: 1
+    amount: 50000
+    priceDolar: 19.99
+    priceCoint: 0
+    iconOverrite: {fileID: 1334393459, guid: 07a651df27eefbd4ab88a1b132d3c319, type: 3}
+    typePacakgaeShopee: 1
+    namePackageType: "Cung C\u1EA5p Xu"
+    hasBanner: 0
+  - idPackage: 5
+    listItemId:
+    - idItem: coint_index
+      amount: 1
+    amount: 12000
+    priceDolar: 39.99
+    priceCoint: 0
+    iconOverrite: {fileID: 1334393459, guid: 07a651df27eefbd4ab88a1b132d3c319, type: 3}
+    typePacakgaeShopee: 1
+    namePackageType: "Cung C\u1EA5p Xu"
+    hasBanner: 0
+  - idPackage: 6
+    listItemId:
+    - idItem: coint_index
+      amount: 1
+    amount: 300000
+    priceDolar: 79.99
+    priceCoint: 0
+    iconOverrite: {fileID: 1334393459, guid: 07a651df27eefbd4ab88a1b132d3c319, type: 3}
+    typePacakgaeShopee: 1
+    namePackageType: "Cung C\u1EA5p Xu"
+    hasBanner: 0
+  - idPackage: 7
+    listItemId:
+    - idItem: drill_index
+      amount: 1
+    amount: 5
+    priceDolar: 0
+    priceCoint: 1000
+    iconOverrite: {fileID: 334525070, guid: d4727ed805eda02479290f643e3f7efd, type: 3}
+    typePacakgaeShopee: 0
+    namePackageType: "V\u1EADt ph\u1EA9m xu"
+    hasBanner: 0
+  - idPackage: 8
+    listItemId:
+    - idItem: light_index
+      amount: 1
+    amount: 5
+    priceDolar: 0
+    priceCoint: 2000
+    iconOverrite: {fileID: 2024830553, guid: 64353460b4af94947ad40227d96bb0e0, type: 3}
+    typePacakgaeShopee: 0
+    namePackageType: "V\u1EADt ph\u1EA9m xu"
+    hasBanner: 0
+  - idPackage: 9
+    listItemId:
+    - idItem: time_index
+      amount: 1
+    amount: 5
+    priceDolar: 0
+    priceCoint: 1000
+    iconOverrite: {fileID: -380611160, guid: 38dab92bf947a104cbe10ef9f5fc4ec7, type: 3}
+    typePacakgaeShopee: 0
+    namePackageType: "V\u1EADt ph\u1EA9m xu"
+    hasBanner: 0
+  - idPackage: 'sieu cap '
+    listItemId:
+    - idItem: time_index
+      amount: 15
+    - idItem: coint_index
+      amount: 10000
+    - idItem: drill_index
+      amount: 15
+    - idItem: light_index
+      amount: 15
+    amount: 1
+    priceDolar: 80
+    priceCoint: 0
+    iconOverrite: {fileID: 21300000, guid: ba81add7a81cf1049baa4aa0c27e3eb4, type: 3}
+    typePacakgaeShopee: 6
+    namePackageType: Siuecap
+    hasBanner: 1
+  - idPackage: sieu cap_vip
+    listItemId:
+    - idItem: time_index
+      amount: 15
+    - idItem: coint_index
+      amount: 10000
+    - idItem: drill_index
+      amount: 15
+    - idItem: light_index
+      amount: 15
+    amount: 1
+    priceDolar: 0
+    priceCoint: 3000
+    iconOverrite: {fileID: 21300000, guid: ba81add7a81cf1049baa4aa0c27e3eb4, type: 3}
+    typePacakgaeShopee: 6
+    namePackageType: Siuecap
+    hasBanner: 1
+  - idPackage: 11
+    listItemId:
+    - idItem: time_index
+      amount: 10
+    - idItem: coint_index
+      amount: 50000
+    - idItem: drill_index
+      amount: 20
+    - idItem: light_index
+      amount: 8
+    amount: 1
+    priceDolar: 50
+    priceCoint: 0
+    iconOverrite: {fileID: 21300000, guid: 595cf7c60b40dfb43960524d71155462, type: 3}
+    typePacakgaeShopee: 6
+    namePackageType: Siuecap
+    hasBanner: 1
+  - idPackage: timer_tang_cuong
+    listItemId:
+    - idItem: time_index
+      amount: 1
+    amount: 10
+    priceDolar: 2.99
+    priceCoint: 0
+    iconOverrite: {fileID: -380611160, guid: 38dab92bf947a104cbe10ef9f5fc4ec7, type: 3}
+    typePacakgaeShopee: 2
+    namePackageType: "V\u1EADt ph\u1EA9m t\u0103ng c\u01B0\u1EDDng"
+    hasBanner: 0
+  - idPackage: drill_tang_cuong
+    listItemId:
+    - idItem: drill_index
+      amount: 1
+    amount: 10
+    priceDolar: 2.99
+    priceCoint: 0
+    iconOverrite: {fileID: 334525070, guid: d4727ed805eda02479290f643e3f7efd, type: 3}
+    typePacakgaeShopee: 2
+    namePackageType: "V\u1EADt ph\u1EA9m t\u0103ng c\u01B0\u1EDDng"
+    hasBanner: 0
+  - idPackage: drill_tang_cuong_c1
+    listItemId:
+    - idItem: drill_index
+      amount: 1
+    amount: 30
+    priceDolar: 6.99
+    priceCoint: 0
+    iconOverrite: {fileID: 334525070, guid: d4727ed805eda02479290f643e3f7efd, type: 3}
+    typePacakgaeShopee: 2
+    namePackageType: "V\u1EADt ph\u1EA9m t\u0103ng c\u01B0\u1EDDng"
+    hasBanner: 0
+  - idPackage: lightning_tang_cuong_c1
+    listItemId:
+    - idItem: light_index
+      amount: 1
+    amount: 30
+    priceDolar: 6.99
+    priceCoint: 0
+    iconOverrite: {fileID: 2024830553, guid: 64353460b4af94947ad40227d96bb0e0, type: 3}
+    typePacakgaeShopee: 2
+    namePackageType: "V\u1EADt ph\u1EA9m t\u0103ng c\u01B0\u1EDDng"
+    hasBanner: 0

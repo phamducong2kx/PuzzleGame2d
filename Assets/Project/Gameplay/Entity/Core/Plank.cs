@@ -81,9 +81,14 @@ public class Plank : MonoBehaviour
             hasFallen = true;
 
             //phat plank rơi
-            EventManager.InvokePlankFallComplete(this);
+            AnimationManager.Instance.gamePlayAnimation.cointBurst
+                .PlayAnimationPlankFell(transform.position, 3, 0.3f, UIManager.Instance.gameplayPannel.coinview.transform, () =>
+                {
+                    UIManager.Instance.gameplayPannel.coinview.UpdateTextCoin();
+                });
 
 
+            //check xem da thoa man hay chua
             GameManager.Instance.winLoseSystem.Evaluate();
         }
     }

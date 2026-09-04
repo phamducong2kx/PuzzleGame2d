@@ -15,6 +15,7 @@ public class HomeManager : MonoBehaviour
     public DailyRewardPopup dailyRewardPopup;
     public NoticeReward noticeReward;
     public AvatarPopup avatarPopup;
+    public ShopPopup shopPopup;
 
 
 
@@ -31,6 +32,7 @@ public class HomeManager : MonoBehaviour
         SetUpDailyRewardButton();
         SetUpSignNoticeDailyReward();
         SetupAvatarButton();
+        SetupShoppeButton();
     }
     public void ActiveSelf()
     {
@@ -55,7 +57,7 @@ public class HomeManager : MonoBehaviour
     private void SetupAvatarButton()
     {
         //tim idavatar curent
-        string idAvatarCurrent = GameConfigManager.Instance.playerDataLogic.GetIdCurrentAvatar(SaveManager.Data);
+        string idAvatarCurrent = GameConfigManager.Instance.playerDataLogic.GetCurrentIdAvatar(SaveManager.Data);
         //tim kiem sprite theo id
         var sprite = GameConfigManager.Instance.playerDataLogic.GetSpriteFormIdAvatar(idAvatarCurrent);
         //gan sprite cho avatar
@@ -106,6 +108,15 @@ public class HomeManager : MonoBehaviour
 
     }
 
+    private void SetupShoppeButton()
+    {
+        shoppe.onClick.AddListener(() =>
+        {
+            shopPopup.gameObject.SetActive(true);
+            shopPopup.SetupCoint();
+            UIManager.Instance.topBarZone.gameObject.SetActive(false);
+        });
+    }
 
     public void RefreshNoticeDailyReward()
     {

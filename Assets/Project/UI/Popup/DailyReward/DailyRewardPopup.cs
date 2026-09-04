@@ -38,19 +38,19 @@ public class DailyRewardPopup : MonoBehaviour
     //tao ra danh sach cacs panell
     private void Genertate()
     {
-
+        //lay danh sách daily reward
         var listReward = dailyRewardConfig.dailyRewards;
 
         //tao danh sacsh pannelDayitem tu lisdtPannel
         for (int i = 0; i < listReward.Count; ++i)
         {
-            // khoi tao 1 cai pannelDay;
+            // khoi tao 1 cai pannelDay de chua danh scah các quà của 1 ngày
             var pannelDay = Instantiate(panelDayItem, listItemPanel);
 
-            //set up cho pannel do
+            //set up cho pannel do : animation , text ngày 
             pannelDay.SetUpPannel(i + 1);
 
-            //duyeetj danh sach cac phan qua tu day i+1
+            //danh sách quà của ngày hôm đó
             var itemList_for_day = listReward[i].listRewardItem;
 
             //taoj 1 bien itemInfor 
@@ -92,11 +92,11 @@ public class DailyRewardPopup : MonoBehaviour
             getRewardButton.gameObject.SetActive(true);
             countDownTime.transform.parent.gameObject.SetActive(false);
             SetUpGetRewardButton();
-          
+
         }
         else
         {
-         
+
             //đếm ngược time
             countDownTime.text = DailyRewardTimeLogic.ConvertTimeSpantoString(remainingTime);
         }
@@ -128,11 +128,11 @@ public class DailyRewardPopup : MonoBehaviour
             //active object animation
             AnimationManager.Instance.dailyRewardAnimation.Active();
 
-            //lay ngay hom do
-            int day = SaveManager.Data.currentDailyReward;
+            //lay danh sách quà của ngày nhận thưởng
+            int rewardDay = SaveManager.Data.currentDailyReward + 1;
 
-            //laays danh sacsh qua cua ngay hom do
-            var listReward = dailyRewardConfig.dailyRewards[day].listRewardItem;
+            //laays danh sacsh qua cua ngay nhan thưởng
+            var listReward = dailyRewardConfig.dailyRewards[rewardDay - 1].listRewardItem;
 
             //cong vao database luon,sau do moi phat animation
             foreach (var x in listReward)
@@ -141,7 +141,8 @@ public class DailyRewardPopup : MonoBehaviour
                 var item = GameConfigManager.Instance.itemLogic.GetItemInfoById(x.idItem);
 
                 //cong vao nguon tai nguyen
-                SaveManager.AddResource(item.type, x.amount);
+                GameConfigManager.Instance.playerDataLogic.AddResource(item.type, x.idItem, x.amount);
+                // SaveManager.AddResource(item.type, x.amount);
             }
             //phat event animation
             EventManager.InvokeGetDailyReward(listReward);

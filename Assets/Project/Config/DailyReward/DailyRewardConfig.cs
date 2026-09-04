@@ -18,6 +18,7 @@ public class DailyReward
 {
     public int day = 1;
     public List<Item_DailyReward> listRewardItem = new List<Item_DailyReward>();
+
 }
 
 [Serializable]

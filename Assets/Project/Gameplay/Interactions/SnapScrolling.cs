@@ -10,6 +10,7 @@ using static UnityEngine.GraphicsBuffer;
 public class SnapScrolling : MonoBehaviour, IEndDragHandler, IDragHandler
 {
 
+
     [Header("UI Elements")]
 
     [SerializeField] private RectTransform contentPanel;

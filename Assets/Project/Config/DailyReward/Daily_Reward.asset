@@ -15,49 +15,49 @@ MonoBehaviour:
   dailyRewards:
   - day: 1
     listRewardItem:
-    - idItem: 1
-      amount: 50
+    - idItem: coint_index
+      amount: 500
   - day: 2
     listRewardItem:
-    - idItem: 1
+    - idItem: coint_index
       amount: 100
-    - idItem: 2
+    - idItem: drill_index
       amount: 1
   - day: 3
     listRewardItem:
-    - idItem: 1
+    - idItem: coint_index
       amount: 200
-    - idItem: 3
+    - idItem: time_index
       amount: 1
   - day: 4
     listRewardItem:
-    - idItem: 1
+    - idItem: coint_index
       amount: 300
-    - idItem: 4
+    - idItem: light_index
       amount: 1
   - day: 5
     listRewardItem:
-    - idItem: 1
+    - idItem: coint_index
       amount: 400
-    - idItem: 5
+    - idItem: undo_index
       amount: 1
   - day: 6
     listRewardItem:
-    - idItem: 1
+    - idItem: coint_index
       amount: 500
-    - idItem: 4
+    - idItem: light_index
       amount: 1
-    - idItem: 5
+    - idItem: undo_index
       amount: 1
   - day: 7
     listRewardItem:
-    - idItem: 1
+    - idItem: coint_index
       amount: 1000
-    - idItem: 2
+    - idItem: drill_index
       amount: 1
-    - idItem: 3
+    - idItem: time_index
       amount: 1
-    - idItem: 4
+    - idItem: light_index
       amount: 1
-    - idItem: 5
+    - idItem: undo_index
       amount: 1

@@ -19,17 +19,11 @@ public class ItemInfo
     public Sprite icon;
 
     public ItemType type;
-
-
-
 }
 
 public enum ItemType
 {
     Coint,
-    DrillSkill,
-    TimeSkill,
-    LightningSkill,
-    Undo
+    Skill,
 }
 

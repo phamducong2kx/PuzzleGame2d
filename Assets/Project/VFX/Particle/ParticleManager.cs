@@ -27,7 +27,7 @@ public class ParticleManager : MonoBehaviour
     private void OnEnable()
     {
 
-        EventManager.OnPlankFallComplete += HandlePlankFall;
+
         EventManager.OnBoltPickedUp += HandlePickUpBolt;
         EventManager.OnBoltPlaced += HandlePickDownBolt;
         EventManager.OnLevelComplete += HandleWinEffect;
@@ -75,7 +75,7 @@ public class ParticleManager : MonoBehaviour
 
     private void OnDisable()
     {
-        EventManager.OnPlankFallComplete -= HandlePlankFall;
+
         EventManager.OnBoltPickedUp -= HandlePickUpBolt;
         EventManager.OnBoltPlaced -= HandlePickDownBolt;
         EventManager.OnLevelComplete -= HandleWinEffect;
@@ -101,10 +101,9 @@ public class ParticleManager : MonoBehaviour
         StartCoroutine(DespawnRoutine(pickUpBoltPrefab.gameObject, obj, 0.5f));
     }
 
-    private void HandlePlankFall(Plank plank)
+    public void HandlePlankFall(Vector3 startPosition)
     {
-        Vector2 target = new Vector2(-2f, -13f);
-        var obj = ObjectPooler.Instance.Spawn(plankFellPrefab.gameObject, target, plankFellPrefab.transform.rotation);
+        var obj = ObjectPooler.Instance.Spawn(plankFellPrefab.gameObject, startPosition, plankFellPrefab.transform.rotation);
         //đua object này vào danh sách;
         var refer = obj.GetComponent<ParticleSystem>();
         listParticlePlankFell.Add(refer);

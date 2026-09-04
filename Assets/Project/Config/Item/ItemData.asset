@@ -21,10 +21,10 @@ MonoBehaviour:
     type: 1
   - id: time_index
     icon: {fileID: -380611160, guid: 38dab92bf947a104cbe10ef9f5fc4ec7, type: 3}
-    type: 2
+    type: 1
   - id: light_index
     icon: {fileID: 2024830553, guid: 64353460b4af94947ad40227d96bb0e0, type: 3}
-    type: 3
+    type: 1
   - id: undo_index
     icon: {fileID: 205766334, guid: 53419001377a13947a3820cdb5425be1, type: 3}
-    type: 4
+    type: 1

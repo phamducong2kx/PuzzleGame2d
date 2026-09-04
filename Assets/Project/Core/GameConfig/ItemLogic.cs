@@ -7,6 +7,7 @@ public class ItemLogic : MonoBehaviour
 {
     //tham chieu toi file itemconfig 
     [SerializeField] private ItemData itemDataConfig;
+    [SerializeField] private ShopeDatabaseSO itemShopeeConfig;
 
     //1 map để chứa id - item
     public Dictionary<string, ItemInfo> itemDict = new Dictionary<string, ItemInfo>();
@@ -41,6 +42,37 @@ public class ItemLogic : MonoBehaviour
         return itemDict[id];
     }
 
+    //lay danh sách các gói vật phẩm theo type
+    public List<PackageShoppe> GetPackageByType(TypePackageShoppe type)
+    {
+        var list = new List<PackageShoppe>();
+        var listPackage = itemShopeeConfig.listPackgeShoppe;
+        foreach (var x in listPackage)
+        {
+            if (x.typePacakgaeShopee == type) list.Add(x);
+        }
+        return list;
+    }
+
+    //lay danh sacsh cacs gois va pham co banner
+    public List<PackageShoppe> GetPackageByBanner()
+    {
+        var list = new List<PackageShoppe>();
+        var listPackage = itemShopeeConfig.listPackgeShoppe;
+        foreach (var x in listPackage)
+        {
+            if (x.hasBanner == true) list.Add(x);
+        }
+        return list;
+    }
+
+    //get  1 item package theo id 
+    public PackageShoppe GetPackageByID(string idPack)
+    {
+
+        var listPackage = itemShopeeConfig.listPackgeShoppe.FirstOrDefault(x => x.idPackage.Equals(idPack));
+        return listPackage;
+    }
 
 
     void Start()

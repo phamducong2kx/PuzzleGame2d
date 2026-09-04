@@ -29,13 +29,14 @@ public static class EventManager
     public static event Action<List<Item_DailyReward>> OnGetDailyReward;
 
 
-
+    //get item
+    public static event Action OnGetItem;
 
 
 
     // === INVOKE METHODS ===
 
-
+    public static void InvokeGetItem() => OnGetItem?.Invoke();
     public static void InvokeBoltPickedUp(Bolt bolt) => OnBoltPickedUp?.Invoke(bolt);
     public static void InvokeBoltPlaced(Bolt bolt) => OnBoltPlaced?.Invoke(bolt);
 

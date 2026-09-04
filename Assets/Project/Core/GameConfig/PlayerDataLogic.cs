@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerDataLogic : MonoBehaviour
 {
+
+
     public AvatarData avatarDatabase;
     //check xme 1 level da unlock hay chua
     public bool CheckLevelUnlock(PlayerData data, int idlevel)
@@ -141,9 +143,39 @@ public class PlayerDataLogic : MonoBehaviour
     }
 
     //lay idcurrent avatar
-    public string GetIdCurrentAvatar(PlayerData data)
+    public string GetCurrentIdAvatar(PlayerData data)
     {
+        if (data.currentIdAvatar == null)
+        {
+            data.currentIdAvatar = avatarDatabase.listAvatarInfo.FirstOrDefault().id;
+        }
         return data.currentIdAvatar;
+
+    }
+
+
+
+    //coong tru skill
+    public void AddResource(ItemType type, string idSkill, int amount)
+    {
+        if (type == ItemType.Coint)
+        {
+            SaveManager.AddCoint(amount);
+        }
+        else
+        {
+            var data = SaveManager.Data;
+            foreach (var x in data.listSkill)
+            {
+                if (x.idSkill.Equals(idSkill))
+                {
+                    x.amount += amount;
+                    SaveManager.SaveData();
+                    return;
+                }
+            }
+
+        }
 
     }
 
@@ -152,6 +184,11 @@ public class PlayerDataLogic : MonoBehaviour
     {
         var avatar = avatarDatabase.listAvatarInfo.FirstOrDefault(x => x.id.Equals(idAvatar));
         return avatar.sprite;
+    }
+
+    private void Awake()
+    {
+
     }
 
     // Start is called before the first frame update

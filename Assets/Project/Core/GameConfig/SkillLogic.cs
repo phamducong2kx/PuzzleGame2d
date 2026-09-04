@@ -79,10 +79,9 @@ public class SkillLogic : MonoBehaviour
     }
 
 
-
     void Start()
     {
-      //  SetUPSkill();
+        //  SetUPSkill();
         var list = SaveManager.Data.listSkill;
         //Debug.Log("danh sacsh casc skill hjient ai");
         foreach (var skill in list)

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ItemDailyReward : MonoBehaviour
 {
-
+    public string idItem;
     public Image imageItem;
     public TextMeshProUGUI amount;
 
@@ -21,4 +21,9 @@ public class ItemDailyReward : MonoBehaviour
     {
 
     }
+    public void Setup(string id)
+    {
+        idItem = id;
+    }
+
 }

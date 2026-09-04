@@ -87,23 +87,6 @@ public class PlayerData
         currentLevel = 1;
         highestUnlockLevel = 1;
         coint = 0;
-        if (currentIdAvatar == null)
-        {
-            currentIdAvatar = "101";
-        }
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
 }
 
