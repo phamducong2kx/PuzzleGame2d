@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerDataLogic : MonoBehaviour
@@ -153,29 +154,34 @@ public class PlayerDataLogic : MonoBehaviour
 
     }
 
+    //add coint
+    public void AddCoint(int amount)
+    {
+        SaveManager.AddCoint(amount);
+    }
+    public void RemoveCoint(int amount)
+    {
+
+        SaveManager.RemoveCoint(amount);
+    }
 
 
     //coong tru skill
-    public void AddResource(ItemType type, string idSkill, int amount)
+    public void BuyResource(ItemType type, string idSkill, int amount)
     {
-        if (type == ItemType.Coint)
-        {
-            SaveManager.AddCoint(amount);
-        }
-        else
-        {
-            var data = SaveManager.Data;
-            foreach (var x in data.listSkill)
-            {
-                if (x.idSkill.Equals(idSkill))
-                {
-                    x.amount += amount;
-                    SaveManager.SaveData();
-                    return;
-                }
-            }
 
+        var data = SaveManager.Data;
+        foreach (var x in data.listSkill)
+        {
+            if (x.idSkill.Equals(idSkill))
+            {
+                x.amount += amount;
+                SaveManager.SaveData();
+                return;
+            }
         }
+
+
 
     }
 

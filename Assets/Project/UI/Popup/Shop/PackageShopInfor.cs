@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
 
 public class PackageShopInfor : MonoBehaviour
@@ -27,25 +28,32 @@ public class PackageShopInfor : MonoBehaviour
 
     }
 
-    public void Setup(string idPackage, Sprite iconPackage, float priceDolar, float priceCoint, int amount, TypePackageShoppe type, Action onclickCallBack)
+    public void Setup(string idPackage, Sprite iconPackage, float priceDolar, float priceCoint, int? amount, TypePackageShoppe type, Action onclickCallBack)
     {
         this.idPackage = idPackage;
         imagePackage.sprite = iconPackage;
+        string name = GameConfigManager.Instance.itemLogic.GetPackageByID(idPackage).namePackageType;
+        Debug.Log("name cua item hien tai la " + name);
 
-        if (type == TypePackageShoppe.VatPhamXu)
+        if (name.Equals("sieucap"))
         {
-
+            amountText.gameObject.SetActive(false);
+        }
+        else if (type == TypePackageShoppe.VatPhamXu)
+        {
+            amountText.gameObject.SetActive(true);
             amountText.text = "x" + amount.ToString();
         }
         else
         {
             amountText.text = amount.ToString();
-
         }
+
+
 
         dolar = priceDolar;
         coint = priceCoint;
-        this.amount = amount;
+        this.amount = amount ?? 1;
         typePk = type;
         if (priceDolar == 0)
         {
@@ -69,35 +77,6 @@ public class PackageShopInfor : MonoBehaviour
 
 
     }
-
-
-    public void Setup(string idPackage, Sprite iconPackage, float priceDolar, float priceCoint)
-    {
-        this.idPackage = idPackage;
-        imagePackage.sprite = iconPackage;
-
-        if (priceDolar == 0)
-        {
-
-            imageCoint.gameObject.SetActive(true);
-            signTextDolar.gameObject.SetActive(false);
-            priceTextDolar.text = priceCoint.ToString();
-        }
-        if (priceCoint == 0)
-        {
-            imageCoint.gameObject.SetActive(false);
-            signTextDolar.gameObject.SetActive(true);
-            priceTextDolar.text = priceDolar.ToString();
-        }
-
-
-    }
-
-
-
-
-
-
 
     // Start is called before the first frame update
     void Start()

@@ -177,11 +177,13 @@ public class ShopPopup : MonoBehaviour
         Debug.Log("Khong du tien ,chay vao day di ");
         //lay vi tri hien tai thoew world cua pannel chua package nay
         var positonPannel = positionCungCapXuPackage.transform.position;
-        //tim vector the hien toa do cua dioem nay so voi viewPort content 
-        var viewportRect = Instance.viewport;
-        Vector2 distance = viewportRect.InverseTransformPoint(positonPannel);
+
+        //tạovector the hien toa do cua dioem nay so voi viewPort content 
+        Vector2 distance = viewport.InverseTransformPoint(positonPannel);
+
         //di chuyen thoe phuonh thang udng nen chi can lay truc y, tim toa do moi
         Vector2 targetPosition = new Vector2(ContentPannel.anchoredPosition.x, ContentPannel.anchoredPosition.y - distance.y);
+
         //di chuyen contetn den vij tri tareget , dung dottwin
         ContentPannel.DOAnchorPos(targetPosition, 1f);
     }

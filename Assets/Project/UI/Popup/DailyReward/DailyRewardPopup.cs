@@ -141,7 +141,7 @@ public class DailyRewardPopup : MonoBehaviour
                 var item = GameConfigManager.Instance.itemLogic.GetItemInfoById(x.idItem);
 
                 //cong vao nguon tai nguyen
-                GameConfigManager.Instance.playerDataLogic.AddResource(item.type, x.idItem, x.amount);
+                // GameConfigManager.Instance.playerDataLogic.AddResource(item.type, x.idItem, x.amount);
                 // SaveManager.AddResource(item.type, x.amount);
             }
             //phat event animation

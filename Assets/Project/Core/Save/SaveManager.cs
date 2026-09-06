@@ -28,7 +28,7 @@ public static class SaveManager
 
             }
             Data.levelProgresses[0].isUnlock = true;
-            // Data.coint = 0;
+            Data.coint = 50000;
 
 
 
@@ -109,6 +109,13 @@ public static class SaveManager
     {
         Data.coint += coint;
         SaveData();
+    }
+
+    public static void RemoveCoint(int coint)
+    {
+        Data.coint -= coint;
+        SaveData();
+
     }
 
 

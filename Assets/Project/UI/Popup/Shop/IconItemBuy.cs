@@ -13,7 +13,11 @@ public class IconItemBuy : MonoBehaviour
     {
         imageBg = GetComponent<Image>();
     }
-
+    public void Setup(Sprite iamge, int amount)
+    {
+        imageBg.sprite = iamge;
+        textAmount.text = amount.ToString();
+    }
     void Start()
     {
 

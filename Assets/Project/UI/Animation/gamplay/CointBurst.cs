@@ -13,6 +13,7 @@ using static UnityEngine.GraphicsBuffer;
 public class CointBurst : MonoBehaviour
 {
 
+
     public GameObject cointPrefab;
     public List<Transform> listCoint;
 
@@ -27,39 +28,22 @@ public class CointBurst : MonoBehaviour
 
     private void OnEnable()
     {
-        //EventManager.OnPlankFallComplete += HandlePlankFall;
+
         EventManager.OnRefreshLevel += HandleRefresh;
-        EventManager.OnGetItem += HandleGetItem;
+
 
     }
 
-    private void HandleGetItem()
-    {
 
-    }
 
     private void OnDisable()
     {
-        // EventManager.OnPlankFallComplete -= HandlePlankFall;
+
         EventManager.OnRefreshLevel -= HandleRefresh;
         ClearAnimation();
     }
 
-    //lay ra cac coint tu pool
-    //private List<Transform> SpawnCoint(Transform plank)
-    //{
-    //    List<Transform> list = new List<Transform>();
-    //    for (int i = 0; i < 3; ++i)
-    //    {
 
-    //        //lay ra (chua co thi sinh ra ) trong pooler , luc nay no se lam con cua game object ten "
-    //        var coint = ObjectPooler.Instance.Spawn(cointPrefab, plank.position, cointPrefab.transform.rotation);
-    //        //Debug.Log("scale cua coint la x = " + coint.transform.localScale.x);
-    //        listCoint.Add(coint.transform);
-    //        list.Add(coint.transform);
-    //    }
-    //    return list;
-    //}
 
     private void HandleRefresh()
     {
@@ -73,6 +57,7 @@ public class CointBurst : MonoBehaviour
         {
             //se tat aniamtion cua no ngay lap tuc va dua no vao ppol ngay 
             x.DOKill(false);
+            //    ObjectPooler.Instance.Despawn(ObjectPooler.Instance.instanceObject[x.gameObject], x.gameObject);
             ObjectPooler.Instance.Despawn(cointPrefab, x.gameObject);
         }
         //sau do clear danh sach coint
@@ -81,64 +66,9 @@ public class CointBurst : MonoBehaviour
 
 
 
-    ////animation
-    //public void PlayAnimationPlankFell(List<Transform> coint, Transform uiTarget, Action eventBurst)
-    //{
-
-    //    for (int i = 0; i < coint.Count; i++)
-    //    {
-    //        Transform cointx = coint[i];
-
-    //        //khoi tao 1 sequence va set vong doi cho no
-    //        var sequence = DOTween.Sequence().SetLink(cointx.gameObject, LinkBehaviour.KillOnDisable);
-
-    //        //dung lai 0.5s
-    //        sequence.AppendInterval(0.2f * i);
-
-    //        //coint di toi trans
-    //        sequence.Append(cointx.DOMove(pannelList.position, 0.8f).SetEase(Ease.OutQuad));
-
-    //        //cho may dong xu lam con cua pannellist nay
-    //        sequence.AppendCallback(() =>
-    //        {
-    //            cointx.SetParent(pannelList, false);
-    //        });
-
-    //        //dung lai 0.2s
-    //        sequence.AppendInterval(0.2f);
 
 
-
-    //        //nhun nhay 2 lan
-    //        sequence.Append(cointx.DOLocalMoveY(50f, 0.6f)
-    //            .SetLoops(3, LoopType.Yoyo)
-    //            .SetEase(Ease.InOutSine));
-
-    //        //dung lai 0.1s
-    //        sequence.AppendInterval(0.3f);
-
-    //        //tien toi vi tri uiTarget
-    //        sequence.Append(cointx.DOMove(uiTarget.position, 0.6f)
-    //            .SetEase(Ease.InBack)
-    //            .OnComplete(() =>
-    //            {
-    //                //  Debug.Log("gia tri cua uitartget.position x va y lan luot  là " + uiTarget.position.x + " va " + uiTarget.position.y);
-    //                eventBurst?.Invoke();
-    //                //cho gameObject nay deactive ,= despawn object nay , cat vao trong pool
-    //                ObjectPooler.Instance.Despawn(cointPrefab, cointx.gameObject);
-
-    //                //xoa ngay phan tu do khoi mang (xoa thma chieu ) 
-    //                listCoint.Remove(cointx);
-
-
-    //            }));
-
-    //    }
-
-    //}
-
-
-    public void PlayAnimationPlankFell(UnityEngine.Vector2 startPosition, int pointCoint, float distance, Transform target, Action eventBurst)
+    public void PlayAnimationPlankFell(UnityEngine.Vector2 startPosition, int pointCoint, float distance, Transform target, Action onItemReachTarget)
     {
         Camera camera = Camera.main;
         var a = camera.ViewportToWorldPoint(new Vector3(0, 0, 0));
@@ -205,7 +135,7 @@ public class CointBurst : MonoBehaviour
                 .OnComplete(() =>
                 {
                     //  Debug.Log("gia tri cua uitartget.position x va y lan luot  là " + uiTarget.position.x + " va " + uiTarget.position.y);
-                    eventBurst?.Invoke();
+                    onItemReachTarget?.Invoke();
 
                     //cho gameObject nay deactive ,= despawn object nay , cat vao trong pool
                     ObjectPooler.Instance.Despawn(cointPrefab, coint);
@@ -220,6 +150,60 @@ public class CointBurst : MonoBehaviour
 
     }
 
+
+    public void PlayAnimationBuyItem(List<RectTransform> listRectTranform, RectTransform pannelList, RectTransform target, Action eventBurst, Action onAllComplete)
+    {
+
+        int count = 0;
+        for (int i = 0; i < listRectTranform.Count; i++)
+        {
+            var obj = listRectTranform[i];
+
+            //khoi tao 1 sequence va set vong doi cho no
+            var sequence = DOTween.Sequence().SetLink(obj.gameObject, LinkBehaviour.KillOnDisable);
+
+            //dung lai 0.5s
+            sequence.AppendInterval(0.5f * (i + 1));
+
+            //cho làm con của pannel
+            obj.SetParent(pannelList, false);
+
+
+
+            sequence.Append(obj.DOMove(target.transform.position, 1f).SetEase(Ease.OutQuad));
+
+            sequence.Append(obj.DOMoveY(10f, 0.01f).SetRelative(true).SetEase(Ease.OutQuad));
+
+            sequence.OnComplete(() =>
+              {
+                  //xu li event
+                  eventBurst?.Invoke();
+                  ++count;
+
+                  if (count == listRectTranform.Count)
+                  {
+                      onAllComplete?.Invoke();
+
+                      //dua tat ca danh sách trong l;ít vao pool
+                      foreach (var x in listRectTranform)
+                      {
+                          ObjectPooler.Instance.Despawn(ObjectPooler.Instance.instanceObject[x.gameObject], x.gameObject);
+                      }
+
+
+                      //xoa di tham chieu trong listRectRanform
+                      listRectTranform.Clear();
+                  }
+
+              });
+
+
+
+
+
+        }
+
+    }
 
 
     private void ClearAnimation()
