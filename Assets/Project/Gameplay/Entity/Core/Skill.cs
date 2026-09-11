@@ -71,10 +71,14 @@ public class Skill : MonoBehaviour
         SetUpButtonShoppe();
     }
 
-    public void SetUp()
+    public void SetUp(SkillData _skillData)
     {
+        //skilldata
+        skillData = _skillData;
+
         //id
         idSkill = skillData.idItem;
+
         //skillsate
         skillState = skillData.GetSkillState(this);
         GameConfigManager.Instance.playerDataLogic.AddSkillToList(idSkill);
@@ -96,6 +100,7 @@ public class Skill : MonoBehaviour
         canvas.overrideSorting = false;
         selectTiming = skillData.selectTiming;
 
+        //set up coooldonw reaming , còn dang dở ở level trước 
         coolDownRemaining = SetUpCoolDown(idSkill);
 
 

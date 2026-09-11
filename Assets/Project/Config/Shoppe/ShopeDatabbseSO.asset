@@ -21,6 +21,7 @@ MonoBehaviour:
     priceDolar: 1.99
     priceCoint: 0
     iconOverrite: {fileID: 1334393459, guid: 07a651df27eefbd4ab88a1b132d3c319, type: 3}
+    iconAdressKey: icon_coint
     typePacakgaeShopee: 1
     namePackageType: "Cung C\u1EA5p Xu"
     hasBanner: 0
@@ -32,6 +33,7 @@ MonoBehaviour:
     priceDolar: 3.99
     priceCoint: 0
     iconOverrite: {fileID: 1334393459, guid: 07a651df27eefbd4ab88a1b132d3c319, type: 3}
+    iconAdressKey: icon_coint
     typePacakgaeShopee: 1
     namePackageType: "Cung C\u1EA5p Xu"
     hasBanner: 0
@@ -43,6 +45,7 @@ MonoBehaviour:
     priceDolar: 9.99
     priceCoint: 0
     iconOverrite: {fileID: 1334393459, guid: 07a651df27eefbd4ab88a1b132d3c319, type: 3}
+    iconAdressKey: icon_coint
     typePacakgaeShopee: 1
     namePackageType: "Cung C\u1EA5p Xu"
     hasBanner: 0
@@ -54,6 +57,7 @@ MonoBehaviour:
     priceDolar: 19.99
     priceCoint: 0
     iconOverrite: {fileID: 1334393459, guid: 07a651df27eefbd4ab88a1b132d3c319, type: 3}
+    iconAdressKey: icon_coint
     typePacakgaeShopee: 1
     namePackageType: "Cung C\u1EA5p Xu"
     hasBanner: 0
@@ -65,6 +69,7 @@ MonoBehaviour:
     priceDolar: 39.99
     priceCoint: 0
     iconOverrite: {fileID: 1334393459, guid: 07a651df27eefbd4ab88a1b132d3c319, type: 3}
+    iconAdressKey: icon_coint
     typePacakgaeShopee: 1
     namePackageType: "Cung C\u1EA5p Xu"
     hasBanner: 0
@@ -76,6 +81,7 @@ MonoBehaviour:
     priceDolar: 79.99
     priceCoint: 0
     iconOverrite: {fileID: 1334393459, guid: 07a651df27eefbd4ab88a1b132d3c319, type: 3}
+    iconAdressKey: icon_coint
     typePacakgaeShopee: 1
     namePackageType: "Cung C\u1EA5p Xu"
     hasBanner: 0
@@ -87,6 +93,7 @@ MonoBehaviour:
     priceDolar: 0
     priceCoint: 1000
     iconOverrite: {fileID: 334525070, guid: d4727ed805eda02479290f643e3f7efd, type: 3}
+    iconAdressKey: icon_drill
     typePacakgaeShopee: 0
     namePackageType: "V\u1EADt ph\u1EA9m xu"
     hasBanner: 0
@@ -98,6 +105,7 @@ MonoBehaviour:
     priceDolar: 0
     priceCoint: 2000
     iconOverrite: {fileID: 2024830553, guid: 64353460b4af94947ad40227d96bb0e0, type: 3}
+    iconAdressKey: icon_light
     typePacakgaeShopee: 0
     namePackageType: "V\u1EADt ph\u1EA9m xu"
     hasBanner: 0
@@ -109,6 +117,7 @@ MonoBehaviour:
     priceDolar: 0
     priceCoint: 1000
     iconOverrite: {fileID: -380611160, guid: 38dab92bf947a104cbe10ef9f5fc4ec7, type: 3}
+    iconAdressKey: icon_time
     typePacakgaeShopee: 0
     namePackageType: "V\u1EADt ph\u1EA9m xu"
     hasBanner: 0
@@ -126,8 +135,9 @@ MonoBehaviour:
     priceDolar: 80
     priceCoint: 0
     iconOverrite: {fileID: 21300000, guid: ba81add7a81cf1049baa4aa0c27e3eb4, type: 3}
+    iconAdressKey: icon_banner
     typePacakgaeShopee: 6
-    namePackageType: Siuecap
+    namePackageType: sieucap
     hasBanner: 1
   - idPackage: sieu cap_vip
     listItemId:
@@ -143,8 +153,9 @@ MonoBehaviour:
     priceDolar: 0
     priceCoint: 3000
     iconOverrite: {fileID: 21300000, guid: ba81add7a81cf1049baa4aa0c27e3eb4, type: 3}
+    iconAdressKey: icon_banner
     typePacakgaeShopee: 6
-    namePackageType: Siuecap
+    namePackageType: sieucap
     hasBanner: 1
   - idPackage: 11
     listItemId:
@@ -160,8 +171,9 @@ MonoBehaviour:
     priceDolar: 50
     priceCoint: 0
     iconOverrite: {fileID: 21300000, guid: 595cf7c60b40dfb43960524d71155462, type: 3}
+    iconAdressKey: icon_banner_bn1
     typePacakgaeShopee: 6
-    namePackageType: Siuecap
+    namePackageType: sieucap
     hasBanner: 1
   - idPackage: timer_tang_cuong
     listItemId:
@@ -171,6 +183,7 @@ MonoBehaviour:
     priceDolar: 2.99
     priceCoint: 0
     iconOverrite: {fileID: -380611160, guid: 38dab92bf947a104cbe10ef9f5fc4ec7, type: 3}
+    iconAdressKey: icon_time
     typePacakgaeShopee: 2
     namePackageType: "V\u1EADt ph\u1EA9m t\u0103ng c\u01B0\u1EDDng"
     hasBanner: 0
@@ -182,6 +195,7 @@ MonoBehaviour:
     priceDolar: 2.99
     priceCoint: 0
     iconOverrite: {fileID: 334525070, guid: d4727ed805eda02479290f643e3f7efd, type: 3}
+    iconAdressKey: icon_drill
     typePacakgaeShopee: 2
     namePackageType: "V\u1EADt ph\u1EA9m t\u0103ng c\u01B0\u1EDDng"
     hasBanner: 0
@@ -193,6 +207,7 @@ MonoBehaviour:
     priceDolar: 6.99
     priceCoint: 0
     iconOverrite: {fileID: 334525070, guid: d4727ed805eda02479290f643e3f7efd, type: 3}
+    iconAdressKey: icon_drill
     typePacakgaeShopee: 2
     namePackageType: "V\u1EADt ph\u1EA9m t\u0103ng c\u01B0\u1EDDng"
     hasBanner: 0
@@ -204,6 +219,7 @@ MonoBehaviour:
     priceDolar: 6.99
     priceCoint: 0
     iconOverrite: {fileID: 2024830553, guid: 64353460b4af94947ad40227d96bb0e0, type: 3}
+    iconAdressKey: icon_light
     typePacakgaeShopee: 2
     namePackageType: "V\u1EADt ph\u1EA9m t\u0103ng c\u01B0\u1EDDng"
     hasBanner: 0

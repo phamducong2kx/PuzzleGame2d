@@ -11,6 +11,8 @@ public class GameConfigManager : MonoBehaviour
     public PlayerDataLogic playerDataLogic;
     public SkillLogic skillLogic;
     public PlankTypeLogic plankTypeLogic;
+    public FireBaseRemoteConfig FireBaseRemoteConfig;
+    public AddressableManager addressableManager;
 
     private void Awake()
     {

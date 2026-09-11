@@ -126,7 +126,7 @@ public class ShopPopup : MonoBehaviour
                 var itemPackage = Instantiate(packageShopInfoPrefab, contentMain.transform);
 
                 //set up packaghe infor do
-                itemPackage.Setup(x.idPackage, x.iconOverrite, x.priceDolar, x.priceCoint, x.amount, x.typePacakgaeShopee, () =>
+                itemPackage.Setup(x.idPackage, x.iconAdressKey, x.priceDolar, x.priceCoint, x.amount, x.typePacakgaeShopee, () =>
                 {
                     HandleButtonBuyItem(x.idPackage);
                 });

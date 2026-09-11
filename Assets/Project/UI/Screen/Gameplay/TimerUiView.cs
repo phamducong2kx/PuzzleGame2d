@@ -112,7 +112,7 @@ public class TimerUiView : MonoBehaviour
              targetWarningText,
              100 * Time.deltaTime);
         warningLabel.text = "Không còn khoảng trống !!";
-        //  PhongtothunhoAnimation.PlayEffectSmallToBig(warningLabel.transform, -1, 1.2f);
+
 
     }
 

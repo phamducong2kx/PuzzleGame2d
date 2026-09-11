@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public LevelMenu pannelLevelSelect;
     public GameObject pannelWingame;
     public LevelMapManager levelMapManager;
+    public LoadingManager loadingManager;
 
     public static UIManager Instance;
 

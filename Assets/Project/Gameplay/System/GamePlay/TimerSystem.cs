@@ -84,9 +84,7 @@ public class TimerSystem : MonoBehaviour
         if (!isRunning) return;
         timeRemaining -= Time.deltaTime;
 
-        //  if (mocsao == 3) CheckMocSao(3, MocStar_3);
-        //  if (mocsao == 2) CheckMocSao(2, MocStar_2);
-        //  if (mocsao == 1) CheckMocSao(1, MocStar_1);
+      
         HandleMocSao();
 
 

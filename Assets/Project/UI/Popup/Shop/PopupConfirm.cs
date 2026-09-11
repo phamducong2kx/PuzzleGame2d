@@ -20,7 +20,7 @@ public class PopupConfirm : MonoBehaviour
     public void OpenPopup(PackageShoppe package)
     {
         gameObject.SetActive(true);
-        packageXacNhanPrefab.Setup(package.idPackage, package.iconOverrite, package.priceDolar, package.priceCoint, package.amount, package.typePacakgaeShopee, () =>
+        packageXacNhanPrefab.Setup(package.idPackage, package.iconAdressKey, package.priceDolar, package.priceCoint, package.amount, package.typePacakgaeShopee, () =>
         {
             HandleBuy(package);
         });

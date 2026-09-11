@@ -26,8 +26,7 @@ public class GameStateManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        //Lúc đầu thì  current State dang là homeState;
-        ChangeSate(GameStateCache.homeState);
+
 
 
     }
@@ -38,7 +37,8 @@ public class GameStateManager : MonoBehaviour
 
     private void Start()
     {
-
+        //Lúc đầu thì  current State dang là homeState;
+        ChangeSate(GameStateCache.loadingState);
     }
 
 

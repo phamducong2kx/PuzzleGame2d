@@ -1,78 +1,101 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class ItemLogic : MonoBehaviour
 {
-    //tham chieu toi file itemconfig 
+    //tham chieu toi các file SO
     [SerializeField] private ItemData itemDataConfig;
     [SerializeField] private ShopeDatabaseSO itemShopeeConfig;
 
-    //1 map để chứa id - item
+    //dư liệu trên ram
     public Dictionary<string, ItemInfo> itemDict = new Dictionary<string, ItemInfo>();
+    public List<PackageShoppe> runtimePackageList = new List<PackageShoppe>();
+
+
 
 
 
 
     private void Awake()
     {
+
         InnitDatabase();
     }
 
     private void InnitDatabase()
     {
+
+        //nap dictionary item vao ram
         itemDict.Clear();
-        foreach (var x in itemDataConfig.listItem)
+        if (itemDataConfig != null)
         {
-            if (!itemDict.ContainsKey(x.id))
+            foreach (var x in itemDataConfig.listItem)
             {
-                itemDict[x.id] = x;
-            }
-            else
-            {
-                Debug.Log("item bi trung lap");
+                if (!itemDict.ContainsKey(x.id))
+                {
+                    itemDict[x.id] = x;
+                }
+                else
+                {
+                    Debug.Log("item bi trung lap");
+                }
             }
         }
+
+        //nap anh sasch cac gói package vào ram
+        runtimePackageList.Clear();
+        if (itemShopeeConfig != null)
+        {
+            runtimePackageList = itemShopeeConfig.listPackgeShoppe;
+        }
+
+
     }
+
+
+
+    #region GETTERS
+
 
     //lay skill theo id
     public ItemInfo GetItemInfoById(string id)
     {
-        return itemDict[id];
+        if (itemDict.TryGetValue(id, out ItemInfo itemInfor)) return itemInfor;
+        return null;
     }
+
 
     //lay danh sách các gói vật phẩm theo type
     public List<PackageShoppe> GetPackageByType(TypePackageShoppe type)
     {
-        var list = new List<PackageShoppe>();
-        var listPackage = itemShopeeConfig.listPackgeShoppe;
-        foreach (var x in listPackage)
-        {
-            if (x.typePacakgaeShopee == type) list.Add(x);
-        }
-        return list;
+        return runtimePackageList.Where(x => x.typePacakgaeShopee == type).ToList();
     }
 
-    //lay danh sacsh cacs gois va pham co banner
+
+    //lay danh sacsh cacs gois vat pham co banner
     public List<PackageShoppe> GetPackageByBanner()
     {
-        var list = new List<PackageShoppe>();
-        var listPackage = itemShopeeConfig.listPackgeShoppe;
-        foreach (var x in listPackage)
-        {
-            if (x.hasBanner == true) list.Add(x);
-        }
-        return list;
+        return runtimePackageList.Where(x => x.hasBanner).ToList();
     }
+
 
     //get  1 item package theo id 
     public PackageShoppe GetPackageByID(string idPack)
     {
 
-        var listPackage = itemShopeeConfig.listPackgeShoppe.FirstOrDefault(x => x.idPackage.Equals(idPack));
-        return listPackage;
+        return itemShopeeConfig.listPackgeShoppe.FirstOrDefault(x => x.idPackage.Equals(idPack));
+
     }
+
+    #endregion
+
+
+
 
 
     void Start()
@@ -85,4 +108,6 @@ public class ItemLogic : MonoBehaviour
     {
 
     }
+
+
 }

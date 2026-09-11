@@ -13,17 +13,5 @@ public class SkillDatabase : ScriptableObject
 }
 
 
-//[Serializable]
-//public abstract class SkillData
-//{
-//    public string idItem;
-//    public float Cooldown;
-//    public float price;
-//    public float selectTiming;
-
-//    public abstract ISKillState GetSkillState(Skill skill);
-//}
-
-
 
 

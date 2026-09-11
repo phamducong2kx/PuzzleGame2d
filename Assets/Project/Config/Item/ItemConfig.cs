@@ -17,6 +17,7 @@ public class ItemInfo
     public string id;
 
     public Sprite icon;
+    public string iconAddressKey;
 
     public ItemType type;
 }

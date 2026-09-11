@@ -82,12 +82,12 @@ public class SkillLogic : MonoBehaviour
     void Start()
     {
         //  SetUPSkill();
-        var list = SaveManager.Data.listSkill;
+        // var list = SaveManager.Data.listSkill;
         //Debug.Log("danh sacsh casc skill hjient ai");
-        foreach (var skill in list)
-        {
-            Debug.Log("skill  co id la " + skill.idSkill + " so luong la " + skill.amount + " , cooldown la " + skill.cooldownRemaining);
-        }
+        //  foreach (var skill in list)
+        //  {
+        //     Debug.Log("skill  co id la " + skill.idSkill + " so luong la " + skill.amount + " , cooldown la " + skill.cooldownRemaining);
+        // }
     }
 
 

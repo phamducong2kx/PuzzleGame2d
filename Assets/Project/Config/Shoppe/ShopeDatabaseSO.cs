@@ -22,7 +22,7 @@ public class PackageShoppe
     public int amount;
     public float priceDolar;
     public float priceCoint;
-    public Sprite iconOverrite;
+    public string iconAdressKey;
     public TypePackageShoppe typePacakgaeShopee;
     public string namePackageType;
     public bool hasBanner;
@@ -50,3 +50,4 @@ public enum TypePackageShoppe
     GoiSieuCap,
 
 }
+

@@ -4,7 +4,6 @@ using UnityEngine;
 public class SkillView : MonoBehaviour
 {
     [SerializeField] private Skill skillPrefab;
-    private List<SkillData> list = new List<SkillData>();
     public List<Skill> listSkill = new List<Skill>();
 
     // Start is called before the first frame update
@@ -28,14 +27,18 @@ public class SkillView : MonoBehaviour
         var list = GameConfigManager.Instance.skillLogic.GetList();
         foreach (var x in list)
         {
-            var transSkill = Instantiate(skillPrefab, transform);
+            //khoi tao preab skill
+            var skill = Instantiate(skillPrefab, transform);
+
             //set up skilldatabase va set up cac thong os khac
-            transSkill.skillData = x;
+            skill.SetUp(x);
+
+            //add voa list
+            listSkill.Add(skill);
 
 
-            transSkill.SetUp();
 
-            listSkill.Add(transSkill);
+
 
         }
     }

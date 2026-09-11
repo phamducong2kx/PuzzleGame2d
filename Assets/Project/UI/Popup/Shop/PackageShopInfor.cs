@@ -2,9 +2,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering.UI;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 
 public class PackageShopInfor : MonoBehaviour
@@ -28,10 +31,14 @@ public class PackageShopInfor : MonoBehaviour
 
     }
 
-    public void Setup(string idPackage, Sprite iconPackage, float priceDolar, float priceCoint, int? amount, TypePackageShoppe type, Action onclickCallBack)
+    public async void Setup(string idPackage, string bannerAddressable, float priceDolar, float priceCoint, int? amount, TypePackageShoppe type, Action onclickCallBack)
     {
         this.idPackage = idPackage;
-        imagePackage.sprite = iconPackage;
+
+        //image
+        //imagePackage.sprite = iconPackage;
+        await LoadImageFromCache(bannerAddressable);
+
         string name = GameConfigManager.Instance.itemLogic.GetPackageByID(idPackage).namePackageType;
         Debug.Log("name cua item hien tai la " + name);
 
@@ -78,7 +85,25 @@ public class PackageShopInfor : MonoBehaviour
 
     }
 
-    // Start is called before the first frame update
+    private async Task LoadImageFromCache(string key)
+    {
+        var handleImage = Addressables.LoadAssetAsync<Sprite>(key);
+        var sprite = await handleImage.Task;
+        if (handleImage.Status == AsyncOperationStatus.Succeeded)
+        {
+            imagePackage.sprite = sprite;
+            Debug.Log("load anh thanh cong");
+
+        }
+        else
+        {
+            Debug.Log("Load anh khong thanh cong");
+        }
+        Addressables.Release(handleImage);
+    }
+
+
+
     void Start()
     {
 

@@ -32,7 +32,7 @@ public class SnapBanner : MonoBehaviour
         var x = listbanner[0];
 
         //setup object nay
-        packBanner.Setup(x.idPackage, x.iconOverrite, x.priceDolar, x.priceCoint, x.amount, x.typePacakgaeShopee, () =>
+        packBanner.Setup(x.idPackage, x.iconAdressKey, x.priceDolar, x.priceCoint, x.amount, x.typePacakgaeShopee, () =>
         {
             //button se lam gi nhi ? cung logic tuong tu nhu 
             ShopPopup.Instance.HandleButtonBuyItem(x.idPackage);
@@ -64,35 +64,35 @@ public class SnapBanner : MonoBehaviour
 
 
     }
-    public void SetupPreviousButton()
+    private void SetupPreviousButton()
     {
         var list = GameConfigManager.Instance.itemLogic.GetPackageByBanner();
 
         previous.onClick.AddListener(() =>
         {
             --indexList;
-            SetupButton(list.Count);
-
-            packBanner.Setup(list[indexList].idPackage, list[indexList].iconOverrite, list[indexList].priceDolar, list[indexList].priceCoint, list[indexList].amount, list[indexList].typePacakgaeShopee, () =>
-            {
-                ShopPopup.Instance.HandleButtonBuyItem(list[indexList].idPackage);
-            });
+            ButtonApparence(list, indexList);
 
         });
     }
 
-    public void SetupNextButton()
+    private void SetupNextButton()
     {
         var list = GameConfigManager.Instance.itemLogic.GetPackageByBanner();
         next.onClick.AddListener(() =>
         {
             ++indexList;
-            SetupButton(list.Count);
+            ButtonApparence(list, indexList);
+        });
+    }
 
-            packBanner.Setup(list[indexList].idPackage, list[indexList].iconOverrite, list[indexList].priceDolar, list[indexList].priceCoint, list[indexList].amount, list[indexList].typePacakgaeShopee, () =>
-            {
-                ShopPopup.Instance.HandleButtonBuyItem(list[indexList].idPackage);
-            });
+    private void ButtonApparence(List<PackageShoppe> list, int _index)
+    {
+        SetupButton(list.Count);
+
+        packBanner.Setup(list[_index].idPackage, list[_index].iconAdressKey, list[_index].priceDolar, list[_index].priceCoint, list[_index].amount, list[_index].typePacakgaeShopee, () =>
+        {
+            ShopPopup.Instance.HandleButtonBuyItem(list[_index].idPackage);
         });
     }
 
