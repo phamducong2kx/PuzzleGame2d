@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.TextCore;
@@ -29,14 +31,16 @@ public class SnapBanner : MonoBehaviour
 
         //danh sacsh cacs package coa banner
         var listbanner = GameConfigManager.Instance.itemLogic.GetPackageByBanner();
-        var x = listbanner[0];
 
         //setup object nay
-        packBanner.Setup(x.idPackage, x.iconAdressKey, x.priceDolar, x.priceCoint, x.amount, x.typePacakgaeShopee, () =>
+        packBanner.Setup(listbanner[0], () =>
         {
             //button se lam gi nhi ? cung logic tuong tu nhu 
-            ShopPopup.Instance.HandleButtonBuyItem(x.idPackage);
+            ShopPopup.Instance.HandleButtonBuyItem(listbanner[0].idPackage);
         });
+
+        //dua voa lisst
+        ShopPopup.Instance.listPackageInfo.Add(packBanner);
 
         //set up 2 nut previsou va next
         SetupButton(listbanner.Count);
@@ -89,11 +93,11 @@ public class SnapBanner : MonoBehaviour
     private void ButtonApparence(List<PackageShoppe> list, int _index)
     {
         SetupButton(list.Count);
-
-        packBanner.Setup(list[_index].idPackage, list[_index].iconAdressKey, list[_index].priceDolar, list[_index].priceCoint, list[_index].amount, list[_index].typePacakgaeShopee, () =>
-        {
-            ShopPopup.Instance.HandleButtonBuyItem(list[_index].idPackage);
-        });
+        //  var sprite = ShopPopup.Instance.listSprite.FirstOrDefault(a => a.name.Equals(list[_index].iconAdressKey));
+        packBanner.Setup(list[_index], () =>
+           {
+               ShopPopup.Instance.HandleButtonBuyItem(list[_index].idPackage);
+           });
     }
 
     // Update is called once per frame

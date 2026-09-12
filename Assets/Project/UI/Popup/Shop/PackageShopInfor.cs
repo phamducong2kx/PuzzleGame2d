@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class PackageShopInfor : MonoBehaviour
 {
-    public string idPackage;
+    public string idPackage = "";
     public Image imagePackage;
     public TextMeshProUGUI amountText;
     public TextMeshProUGUI priceTextDolar;
@@ -23,6 +23,9 @@ public class PackageShopInfor : MonoBehaviour
     public TextMeshProUGUI signTextDolar;
     public Image imageCoint;
     public Button buytItemButton;
+    public string keyAddressalbe = "";
+
+
 
 
 
@@ -30,25 +33,36 @@ public class PackageShopInfor : MonoBehaviour
     {
 
     }
-
-    public async void Setup(string idPackage, string bannerAddressable, float priceDolar, float priceCoint, int? amount, TypePackageShoppe type, Action onclickCallBack)
+    private void OnEnable()
     {
-        this.idPackage = idPackage;
 
-        //image
-        //imagePackage.sprite = iconPackage;
-        await LoadImageFromCache(bannerAddressable);
+    }
 
-        string name = GameConfigManager.Instance.itemLogic.GetPackageByID(idPackage).namePackageType;
-        Debug.Log("name cua item hien tai la " + name);
+    public void Refresh()
+    {
 
+
+        imagePackage.sprite = ShopPopup.Instance.dictionary[keyAddressalbe];
+        imagePackage.enabled = true;
+    }
+
+    public void Setup(PackageShoppe package, Action onclickCallBack)
+    {
+        idPackage = package.idPackage;
+
+        keyAddressalbe = package.iconAdressKey;
+        imagePackage.sprite = ShopPopup.Instance.dictionary[keyAddressalbe];
+
+        string name = package.namePackageType;
         if (name.Equals("sieucap"))
         {
             amountText.gameObject.SetActive(false);
+            // amountText.enabled = false;
         }
-        else if (type == TypePackageShoppe.VatPhamXu)
+        else if (package.typePacakgaeShopee == TypePackageShoppe.VatPhamXu)
         {
             amountText.gameObject.SetActive(true);
+            //   amountText.enabled = false;
             amountText.text = "x" + amount.ToString();
         }
         else
@@ -58,23 +72,24 @@ public class PackageShopInfor : MonoBehaviour
 
 
 
-        dolar = priceDolar;
-        coint = priceCoint;
-        this.amount = amount ?? 1;
-        typePk = type;
-        if (priceDolar == 0)
+        dolar = package.priceDolar;
+        coint = package.priceCoint;
+        amount = package.amount;
+        typePk = package.typePacakgaeShopee;
+        if (package.priceDolar == 0)
         {
 
             imageCoint.gameObject.SetActive(true);
             signTextDolar.gameObject.SetActive(false);
-            priceTextDolar.text = priceCoint.ToString();
+            priceTextDolar.text = package.priceCoint.ToString();
         }
-        if (priceCoint == 0)
+        if (package.priceCoint == 0)
         {
             imageCoint.gameObject.SetActive(false);
             signTextDolar.gameObject.SetActive(true);
-            priceTextDolar.text = priceDolar.ToString();
+            priceTextDolar.text = package.priceDolar.ToString();
         }
+
 
         buytItemButton.onClick.RemoveAllListeners();
         buytItemButton.onClick.AddListener(() =>
@@ -84,25 +99,71 @@ public class PackageShopInfor : MonoBehaviour
 
 
     }
+    //public void Setup(string idPackage, Sprite sprite, float priceDolar, float priceCoint, int? amount, TypePackageShoppe type, Action onclickCallBack)
+    //{
+    //    this.idPackage = idPackage;
 
-    private async Task LoadImageFromCache(string key)
+    //    //image
+    //    //tim image
+
+    //    imagePackage.sprite = sprite;
+
+    //    string name = GameConfigManager.Instance.itemLogic.GetPackageByID(idPackage).namePackageType;
+    //    //  Debug.Log("name cua item hien tai la " + name);
+
+    //    if (name.Equals("sieucap"))
+    //    {
+    //        amountText.gameObject.SetActive(false);
+    //    }
+    //    else if (type == TypePackageShoppe.VatPhamXu)
+    //    {
+    //        amountText.gameObject.SetActive(true);
+    //        amountText.text = "x" + amount.ToString();
+    //    }
+    //    else
+    //    {
+    //        amountText.text = amount.ToString();
+    //    }
+
+
+
+    //    dolar = priceDolar;
+    //    coint = priceCoint;
+    //    this.amount = amount ?? 1;
+    //    typePk = type;
+    //    if (priceDolar == 0)
+    //    {
+
+    //        imageCoint.gameObject.SetActive(true);
+    //        signTextDolar.gameObject.SetActive(false);
+    //        priceTextDolar.text = priceCoint.ToString();
+    //    }
+    //    if (priceCoint == 0)
+    //    {
+    //        imageCoint.gameObject.SetActive(false);
+    //        signTextDolar.gameObject.SetActive(true);
+    //        priceTextDolar.text = priceDolar.ToString();
+    //    }
+
+
+    //    buytItemButton.onClick.RemoveAllListeners();
+    //    buytItemButton.onClick.AddListener(() =>
+    //    {
+    //        onclickCallBack?.Invoke();
+    //    });
+
+
+    //}
+
+
+
+    private void OnDisable()
     {
-        var handleImage = Addressables.LoadAssetAsync<Sprite>(key);
-        var sprite = await handleImage.Task;
-        if (handleImage.Status == AsyncOperationStatus.Succeeded)
-        {
-            imagePackage.sprite = sprite;
-            Debug.Log("load anh thanh cong");
+        imagePackage.enabled = false;
+        imagePackage.sprite = null;
 
-        }
-        else
-        {
-            Debug.Log("Load anh khong thanh cong");
-        }
-        Addressables.Release(handleImage);
+
     }
-
-
 
     void Start()
     {

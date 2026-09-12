@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 38dab92bf947a104cbe10ef9f5fc4ec7
+guid: 07a651df27eefbd4ab88a1b132d3c319
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,12 +97,12 @@ TextureImporter:
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 47
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -110,22 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: timekill_0
+      name: icon_coint
       rect:
         serializedVersion: 2
-        x: 104
-        y: 128
-        width: 816
-        height: 808
+        x: 472
+        y: 264
+        width: 596
+        height: 584
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db80fcd814f382f4abdec0f727a467e9
-      internalID: -380611160
+      spriteID: 59c12ff51b14f144ba9359cdcfc41ef9
+      internalID: 1334393459
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      timekill_0: -380611160
+      icon_coint: 1334393459
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

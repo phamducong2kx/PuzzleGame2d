@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class Skill : MonoBehaviour
 {
-    [SerializeField] public SkillData skillData;
+    // [SerializeField] public SkillData skillData;
     public string idSkill;
     public float coolDown;
     public float coolDownRemaining;
@@ -71,10 +71,9 @@ public class Skill : MonoBehaviour
         SetUpButtonShoppe();
     }
 
-    public void SetUp(SkillData _skillData)
+    public void SetUp(SkillData skillData)
     {
-        //skilldata
-        skillData = _skillData;
+
 
         //id
         idSkill = skillData.idItem;
@@ -105,6 +104,41 @@ public class Skill : MonoBehaviour
 
 
     }
+
+    //public void SetUp(SkillData _skillData)
+    //{
+    //    //skilldata
+    //    skillData = _skillData;
+
+    //    //id
+    //    idSkill = skillData.idItem;
+
+    //    //skillsate
+    //    skillState = skillData.GetSkillState(this);
+    //    GameConfigManager.Instance.playerDataLogic.AddSkillToList(idSkill);
+
+    //    //cooldown
+    //    coolDown = skillData.Cooldown;
+    //    coolDownText.text = "";
+    //    coolDownOverlay.fillAmount = 0;
+
+    //    //amount skill
+    //    amountSkill = GameConfigManager.Instance.skillLogic.GetAmountSkillById(idSkill);
+    //    amounttext.text = amountSkill.ToString();
+    //    SetUpButtonShoppe();
+
+    //    //price
+    //    price = skillData.price;
+    //    backgroundImage.sprite = GameConfigManager.Instance.itemLogic.GetItemInfoById(idSkill).icon;
+    //    isCoolDownRunning = false;
+    //    canvas.overrideSorting = false;
+    //    selectTiming = skillData.selectTiming;
+
+    //    //set up coooldonw reaming , còn dang dở ở level trước 
+    //    coolDownRemaining = SetUpCoolDown(idSkill);
+
+
+    //}
 
     public void SetUpButtonShoppe()
     {

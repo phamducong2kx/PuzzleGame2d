@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d4727ed805eda02479290f643e3f7efd
+guid: 64353460b4af94947ad40227d96bb0e0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,22 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: drill_0
+      name: icon_light
       rect:
         serializedVersion: 2
-        x: 150
-        y: 463
-        width: 720
-        height: 707
+        x: 164
+        y: 437
+        width: 680
+        height: 674
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c78cc1630c7e4848b9aa12f71e37792
-      internalID: 334525070
+      spriteID: 7ad6d567c9cee5b4cb1a398128fba09d
+      internalID: 2024830553
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      drill_0: 334525070
+      icon_light: 2024830553
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

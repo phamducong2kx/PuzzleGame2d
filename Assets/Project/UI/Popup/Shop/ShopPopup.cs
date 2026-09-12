@@ -4,9 +4,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering.UI;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.ReloadAttribute;
 using static UnityEngine.UI.Image;
@@ -26,7 +31,55 @@ public class ShopPopup : MonoBehaviour
     public PackageShopInfor packageShopInfoPrefab;
     public GameObject positionCungCapXuPackage;
     public PopupConfirm buttonConfirm;
+    private AsyncOperationHandle<IList<Sprite>> preloadHandle;
+    public IList<Sprite> listSprite = new List<Sprite>();
+    public bool isKhoitao = false;
+    public Dictionary<string, Sprite> dictionary = new Dictionary<string, Sprite>();
+    public List<PackageShopInfor> listPackageInfo;
 
+    private async void OnEnable()
+    {
+        //loading tát cả ảnh vào đây 
+        preloadHandle = Addressables.LoadAssetsAsync<Sprite>(AddressableLabels.PRELOAD, null);
+        listSprite = await preloadHandle.Task;
+        if (preloadHandle.Status == AsyncOperationStatus.Succeeded)
+        {
+            Debug.Log("tải ảnh lên ram thanh cong");
+            //đua anh vao dictionary
+            foreach (var x in listSprite)
+            {
+                dictionary[x.name] = x;
+            }
+        }
+
+        if (isKhoitao == false)
+        {
+            SetupButtonExist();
+            GenerateListItem();
+            isKhoitao = true;
+        }
+        else
+        {
+            //refresh
+            foreach (var x in listPackageInfo)
+            {
+                x.Refresh();
+            }
+
+        }
+
+
+    }
+    private void OnDisable()
+    {
+        if (preloadHandle.IsValid())
+        {
+            Addressables.Release(preloadHandle);
+            listSprite.Clear();
+            Debug.Log("Đã giải phóng bộ nhớ RAM của các ảnh preload.");
+        }
+
+    }
 
     private void Awake()
     {
@@ -37,10 +90,10 @@ public class ShopPopup : MonoBehaviour
         }
         else Instance = this;
 
-        SetupButtonExist();
-        GenerateListItem();
-        Debug.Log("co chay vao shoppopup ko nhir");
+
     }
+
+
     void Start()
     {
 
@@ -61,7 +114,7 @@ public class ShopPopup : MonoBehaviour
         //so tien hien tai la
 
         var coint = SaveManager.Data.coint;
-        Debug.Log("coint hien tai la " + coint);
+        // Debug.Log("coint hien tai la " + coint);
         cointText.text = GameConfigManager.Instance.playerDataLogic.GetCoint(SaveManager.Data).ToString();
     }
 
@@ -125,11 +178,18 @@ public class ShopPopup : MonoBehaviour
                 //tao 1 object tu packageShopInfoPrefab
                 var itemPackage = Instantiate(packageShopInfoPrefab, contentMain.transform);
 
-                //set up packaghe infor do
-                itemPackage.Setup(x.idPackage, x.iconAdressKey, x.priceDolar, x.priceCoint, x.amount, x.typePacakgaeShopee, () =>
-                {
-                    HandleButtonBuyItem(x.idPackage);
-                });
+                //thme vao lisst
+                listPackageInfo.Add(itemPackage);
+
+                //tim image
+                var sprite = dictionary[x.iconAdressKey];
+
+
+                itemPackage.Setup(x, () =>
+                 {
+                     HandleButtonBuyItem(x.idPackage);
+
+                 });
 
             }
 

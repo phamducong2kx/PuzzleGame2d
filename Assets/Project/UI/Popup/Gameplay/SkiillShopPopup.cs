@@ -55,10 +55,10 @@ public class SkiillShopPopup : MonoBehaviour
 
     public void ResetCurrentSkillData()
     {
-        imageSkill.sprite = GameConfigManager.Instance.itemLogic.GetItemInfoById(currentSkillRefrence.skillData.idItem).icon;
-        textDescribe.text = currentSkillRefrence.skillData.desscribeSkill;
-        textPrice.text = "Giá: " + currentSkillRefrence.skillData.price.ToString() + " xu";
-        totalCoint.text = GameConfigManager.Instance.playerDataLogic.GetCoint(SaveManager.Data).ToString();
+        //imageSkill.sprite = GameConfigManager.Instance.itemLogic.GetItemInfoById(currentSkillRefrence.skillData.idItem).icon;
+        //textDescribe.text = currentSkillRefrence.skillData.desscribeSkill;
+        //textPrice.text = "Giá: " + currentSkillRefrence.skillData.price.ToString() + " xu";
+        //totalCoint.text = GameConfigManager.Instance.playerDataLogic.GetCoint(SaveManager.Data).ToString();
     }
     void Start()
     {

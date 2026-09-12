@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.ReloadAttribute;
@@ -20,10 +22,12 @@ public class PopupConfirm : MonoBehaviour
     public void OpenPopup(PackageShoppe package)
     {
         gameObject.SetActive(true);
-        packageXacNhanPrefab.Setup(package.idPackage, package.iconAdressKey, package.priceDolar, package.priceCoint, package.amount, package.typePacakgaeShopee, () =>
-        {
-            HandleBuy(package);
-        });
+
+        var sprite = ShopPopup.Instance.dictionary[package.iconAdressKey];
+        packageXacNhanPrefab.Setup(package, () =>
+         {
+             HandleBuy(package);
+         });
 
     }
     public void SetupButotnExist()
@@ -31,6 +35,8 @@ public class PopupConfirm : MonoBehaviour
         exxistButton.onClick.RemoveAllListeners();
         exxistButton.onClick.AddListener(() =>
         {
+            //release ảnh hiện tại
+            //đóng cái này lại
             gameObject.SetActive(false);
         });
     }

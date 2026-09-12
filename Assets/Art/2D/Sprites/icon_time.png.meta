@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 64353460b4af94947ad40227d96bb0e0
+guid: 38dab92bf947a104cbe10ef9f5fc4ec7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,22 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: light_0
+      name: icon_time
       rect:
         serializedVersion: 2
-        x: 164
-        y: 437
-        width: 680
-        height: 674
+        x: 104
+        y: 128
+        width: 816
+        height: 808
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ad6d567c9cee5b4cb1a398128fba09d
-      internalID: 2024830553
+      spriteID: db80fcd814f382f4abdec0f727a467e9
+      internalID: -380611160
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      light_0: 2024830553
+      icon_time: -380611160
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
