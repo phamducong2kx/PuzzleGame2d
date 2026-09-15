@@ -10,13 +10,25 @@ public class DrillSkillState : ISKillState
     public int solantapBolt = 0;
 
 
-    public DrillSkillState(Skill skill)
+    //public DrillSkillState(Skill skill)
+    //{
+    //    this.skill = skill;
+    //}
+    public DrillSkillState()
     {
-        this.skill = skill;
+        //skill = InputHandler.Instance.currentSkill;
+        //  Debug.Log("skill hien tại la " + skill.name);
     }
+
+
     public void OnEnterState()
     {
+        skill = InputHandler.Instance.currentSkill;
 
+        //if (skill == null)
+        //{
+        //    Debug.Log("skill co gia tri null");
+        //}
 
         //neu nhu nhan lan thu 2 thi phai thoar ra
         if (skill.isFirstTouch == false)
@@ -24,7 +36,7 @@ public class DrillSkillState : ISKillState
             VisualSelectBolt();
 
             //chuyen sang state dèault
-            InputHandler.Instance.SetStrategy(new DefaultState());
+            InputHandler.Instance.SetStrategy(SkillStateCache.defaultSkillState, null);
 
         }
         else
@@ -76,7 +88,8 @@ public class DrillSkillState : ISKillState
         bolt.transform.DOKill();
         VisualSelectBolt();
         skill.activeSkill = true;
-        InputHandler.Instance.SetStrategy(new DefaultState());
+        // InputHandler.Instance.SetStrategy(new DefaultState());
+        InputHandler.Instance.SetStrategy(SkillStateCache.defaultSkillState, null);
     }
 
     public void OntapHole(Hole hole)

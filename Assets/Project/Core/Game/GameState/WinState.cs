@@ -69,7 +69,7 @@ public class WinState : IGameState
         }
 
         //tro ve trang thai che do choi binh thường
-        InputHandler.Instance.SetStrategy(new DefaultState());
+        InputHandler.Instance.SetStrategy(SkillStateCache.defaultSkillState, null);
 
         //disable cacs aniamtion
         AnimationManager.Instance.gamePlayAnimation.Hide();

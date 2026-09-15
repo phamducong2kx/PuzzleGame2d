@@ -27,26 +27,35 @@ public class InputHandler : MonoBehaviour
     }
     private void Start()
     {
-        SetStrategy(currentSkillState);
+        SetStrategy(currentSkillState, null);
     }
-    public void SetStrategy(ISKillState newStrategy)
+    public void SetStrategy(ISKillState newStrategy, Skill skill)
     {
         currentSkillState.OnExitState();
         currentSkillState = newStrategy;
-        currentSkillState.OnEnterState();
-    }
-
-    public void SetStrategy_2(ISKillState newStrategy, Skill skill)
-    {
-        currentSkillState.OnExitState();
-        currentSkillState = newStrategy;
-        if (currentSkill != null)
+        if (skill != null)
         {
             currentSkill = skill;
+        }
+        else
+        {
+            Debug.Log("cuernt skill dang co gia tri la null");
         }
 
         currentSkillState.OnEnterState();
     }
+
+    //public void SetStrategy_2(ISKillState newStrategy, Skill skill)
+    //{
+    //    currentSkillState.OnExitState();
+    //    currentSkillState = newStrategy;
+    //    if (currentSkill != null)
+    //    {
+    //        currentSkill = skill;
+    //    }
+
+    //    currentSkillState.OnEnterState();
+    //}
 
     private void Update()
     {

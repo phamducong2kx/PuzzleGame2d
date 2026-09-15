@@ -28,6 +28,7 @@ public class Skill : MonoBehaviour
     public float selectTiming;
     public bool activeSkill = false;
     public bool isFirstTouch = false;
+    public ISKillState state;
 
 
     private void Awake()
@@ -37,7 +38,8 @@ public class Skill : MonoBehaviour
 
     private void GetButton(SkillData skillData)
     {
-
+        //tim state khi nhấn vòa skill này
+        //  var state = GameConfigManager.Instance.skillLogic.GetSkillSate(skillData.skillType);
 
 
         if (isCoolDownRunning || amountSkill == 0) return;
@@ -48,7 +50,8 @@ public class Skill : MonoBehaviour
         {
             //  activeSkill = false;
             // InputHandler.Instance.SetStrategy(skillState);
-            InputHandler.Instance.SetStrategy(skillData.GetSkillState(this));
+
+            InputHandler.Instance.SetStrategy(state, this);
         }
 
         else
@@ -75,7 +78,8 @@ public class Skill : MonoBehaviour
 
     public void SetUp(SkillData skillData)
     {
-
+        //state
+        state = GameConfigManager.Instance.skillLogic.GetSkillSate(skillData.skillType);
 
         //id
         idSkill = skillData.idItem;

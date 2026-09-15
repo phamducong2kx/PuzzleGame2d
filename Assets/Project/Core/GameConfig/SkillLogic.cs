@@ -25,6 +25,7 @@ public class SkillLogic : MonoBehaviour
     }
 
 
+
     //invoke event drillSkillEvent;
     public void InvokeDrillSKillEvent(Bolt bolt)
     {
@@ -50,6 +51,22 @@ public class SkillLogic : MonoBehaviour
     private void OnDisable()
     {
 
+    }
+
+    //laays skillSate theo skill
+    public ISKillState GetSkillSate(SkillType type)
+    {
+        switch (type)
+        {
+            case SkillType.timeSkill:
+                return SkillStateCache.timeSkillState;
+            case SkillType.lightningSkill:
+                return SkillStateCache.lightningSkillState;
+            case SkillType.dirillSkill:
+                return SkillStateCache.drillSkillState;
+            default:
+                return SkillStateCache.defaultSkillState;
+        }
     }
 
     //lay danh sacsh

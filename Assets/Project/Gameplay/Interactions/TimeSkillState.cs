@@ -10,14 +10,20 @@ public class TimeSkillState : ISKillState
         skill = _skill;
     }
 
+    public TimeSkillState()
+    {
+        // skill = InputHandler.Instance.currentSkill;
+    }
+
     public void OnEnterState()
     {
+        skill = InputHandler.Instance.currentSkill;
         // cộng time , va aniamtion đồng hồ chạy
         GameConfigManager.Instance.skillLogic.InvokeAddTimeSkill();
 
         // tro ve trang thai default
-        InputHandler.Instance.SetStrategy(new DefaultState());
-
+        // InputHandler.Instance.SetStrategy(new DefaultState());
+        InputHandler.Instance.SetStrategy(SkillStateCache.defaultSkillState, null);
 
     }
 

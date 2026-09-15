@@ -61,8 +61,8 @@ public class PauseManager : MonoBehaviour
             UIManager.Instance.gameplayPannel.HidePauseUI();
 
             //chuyển skillstate sang default state;
-            InputHandler.Instance.SetStrategy(new DefaultState());
-
+            //  InputHandler.Instance.SetStrategy(new DefaultState());
+            InputHandler.Instance.SetStrategy(SkillStateCache.defaultSkillState, null);
             //chuyeefn sang playing
             GameStateManager.Instance.ChangeSate(GameStateCache.playingState);
 
@@ -89,8 +89,8 @@ public class PauseManager : MonoBehaviour
             InputHandler.Instance.pickedBolt = null;
 
             //chuyển skillstate sang default state;
-            InputHandler.Instance.SetStrategy(new DefaultState());
-
+            // InputHandler.Instance.SetStrategy(new DefaultState());
+            InputHandler.Instance.SetStrategy(SkillStateCache.defaultSkillState, null);
 
             //chuyen sang gameState moi
             GameStateManager.Instance.ChangeSate(GameStateCache.levelSelecState);

@@ -13,13 +13,16 @@ public class LightNingState : ISKillState
         skill = _skill;
     }
 
-
+    public LightNingState()
+    {
+        // skill = InputHandler.Instance.currentSkill;
+    }
 
 
     public void OnEnterState()
     {
 
-
+        skill = InputHandler.Instance.currentSkill;
         //neu nhu nhan lan thu 2 thi phai thoar ra
         if (skill.isFirstTouch == false)
         {
@@ -27,8 +30,8 @@ public class LightNingState : ISKillState
             VisualSelectPlank();
 
             //nếu đang nhấn skill mà nhấn lần nữa sẽ mất skill
-            InputHandler.Instance.SetStrategy(new DefaultState());
-
+            //InputHandler.Instance.SetStrategy(new DefaultState());
+            InputHandler.Instance.SetStrategy(SkillStateCache.defaultSkillState, null);
         }
         else
         {
@@ -94,7 +97,8 @@ public class LightNingState : ISKillState
         await Task.Delay(1000);
         VisualSelectPlank();
         skill.activeSkill = true;
-        InputHandler.Instance.SetStrategy(new DefaultState());
+        //  InputHandler.Instance.SetStrategy(new DefaultState());
+        InputHandler.Instance.SetStrategy(SkillStateCache.defaultSkillState, null);
         GameManager.Instance.winLoseSystem.Evaluate();
 
 

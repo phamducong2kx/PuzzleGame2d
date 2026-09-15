@@ -44,7 +44,8 @@ public class LossPopup : MonoBehaviour
             UIManager.Instance.gameplayPannel.HidePauseUI();
 
             //chuyển skillstate sang default state;
-            InputHandler.Instance.SetStrategy(new DefaultState());
+            //InputHandler.Instance.SetStrategy(new DefaultState());
+            InputHandler.Instance.SetStrategy(SkillStateCache.defaultSkillState, null);
 
             //chuyen sang state playing
             GameStateManager.Instance.ChangeSate(GameStateCache.playingState);
@@ -72,8 +73,8 @@ public class LossPopup : MonoBehaviour
             InputHandler.Instance.pickedBolt = null;
 
             //chuyển skillstate sang default state;
-            InputHandler.Instance.SetStrategy(new DefaultState());
-
+            // InputHandler.Instance.SetStrategy(new DefaultState());
+            InputHandler.Instance.SetStrategy(SkillStateCache.defaultSkillState, null);
 
             //chuyen sang gameState moi
             GameStateManager.Instance.ChangeSate(GameStateCache.levelSelecState);
