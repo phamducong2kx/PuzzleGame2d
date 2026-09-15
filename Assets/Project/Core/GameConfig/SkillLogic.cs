@@ -68,6 +68,11 @@ public class SkillLogic : MonoBehaviour
         return skill.amount;
     }
 
+    //lay skill thoe id
+    public SkillData GetSkilLData(string id)
+    {
+        return skillDatabase.skillDatas.FirstOrDefault(x => x.idItem.Equals(id));
+    }
 
     //dua het danh sachs skill voa data
     public void SetUPSkill()

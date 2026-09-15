@@ -27,11 +27,16 @@ public static class GameStateCache
 
     public static readonly IGameState winGameState = new WinState();
     public static readonly IGameState lossState = new LossState();
-     
-
-
-
 }
+
+//public static class SkillStateCache
+//{
+//    public static readonly ISKillState lightningSkillState = new LightNingState();
+//    public static readonly ISKillState drillSkillState = new HomeState();
+//    public static readonly ISKillState timeSkillState = new LevelMapState();
+
+
+//}
 
 
 

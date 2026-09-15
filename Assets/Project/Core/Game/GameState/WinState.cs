@@ -28,7 +28,7 @@ public class WinState : IGameState
 
         //tăt logic time , tắt ui ko cần thiết
         GameManager.Instance.timerSystem.isRunning = false;
-        GameManager.Instance.warningSystem.isPlaying = false;
+        GameManager.Instance.warningSystem.isRuning = false;
 
         UIManager.Instance.gameplayPannel.WinUI();
 

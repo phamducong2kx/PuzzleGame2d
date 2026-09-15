@@ -39,7 +39,15 @@ public class FireBaseRemoteConfig : MonoBehaviour
         //tren dien thoai .tinh theo ms , 1h co 3600000 ms, mắc định là 12h
         // configSetting.MinimumFetchIntervalInMilliseconds = 3600000;
         //ap dung cau hinh vao remote cònig
-        await FirebaseRemoteConfig.DefaultInstance.SetConfigSettingsAsync(configSetting);
+        try
+        {
+            await FirebaseRemoteConfig.DefaultInstance.SetConfigSettingsAsync(configSetting);
+        }
+        catch (Exception e)
+        {
+            Debug.Log("loi " + e.Message);
+        }
+        //  await FirebaseRemoteConfig.DefaultInstance.SetConfigSettingsAsync(configSetting);
 
         //fetch du lieu
         try

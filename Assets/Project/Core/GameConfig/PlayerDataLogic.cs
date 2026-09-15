@@ -171,18 +171,10 @@ public class PlayerDataLogic : MonoBehaviour
     {
 
         var data = SaveManager.Data;
-        foreach (var x in data.listSkill)
-        {
-            if (x.idSkill.Equals(idSkill))
-            {
-                x.amount += amount;
-                SaveManager.SaveData();
-                return;
-            }
-        }
-
-
-
+        //tim kiem skill 
+        var skill = data.listSkill.FirstOrDefault(x => x.idSkill.Equals(idSkill));
+        skill.amount += amount;
+        SaveManager.SaveData();
     }
 
     //tim sprite tu id avatar

@@ -10,13 +10,11 @@ public class Plank : MonoBehaviour
 
     public float groundY = -30f;
     public bool hasFallen = false;
-    public SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     public string defaultSortingLayer;
     public string lightningSortingLayer;
     public SortingGroup sortingGroup;
     public SpriteRenderer spriteRender;
-
     public PlankType plankType;
 
 
@@ -26,9 +24,40 @@ public class Plank : MonoBehaviour
         sortingGroup = GetComponent<SortingGroup>();
         defaultSortingLayer = sortingGroup.sortingLayerName;
         lightningSortingLayer = "top";
-        spriteRender = GetComponentInChildren<SpriteRenderer>();
+        spriteRender = GetComponent<SpriteRenderer>();
 
     }
+
+    public void SetupPlank(PlankData plankData)
+    {
+        //id
+        plankId = plankData.plankId;
+
+        //type
+        plankType = plankData.plankType;
+
+
+        spriteRender.size = new Vector2(plankData.sizeWidth, plankData.sizeHeight);
+
+
+        //rigibody
+        SetDynamicRigibody();
+
+        //scale
+        transform.localScale = new Vector3(plankData.scaleX, plankData.scaleY, 1);
+
+        // Sorting Group
+        sortingGroup.sortingLayerName = plankData.sortingLayerName;
+        sortingGroup.sortingOrder = plankData.sortingOrder;
+
+        //mafu sawc
+        StringToClour(plankData.hexColor);
+
+
+    }
+
+
+
 
     //getColor
     public void StringToClour(string colorr)
@@ -122,8 +151,7 @@ public class Plank : MonoBehaviour
             if (joint.connectedBody == bolt.rb)
             {
                 Destroy(joint);
-                // --numberHingeJoined;
-                // if (numberHingeJoined == 0) hasFallen = true;
+
                 return;
             }
         }
@@ -137,6 +165,19 @@ public class Plank : MonoBehaviour
     public void SetStaticRigibody()
     {
         rb.bodyType = RigidbodyType2D.Static;
+    }
+
+    public float GetHight()
+    {
+        if (spriteRender.size != null)
+            return spriteRender.size.y;
+        return 0;
+    }
+    public float GetWeight()
+    {
+        if (spriteRender.size != null)
+            return spriteRender.size.x;
+        return 0;
     }
 
     public void VisualDefaultSkill()

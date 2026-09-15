@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ public class PlankTypeLogic : MonoBehaviour
 {
     public PlankTypeData plankTypeData;
 
-    public Dictionary<PlankType, GameObject> dictionary = new Dictionary<PlankType, GameObject>();
+    public Dictionary<PlankType, string> dictionary = new Dictionary<PlankType, string>();
 
     private void Awake()
     {
@@ -26,13 +26,16 @@ public class PlankTypeLogic : MonoBehaviour
         var listPlankTypeInfo = plankTypeData.list;
         foreach (var x in listPlankTypeInfo)
         {
-            dictionary[x.type] = x.prefab;
+            dictionary[x.type] = x.addressKey;
         }
     }
-    //ham lay prefab theo type
-    public GameObject GetPrefabByPlankType(PlankType plankType)
+
+
+    //timf kiếm keyAdrers từ type
+    public string GetKeyAddressFromType(PlankType plankType)
     {
         return dictionary[plankType];
     }
+
 
 }

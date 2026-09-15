@@ -115,7 +115,7 @@ public class LightNingState : ISKillState
 
         //time hoat dong binh thuong chay lai corotine
         GameManager.Instance.timerSystem.isRunning = true;
-        GameManager.Instance.warningSystem.isPlaying = true;
+        GameManager.Instance.warningSystem.isRuning = true;
         Time.timeScale = 1f;
 
         //disactive square
@@ -138,7 +138,7 @@ public class LightNingState : ISKillState
 
         //dung dem thoi gian
         GameManager.Instance.timerSystem.isRunning = false;
-        GameManager.Instance.warningSystem.isPlaying = false;
+        // GameManager.Instance.warningSystem.isPlaying = false;
 
         //active square
         UIManager.Instance.gameplayPannel.Square_Skill.SetActive(true);

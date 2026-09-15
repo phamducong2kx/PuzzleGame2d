@@ -18,12 +18,16 @@ MonoBehaviour:
   coint: 0
   ListMocTimeStar:
   - 80
-  - 100
+  - 135
   - 150
   listPlankData:
   - plankId: 1
-    position: {x: -0.8253631, y: 3.437375, z: -0.10341765}
-    rotation: 45.699154
+    position: {x: -0.8233579, y: 3.435169, z: -0.10341765}
+    rotation: 45.531834
+    scaleX: 1
+    scaleY: 1
+    sizeWidth: 5
+    sizeHeight: 1
     hexColor: '#4B22F5FF'
     listPlankHole:
     - holeId: p1_1
@@ -31,10 +35,15 @@ MonoBehaviour:
     - holeId: p1_2
       positionLocal: {x: -1.019, y: 0.06, z: 0.022822045}
     sortingLayerName: 2
-    plankType: 1
+    sortingOrder: 0
+    plankType: 0
   - plankId: 2
-    position: {x: 0.89482915, y: 3.3576658, z: -0.10341765}
-    rotation: 133.25056
+    position: {x: 0.89521414, y: 3.3580174, z: -0.10341765}
+    rotation: 133.21426
+    scaleX: 1
+    scaleY: 1
+    sizeWidth: 5
+    sizeHeight: 1
     hexColor: '#545916FF'
     listPlankHole:
     - holeId: p2_1
@@ -42,10 +51,15 @@ MonoBehaviour:
     - holeId: p2_2
       positionLocal: {x: -0.823, y: 0.012, z: 0.022822045}
     sortingLayerName: 2
-    plankType: 1
+    sortingOrder: 0
+    plankType: 0
   - plankId: 3
-    position: {x: -0.019992905, y: 2.7561862, z: -0.10341765}
-    rotation: 179.60298
+    position: {x: -0.020048069, y: 2.7492597, z: -0.10341765}
+    rotation: 179.87294
+    scaleX: 1
+    scaleY: 1
+    sizeWidth: 5
+    sizeHeight: 1
     hexColor: '#22F537FF'
     listPlankHole:
     - holeId: p3_1
@@ -53,10 +67,15 @@ MonoBehaviour:
     - holeId: p3_2
       positionLocal: {x: -1.47, y: -0.004, z: 0.022822045}
     sortingLayerName: 2
-    plankType: 1
+    sortingOrder: 0
+    plankType: 0
   - plankId: 4
-    position: {x: 0.019267656, y: -0.9640303, z: -0.10341765}
-    rotation: 0.035349354
+    position: {x: 0.019393038, y: -0.96385396, z: -0.10341765}
+    rotation: 0.029297993
+    scaleX: 1
+    scaleY: 1
+    sizeWidth: 4.7
+    sizeHeight: 4
     hexColor: '#FFF870FF'
     listPlankHole:
     - holeId: p4_1
@@ -68,7 +87,8 @@ MonoBehaviour:
     - holeId: p4_4
       positionLocal: {x: 1.67, y: -1.187, z: 0.022822045}
     sortingLayerName: 2
-    plankType: 5
+    sortingOrder: 0
+    plankType: 0
   listBoltData:
   - boltId: 1
     position: {x: 0.022, y: 4.36, z: -2}

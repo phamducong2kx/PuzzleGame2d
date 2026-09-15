@@ -2,6 +2,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -21,6 +23,7 @@ public class GameplayPannel : MonoBehaviour
     public LossPopup lossPopup;
 
 
+
     //tham chiếu pausePannel
     public PauseManager pannelPause;
 
@@ -35,18 +38,15 @@ public class GameplayPannel : MonoBehaviour
 
     public void SetBegin()
     {
-        //set up time
+
+
+
+
         float timeLimit = LevelLoader.Instance.CurrentLevelData.timerLimit;
         float timeWarn = LevelLoader.Instance.CurrentLevelData.timerWanr;
-
         var listStar = LevelLoader.Instance.CurrentLevelData.ListMocTimeStar;
-
-
-
         GameManager.Instance.timerSystem.SetupTimeLevel(timeLimit, timeWarn, listStar);
         GameManager.Instance.warningSystem.SetupWarningTime();
-
-
 
 
         //set up starview
@@ -67,6 +67,8 @@ public class GameplayPannel : MonoBehaviour
         //dang ki su kien
 
         SetupRegisterEvent();
+
+
 
     }
 

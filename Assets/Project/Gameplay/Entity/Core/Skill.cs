@@ -32,14 +32,13 @@ public class Skill : MonoBehaviour
 
     private void Awake()
     {
-        buttonInteract.onClick.AddListener(() =>
-        {
-            GetButton();
-        });
+
     }
 
-    private void GetButton()
+    private void GetButton(SkillData skillData)
     {
+
+
 
         if (isCoolDownRunning || amountSkill == 0) return;
 
@@ -48,12 +47,15 @@ public class Skill : MonoBehaviour
         if (isFirstTouch)
         {
             //  activeSkill = false;
-            InputHandler.Instance.SetStrategy(skillState);
+            // InputHandler.Instance.SetStrategy(skillState);
+            InputHandler.Instance.SetStrategy(skillData.GetSkillState(this));
         }
 
         else
         {
-            skillState.OnEnterState();
+            //  skillState.OnEnterState();
+            InputHandler.Instance.currentSkillState.OnEnterState();
+
 
         }
 
@@ -79,7 +81,7 @@ public class Skill : MonoBehaviour
         idSkill = skillData.idItem;
 
         //skillsate
-        skillState = skillData.GetSkillState(this);
+        //  skillState = skillData.GetSkillState(this);
         GameConfigManager.Instance.playerDataLogic.AddSkillToList(idSkill);
 
         //cooldown
@@ -101,6 +103,12 @@ public class Skill : MonoBehaviour
 
         //set up coooldonw reaming , còn dang dở ở level trước 
         coolDownRemaining = SetUpCoolDown(idSkill);
+
+        //xet up button skill
+        buttonInteract.onClick.AddListener(() =>
+        {
+            GetButton(skillData);
+        });
 
 
     }

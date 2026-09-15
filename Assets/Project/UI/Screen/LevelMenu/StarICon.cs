@@ -63,6 +63,7 @@ public class StarICon : MonoBehaviour
     public void HandleStar(int id, StarState starState)
     {
         if (id != idStar) return;
+        // Debug.Log("chay su kien star voi id = " + id);
         //voi id nay tim xem trnog danh sacsh casc sao , tim object theo id
 
 
@@ -80,7 +81,7 @@ public class StarICon : MonoBehaviour
     }
     private void HandleAnimationWarning(int id)
     {
-
+        Debug.Log("chay su kien star voi id = " + id);
 
         //phong to thu nho 
         PhongtothunhoAnimation.PlayEffectSmallToBig(transform, -1, 1.2f);

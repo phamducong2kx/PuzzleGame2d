@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayingSate : IGameState
@@ -7,7 +8,7 @@ public class PlayingSate : IGameState
 
 
 
-    public void EnterSate()
+    public async void EnterSate()
     {
         if (GameManager.Instance.isResume)
         {
@@ -35,10 +36,12 @@ public class PlayingSate : IGameState
             LevelLoader.Instance.ClearLevel();
         }
 
-        //load level
+        //   load level
         int currentLevel = SaveManager.Data.currentLevel;
 
-        LevelLoader.Instance.LoadLevel(currentLevel);
+        await LevelLoader.Instance.LoadLevel(currentLevel);
+
+
 
 
 

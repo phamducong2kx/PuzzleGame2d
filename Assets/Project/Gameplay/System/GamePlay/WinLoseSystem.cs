@@ -36,7 +36,7 @@ public class WinLoseSystem : MonoBehaviour
         else if (GameManager.Instance.timerSystem != null && GameManager.Instance.timerSystem.timeRemaining <= 0f)
         {
             //chua xu li trunog hop nay
-
+            //GameManager.Instance.timerSystem.isRunning = false;
             GameStateManager.Instance.ChangeSate(GameStateCache.lossState);
 
 

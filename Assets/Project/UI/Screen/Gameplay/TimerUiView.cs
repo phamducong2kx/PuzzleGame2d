@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System;
 using TMPro;
+using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,6 +33,7 @@ public class TimerUiView : MonoBehaviour
     private void OnEnable()
     {
         //  RegisterTimeEvent();
+        //  label.enabled = true;
     }
 
     private void OnDisable()
@@ -41,66 +43,41 @@ public class TimerUiView : MonoBehaviour
         //huy naimation
         PhongtothunhoAnimation.KillAnimation(label.transform);
         PhongtothunhoAnimation.KillAnimation(warningLabel.transform);
+        //GameManager.Instance.timerSystem.OnTimerTick -= HandleTick;
         GameManager.Instance.timerSystem.OnTimerTick -= HandleTick;
+        GameManager.Instance.timerSystem.OnTimeWarning -= HandleWarning;
         GameManager.Instance.warningSystem.warningSystemAction -= HandleWarningSystemAction;
 
 
     }
 
-
-
-    public void HandleTick(float remaining, TimeState timeState)
-    {
-
-        switch (timeState)
-        {
-            case TimeState.Normal:
-                isRuning = true;
-                HandleNormalTime(remaining);
-                break;
-            case TimeState.Warning:
-
-                HandleWarningTime(remaining);
-                break;
-            case TimeState.TimeOut:
-                HandleTimeOut(remaining);
-
-                break;
-        }
-
-
-
-
-    }
-
-    public void HandleNormalTime(float remaining)
-    {
-        if (label == null) return;
-        label.color = normalColor;
-        label.text = FormatString(remaining);
-    }
-    public void HandleWarningTime(float remaining)
+    private void HandleWarning(float remaining)
     {
         if (label == null) return;
         label.color = warnColor;
-        label.text = FormatString(remaining);
         //mịc đích là để cho dot sin hra 1 đoi tuong thoi
         if (isRuning)
         {
             isRuning = false;
             PhongtothunhoAnimation.PlayEffectSmallToBig(label.transform, -1, 1.2f);
         }
+        if (remaining <= 0)
+        {
 
 
+            PhongtothunhoAnimation.KillAnimation(label.transform);
+            GameManager.Instance.winLoseSystem.Evaluate();
+        }
     }
 
-    public void HandleTimeOut(float remaining)
+    public void HandleTick(float remaining)
     {
+        if (label == null) return;
+        label.color = normalColor;
         label.text = FormatString(remaining);
-        //huy dotteenw
-        PhongtothunhoAnimation.KillAnimation(label.transform);
-        GameManager.Instance.winLoseSystem.Evaluate();
     }
+
+
     private void HandleWarningSystemAction(float reamingtime)
     {
         label.color = warnColor;
@@ -120,6 +97,8 @@ public class TimerUiView : MonoBehaviour
     {
         GameManager.Instance.timerSystem.OnTimerTick -= HandleTick;
         GameManager.Instance.timerSystem.OnTimerTick += HandleTick;
+        GameManager.Instance.timerSystem.OnTimeWarning -= HandleWarning;
+        GameManager.Instance.timerSystem.OnTimeWarning += HandleWarning;
         GameManager.Instance.warningSystem.warningSystemAction -= HandleWarningSystemAction;
         GameManager.Instance.warningSystem.warningSystemAction += HandleWarningSystemAction;
 
@@ -132,9 +111,9 @@ public class TimerUiView : MonoBehaviour
         time = Mathf.CeilToInt(time);
         //  if (time <= 0) time = 0;
         int minute = Mathf.FloorToInt(time / 60);
-        if (time < 0) Debug.Log("minute la  " + minute);
+        // if (time < 0) Debug.Log("minute la  " + minute);
         int secs = Mathf.FloorToInt(time % 60);
-        if (time < 0) Debug.Log("secs la  " + secs);
+        // if (time < 0) Debug.Log("secs la  " + secs);
         return $"{minute:00}:{secs:00}";
     }
 

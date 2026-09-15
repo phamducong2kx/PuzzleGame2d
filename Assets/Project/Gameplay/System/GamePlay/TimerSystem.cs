@@ -1,14 +1,14 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TimeState
-{
-    Normal,
-    Warning,
-    TimeOut
-}
+//public enum TimeState
+//{
+//    Normal,
+//    Warning,
+//    TimeOut
+//}
 
 public class TimerSystem : MonoBehaviour
 {
@@ -20,16 +20,29 @@ public class TimerSystem : MonoBehaviour
     [Header("Config")]
     public float warnThreshold;
     public List<float> listMocSao = new List<float>();
-    public float MocStar_3 = 0;
-    public float MocStar_2 = 0;
-    public float MocStar_1 = 0;
+
     public int mocsao;
-    public event Action<float, TimeState> OnTimerTick;
+    // public event Action<float, TimeState> OnTimerTick;
+    public event Action<float> OnTimerTick;
+    public event Action<float> OnTimeWarning;
     public event Action<int, StarState> OnStarView;
     public bool isDotweeinRuning = false;
+    public bool isEventTimeCall = false;
 
-    public TimeState timeState = TimeState.Normal;
+    //public TimeState timeState = TimeState.Normal;
 
+
+
+    public void SetupTimeLevel(float duration, float warnTime, List<float> listmocsao)
+    {
+        this.duration = duration;
+        warnThreshold = warnTime;
+        timeRemaining = duration;
+        isRunning = true;
+        listMocSao = listmocsao;
+        mocsao = listMocSao.Count;
+        //  timeState = TimeState.Normal;
+    }
     private void Awake()
     {
 
@@ -49,7 +62,7 @@ public class TimerSystem : MonoBehaviour
     {
         timeRemaining += 40f;
 
-        for (int i = listMocSao.Count; i >= 1; ++i)
+        for (int i = listMocSao.Count; i >= 1; --i)
         {
             if (timeRemaining >= listMocSao[i - 1])
             {
@@ -71,7 +84,7 @@ public class TimerSystem : MonoBehaviour
 
     private void OnDisable()
     {
-        // StopCoroutine(TimeRoutine());
+
         GameConfigManager.Instance.skillLogic.AddTimeSkill -= HandleAddTime;
     }
     private void Start()
@@ -79,36 +92,46 @@ public class TimerSystem : MonoBehaviour
 
     }
 
+
     private void Update()
     {
-        if (!isRunning) return;
+
+        if (isRunning == false)
+        {
+            //Debug.LogWarning($"[TimerSystem] isRunning bị đổi thành FALSE tại Frame {Time.frameCount}!\n" +
+            //                 $"Chi tiết nguồn gọi:\n{System.Environment.StackTrace}");
+            return;
+        }
+        //if (isRunning == true)
+        //{
+        //    Debug.LogWarning($"[TimerSystem] isRunning bị đổi thành TRUE tại Frame {Time.frameCount}!\n" +
+        //                     $"Chi tiết nguồn gọi:\n{System.Environment.StackTrace}");
+        //    // return;
+        //}
+
         timeRemaining -= Time.deltaTime;
-
-      
         HandleMocSao();
-
-
+        // Debug.Log("van chay tipe");
+        OnTimerTick?.Invoke(timeRemaining);
         if (timeRemaining <= warnThreshold)
         {
-            timeState = TimeState.Warning;
-        }
-        if (timeRemaining <= 0)
-        {
-            timeState = TimeState.TimeOut;
-            isRunning = false;
-        }
+            OnTimeWarning?.Invoke(timeRemaining);
 
-        OnTimerTick?.Invoke(timeRemaining, timeState);
+        }
+       
+
+
+
     }
-
     private void HandleMocSao()
     {
-        for (int i = listMocSao.Count; i >= 1; --i)
+        for (int i = listMocSao.Count; i >= 1; --i)  //3
         {
             if (mocsao == i)
             {
                 if (timeRemaining <= listMocSao[i - 1] + 10 && isDotweeinRuning == false)
                 {
+                    Debug.Log($"lucs nafy i = {i} va bat dau chay evet");
                     OnStarView?.Invoke(i, StarState.Warning);
                     isDotweeinRuning = true;
                 }
@@ -120,26 +143,39 @@ public class TimerSystem : MonoBehaviour
                 }
 
             }
-            else
-            {
-                break;
-            }
+
         }
     }
 
 
 
 
-    public void SetupTimeLevel(float duration, float warnTime, List<float> listmocsao)
-    {
-        this.duration = duration;
-        warnThreshold = warnTime;
-        timeRemaining = duration;
-        isRunning = true;
-        listMocSao = listmocsao;
-        mocsao = listMocSao.Count;
-        timeState = TimeState.Normal;
-    }
+    //private void Update()
+    //{
+    //    if (!isRunning) return;
+    //    timeRemaining -= Time.deltaTime;
+    //    HandleMocSao();
+    //    if (timeRemaining < duration && isEventTimeCall == false)
+    //    {
+    //        OnTimerTick?.Invoke(timeRemaining, timeState);
+    //    }
+    //    if (timeRemaining <= warnThreshold)
+    //    {
+    //        timeState = TimeState.Warning;
+    //    }
+    //    if (timeRemaining <= 0)
+    //    {
+    //        timeState = TimeState.TimeOut;
+    //        isRunning = false;
+    //    }
+
+    //    OnTimerTick?.Invoke(timeRemaining, timeState);
+    //}
+
+
+
+
+
 
     public void ReloadTime(float time)
     {

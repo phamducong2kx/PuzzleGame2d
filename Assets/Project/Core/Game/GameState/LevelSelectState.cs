@@ -11,7 +11,7 @@ public class LevelSelectState : IGameState
         //reset lại time
         Time.timeScale = 1;
         GameManager.Instance.timerSystem.isRunning = false;
-        GameManager.Instance.warningSystem.isPlaying = false;
+        GameManager.Instance.warningSystem.isRuning = false;
 
         //khóa ui home
         UIManager.Instance.homeManager.HideSelf();

@@ -8,10 +8,8 @@ public class WarningSystem : MonoBehaviour
 {
     // Start is called before the first frame update
     public float WarningTimeWating = 2f;
-    public float WarningTimeRemaining = 10f;
-    public event Action<float> warningSystemAction;
-    public bool isPlaying;
-    public float markTime;
+
+
 
 
     private void Awake()
@@ -22,59 +20,79 @@ public class WarningSystem : MonoBehaviour
     {
 
     }
+    private void OnEnable()
+    {
+        //   SetupWarningTime();
+    }
+    private void OnDisable()
+    {
+        SetupOnDisable();
+    }
+
     public void SetupWarningTime()
     {
-        WarningTimeWating = 2f;
-        WarningTimeRemaining = 10f;
-        markTime = -1;
-        isPlaying = true;
-
+        WarningTimeWating = 2;
+        timeDuration = 10;
+        isCountDown = false;
+        isRuning = true;
+        timeRemaing = 0;
     }
-    // Update is called once per frame
-    void Update()
+    public void SetupOnDisable()
     {
-        if (!isPlaying) return;
-        bool check = GameManager.Instance.holeSystem.AreAllHoleBackgroundCoverd();
-        if (!check)
+
+        isCountDown = false;
+        isRuning = false;
+    }
+    public bool isCountDown = false;
+    public float timeRemaing;
+    public float timeDuration;
+    public event Action<float> warningSystemAction;
+    public bool isRuning;
+    private void FixedUpdate()
+    {
+        if (!isRuning) return;
+        //check liên tục trong update , khi mà check = true thì đếm nguwocsj 2s, nếu như trong 
+        //2s đó ko check == false, hủy đếm ngược ngay , cứ lặp lại như vậy thôi 
+        var check = GameManager.Instance.holeSystem.AreAllHoleBackgroundCoverd();
+        if (check == true)
         {
-            WarningTimeRemaining = 10f;
-            WarningTimeWating = 2f;
-            GameManager.Instance.timerSystem.isRunning = true;
-            UIManager.Instance.gameplayPannel.timeView.SetupText();
-            if (markTime > 0)
+            if (isCountDown == false)
             {
-                GameManager.Instance.timerSystem.timeRemaining = markTime;
-                markTime = -1;
+
+                if (timeRemaing < WarningTimeWating)
+                {
+                    timeRemaing += Time.deltaTime;
+                }
+                else
+                {
+                    isCountDown = true;
+                    timeRemaing = timeDuration;
+                }
+            }
+            else
+            {
+                if (timeRemaing > 0)
+                {
+                    timeRemaing -= Time.deltaTime;
+                    //goi event
+                    warningSystemAction?.Invoke(timeRemaing);
+                }
+                else
+                {
+                    isRuning = false;
+                    //Chuyển sang state loss
+                    GameStateManager.Instance.ChangeSate(GameStateCache.lossState);
+
+                }
             }
 
-            // 
+
         }
         else
         {
-            if (WarningTimeWating >= 0)
-            {
-                WarningTimeWating -= Time.deltaTime;
-            }
-            if (WarningTimeWating < 0)
-            {
-                //danh dau lai thoi gian dang chay game
-                markTime = GameManager.Instance.timerSystem.timeRemaining;
-                GameManager.Instance.timerSystem.isRunning = false;
-
-
-
-
-                WarningTimeRemaining -= Time.deltaTime;
-
-                warningSystemAction?.Invoke(WarningTimeRemaining);
-            }
-            if (WarningTimeRemaining <= 0)
-            {
-                //chuyenr den los sytem
-                //tat
-                isPlaying = false;
-                GameStateManager.Instance.ChangeSate(GameStateCache.lossState);
-            }
+            SetupWarningTime();
+            UIManager.Instance.gameplayPannel.timeView.SetupText();
         }
+
     }
 }

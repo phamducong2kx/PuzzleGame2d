@@ -1,20 +1,11 @@
 ﻿using DG.Tweening;
-using JetBrains.Annotations;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Rendering.UI;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.ReloadAttribute;
-using static UnityEngine.UI.Image;
+
 
 public class ShopPopup : MonoBehaviour
 {
@@ -30,16 +21,34 @@ public class ShopPopup : MonoBehaviour
     public RectTransform ContentPannel;
     public PackageShopInfor packageShopInfoPrefab;
     public GameObject positionCungCapXuPackage;
-    public PopupConfirm buttonConfirm;
+    public PopupConfirm popupConfirm;
     private AsyncOperationHandle<IList<Sprite>> preloadHandle;
     public IList<Sprite> listSprite = new List<Sprite>();
     public bool isKhoitao = false;
     public Dictionary<string, Sprite> dictionary = new Dictionary<string, Sprite>();
     public List<PackageShopInfor> listPackageInfo;
+    private bool isLoadImage = false;
+    private void Awake()
+    {
+        //khoi tao instance
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else Instance = this;
+
+        //lưu ảnh trong đây
+
+
+    }
 
     private async void OnEnable()
     {
+        if (isLoadImage) return;
         //loading tát cả ảnh vào đây 
+        isLoadImage = true;
+        //load a?nh tu thu muc ung dung hoacj cache, khong co thi load tren server
         preloadHandle = Addressables.LoadAssetsAsync<Sprite>(AddressableLabels.PRELOAD, null);
         listSprite = await preloadHandle.Task;
         if (preloadHandle.Status == AsyncOperationStatus.Succeeded)
@@ -50,6 +59,7 @@ public class ShopPopup : MonoBehaviour
             {
                 dictionary[x.name] = x;
             }
+
         }
 
         if (isKhoitao == false)
@@ -58,40 +68,15 @@ public class ShopPopup : MonoBehaviour
             GenerateListItem();
             isKhoitao = true;
         }
-        else
-        {
-            //refresh
-            foreach (var x in listPackageInfo)
-            {
-                x.Refresh();
-            }
-
-        }
 
 
     }
     private void OnDisable()
     {
-        if (preloadHandle.IsValid())
-        {
-            Addressables.Release(preloadHandle);
-            listSprite.Clear();
-            Debug.Log("Đã giải phóng bộ nhớ RAM của các ảnh preload.");
-        }
-
+       
     }
 
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        else Instance = this;
 
-
-    }
 
 
     void Start()
@@ -223,7 +208,7 @@ public class ShopPopup : MonoBehaviour
 
             if (currentCoint >= pricePackage)
             {
-                buttonConfirm.OpenPopup(package);
+                popupConfirm.OpenPopup(package);
             }
             else
             {

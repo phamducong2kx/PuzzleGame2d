@@ -22,6 +22,7 @@ public class LoadingManager : MonoBehaviour
 
         //tải catalog
         await GameConfigManager.Instance.addressableManager.LoadCatalogUpdate();
+
         //tải bundle
         await GameConfigManager.Instance.addressableManager.LoadBundleAssetAsync(AddressableLabels.PRELOAD, (float x) =>
         {

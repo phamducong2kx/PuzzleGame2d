@@ -13,6 +13,7 @@ public class InputHandler : MonoBehaviour
     public LayerMask layerMask;
 
     public ISKillState currentSkillState = new DefaultState();
+    public Skill currentSkill = null;
     private void Awake()
     {
         if (Instance != null)
@@ -32,6 +33,18 @@ public class InputHandler : MonoBehaviour
     {
         currentSkillState.OnExitState();
         currentSkillState = newStrategy;
+        currentSkillState.OnEnterState();
+    }
+
+    public void SetStrategy_2(ISKillState newStrategy, Skill skill)
+    {
+        currentSkillState.OnExitState();
+        currentSkillState = newStrategy;
+        if (currentSkill != null)
+        {
+            currentSkill = skill;
+        }
+
         currentSkillState.OnEnterState();
     }
 

@@ -28,15 +28,29 @@ public class LevelData : ScriptableObject
 }
 
 [System.Serializable]
+public enum PlankType
+{
+    Square,
+    Triagle,
+    Circle,
+}
+
+[System.Serializable]
 public class PlankData
 {
     public string plankId;
     public Vector3 position;
     public float rotation;
+    public float scaleX;
+    public float scaleY;
+    public float sizeWidth;
+    public float sizeHeight;
     public string hexColor;
     public List<HoleData> listPlankHole = new List<HoleData>();
     public string sortingLayerName;
+    public int sortingOrder;
     public PlankType plankType;
+
 }
 
 [System.Serializable]

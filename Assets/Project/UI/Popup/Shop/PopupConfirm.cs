@@ -22,8 +22,6 @@ public class PopupConfirm : MonoBehaviour
     public void OpenPopup(PackageShoppe package)
     {
         gameObject.SetActive(true);
-
-        var sprite = ShopPopup.Instance.dictionary[package.iconAdressKey];
         packageXacNhanPrefab.Setup(package, () =>
          {
              HandleBuy(package);
@@ -43,10 +41,10 @@ public class PopupConfirm : MonoBehaviour
 
     public void HandleBuy(PackageShoppe package)
     {
-        //cho nutys mua vô hiệu đã
+        //cho nut mua vi hieu hoa
         packageXacNhanPrefab.buytItemButton.enabled = false;
 
-        //vo hieu hoa nut ẽisty
+        //vo hieu hoa nut exxist
         exxistButton.interactable = false;
 
 
@@ -62,8 +60,17 @@ public class PopupConfirm : MonoBehaviour
             //xem no la loai gi , add vao luon , hoat anh sau
             var amount = x.amount * package.amount;
 
-            //cong iteem vao kho 
-            GameConfigManager.Instance.playerDataLogic.BuyResource(item.type, item.id, amount);
+            //nếu item ko phải coint thì cộng như này
+            if (item.type == ItemType.Skill)
+            {
+                GameConfigManager.Instance.playerDataLogic.BuyResource(item.type, item.id, amount);
+            }
+            else
+            {
+                //  còn  item là coin thfi cộng như này
+                GameConfigManager.Instance.playerDataLogic.AddCoint(amount);
+            }
+
 
 
             //tao 1 object tu prefab;

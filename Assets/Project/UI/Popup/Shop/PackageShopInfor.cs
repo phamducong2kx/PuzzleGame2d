@@ -50,19 +50,25 @@ public class PackageShopInfor : MonoBehaviour
     {
         idPackage = package.idPackage;
 
-        keyAddressalbe = package.iconAdressKey;
-        imagePackage.sprite = ShopPopup.Instance.dictionary[keyAddressalbe];
 
+        keyAddressalbe = package.iconAdressKey;
+        imagePackage.enabled = true;
+        imagePackage.sprite = ShopPopup.Instance.dictionary[keyAddressalbe];
+        amount = package.amount;
         string name = package.namePackageType;
-        if (name.Equals("sieucap"))
+        if (package.typePacakgaeShopee == TypePackageShoppe.GoiSieuCap)
         {
             amountText.gameObject.SetActive(false);
-            // amountText.enabled = false;
         }
-        else if (package.typePacakgaeShopee == TypePackageShoppe.VatPhamXu)
+        //else  if (name.Equals("sieucap"))
+        // {
+        //     amountText.gameObject.SetActive(false);
+        //     // amountText.enabled = false;
+        // }
+        else if (package.typePacakgaeShopee == TypePackageShoppe.VatPhamXu
+            || package.typePacakgaeShopee == TypePackageShoppe.VatPhamTangCuong)
         {
             amountText.gameObject.SetActive(true);
-            //   amountText.enabled = false;
             amountText.text = "x" + amount.ToString();
         }
         else
@@ -159,10 +165,6 @@ public class PackageShopInfor : MonoBehaviour
 
     private void OnDisable()
     {
-        imagePackage.enabled = false;
-        imagePackage.sprite = null;
-
-
     }
 
     void Start()

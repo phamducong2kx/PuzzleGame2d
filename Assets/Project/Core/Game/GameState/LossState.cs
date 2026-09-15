@@ -6,6 +6,7 @@ public class LossState : IGameState
 {
     public void EnterSate()
     {
+        GameManager.Instance.timerSystem.isRunning = false;
         //hient thi casi lossPOPup la xong
         UIManager.Instance.gameplayPannel.lossPopup.gameObject.SetActive(true);
         //

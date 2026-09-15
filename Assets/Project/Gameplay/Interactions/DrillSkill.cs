@@ -100,7 +100,7 @@ public class DrillSkillState : ISKillState
 
         //time hoat dong binh thuong chay lai corotine
         GameManager.Instance.timerSystem.isRunning = true;
-        GameManager.Instance.warningSystem.isPlaying = true;
+        GameManager.Instance.warningSystem.isRuning = true;
         Time.timeScale = 1f;
 
         //dong coroutine
@@ -122,7 +122,7 @@ public class DrillSkillState : ISKillState
 
         //dong bang time luon
         GameManager.Instance.timerSystem.isRunning = false;
-        GameManager.Instance.warningSystem.isPlaying = false;
+        GameManager.Instance.warningSystem.isRuning = false;
         // Time.timeScale = 0f;
 
         //kich hoat time star courotine

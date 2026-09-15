@@ -4,15 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum PlankType
-{
-    TypeRectangleBig,
-    TypeRectangleSamll,
-    TypeTriagle,
-    TypeCicrleBig,
-    TypeCirlceSmall,
-    Sqaure
-}
+
 
 [CreateAssetMenu(fileName = "plankTypeData", menuName = "ScrewPuzzle/PlankTypeData")]
 public class PlankTypeData : ScriptableObject
@@ -24,5 +16,5 @@ public class PlankTypeData : ScriptableObject
 public class PlankTypeInfo
 {
     public PlankType type;
-    public GameObject prefab;
+    public string addressKey;
 }

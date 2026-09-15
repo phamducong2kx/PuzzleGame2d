@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Numerics;
-
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
@@ -27,6 +29,7 @@ public class LevelLoader : MonoBehaviour
     public List<Bolt> spawnedBolts = new List<Bolt>();
     private LevelData currentLevelData;
     private Dictionary<string, Hole> map = new Dictionary<string, Hole>();
+    private Dictionary<PlankType, GameObject> dic = new Dictionary<PlankType, GameObject>();
 
     public LevelData CurrentLevelData
     {
@@ -53,17 +56,49 @@ public class LevelLoader : MonoBehaviour
     }
 
     //tải prefab lên màn hình
-    public void LoadLevel(int levelIndex)
+    public async Task LoadLevel(int levelIndex)
     {
         //tìm kiếm levelData từ levelIndex trong levelDatabase
         currentLevelData = GameConfigManager.Instance.levelDatabaseLogic.GetLevelDataByLevelID(levelIndex);
 
-        //spawn object
+        //sau khi tìm xong thì xem trong level này có những loại prefab nào để chỉ tải lên 
+        //những prefab đó từ ổ đĩa thay vì tải hết
+        await UpLoadPrefabPlank();
+
+
+        //spawn các object trong game
         SpawnBackground(currentLevelData.bgData);
         SpawnPlanks(currentLevelData.listPlankData);
         SpawnBolts(currentLevelData.listBoltData);
+      
 
 
+    }
+    //lan 2 truy cap lay anh thi ssao ta
+    private async Task UpLoadPrefabPlank()
+    {
+       // var list = new List<string>();
+        //xet dnah sacsh plank data
+        foreach (var a in currentLevelData.listPlankData)
+        {
+            //  check neu da co prefab cua type nay thi return luon
+            if (dic.ContainsKey(a.plankType))
+            {
+                //ve luon khong can tai len ram
+                continue;
+            }
+            // tim kiem key address tu type
+            var keyAddress = GameConfigManager.Instance.plankTypeLogic.GetKeyAddressFromType(a.plankType);
+            // tải prefab tương ứng lên ram
+            var handle = Addressables.LoadAssetAsync<GameObject>(keyAddress);
+            var obj = await handle.Task;
+            //sau khi tari xong thì đưa obj và keydaress vòa 1 cái map
+            if (!dic.ContainsKey(a.plankType))
+            {
+                dic[a.plankType] = obj;
+            }
+
+        }
     }
     private void SpawnBackground(BackgroundData bgData)
     {
@@ -115,7 +150,7 @@ public class LevelLoader : MonoBehaviour
     }
     private void SpawnPlanks(List<PlankData> plankDatas)
     {
-
+        //danh sach plankdata ko có gì return
         if (plankDatas == null) return;
 
         foreach (var plankData in plankDatas)
@@ -123,35 +158,17 @@ public class LevelLoader : MonoBehaviour
 
             if (string.IsNullOrEmpty(plankData.plankId)) continue;
 
-            //tim kiem typePlank
-            var plankType = plankData.plankType;
+            //tim kiem prefab dựa vào planktype 
+            var plankPrefab = dic[plankData.plankType];
 
-            //tim kiem prefab duwaj vao plankType
-            var plankPrefab = GameConfigManager.Instance.plankTypeLogic.GetPrefabByPlankType(plankType);
-
-            //tim kiem plank trong pooler
+            //tim kiem plank trong pooler hoac span ra nếu chưa có plank
             var plankObj = ObjectPooler.Instance.Spawn(plankPrefab, plankData.position, UnityEngine.Quaternion.Euler(0, 0, plankData.rotation));
 
             //tìm kiếm componenet plank
             Plank plank = plankObj.GetComponent<Plank>();
 
-            //set up plankType
-            plank.plankType = plankType;
-
-            //set up rigibody
-            plank.SetDynamicRigibody();
-
-            //id plank
-            // plank.plankId = plankData.plankId;
-
-            //mau sac
-            plank.StringToClour(plankData.hexColor);
-
-            // Sorting Group
-            var sortingGroup = plankObj.GetComponent<SortingGroup>();
-            if (sortingGroup == null)
-                sortingGroup = plankObj.AddComponent<SortingGroup>();
-            sortingGroup.sortingLayerName = plankData.sortingLayerName;
+            //setup cơ bản 
+            plank.SetupPlank(plankData);
 
             //thêm nó vòa danh sách quản lí các plank
             spawnedPlanks.Add(plank);
@@ -159,6 +176,7 @@ public class LevelLoader : MonoBehaviour
             // Spawn holes trong plank
             if (plankData.listPlankHole == null) continue;
 
+            //duyệt danh sách các hole
             foreach (var holeData in plankData.listPlankHole)
             {
                 if (string.IsNullOrEmpty(holeData.holeId)) continue;
@@ -166,6 +184,7 @@ public class LevelLoader : MonoBehaviour
 
                 // lay hole ra tu pool
                 var holeObj = ObjectPooler.Instance.Spawn(holePrefab, UnityEngine.Vector3.zero, holePrefab.transform.rotation);
+
                 // GameObject holeObj = Instantiate(holePrefab, spawnedBackground.transform);
                 holeObj.transform.SetParent(plankObj.transform);
                 holeObj.transform.localPosition = holeData.positionLocal;
@@ -229,7 +248,7 @@ public class LevelLoader : MonoBehaviour
         foreach (var plank in spawnedPlanks)
         {
 
-            var prefab = GameConfigManager.Instance.plankTypeLogic.GetPrefabByPlankType(plank.plankType);
+            var prefab = dic[plank.plankType];
             ObjectPooler.Instance.Despawn(prefab, plank.gameObject);
             //dua hole trong plank ve pool
             foreach (var hole in plank.holes)

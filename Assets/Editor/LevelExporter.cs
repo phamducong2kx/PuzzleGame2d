@@ -212,9 +212,6 @@ public class LevelExporter : EditorWindow
         AssetDatabase.Refresh();
 
     }
-
-
-
     private List<PlankData> ExportPlank()
     {
         //tìm kiếm các instance của compoenent Plank có trên sence
@@ -226,48 +223,44 @@ public class LevelExporter : EditorWindow
         //duyet danh sach plank tìm dc trên sence
         foreach (var plank in listPlank)
         {
-
-            /*
-     public class PlankData
-{
-    public string plankId;
-    public Vector3 position;
-    public Vector3 rotation;
-    public string hexColor;
-    public List<HoleData> listPlankHole = new List<HoleData>();
-    public string sortingLayerName;
-    public PlankType plankType;
-}
-
-     
-     */
-
             // khoi tao 1 plank
             var plankData = new PlankData();
 
             // gán id cho plank
             plankData.plankId = plank.plankId;
 
-            //gán position cho plnak
+            //gán position cho plank
             plankData.position = plank.transform.position;
 
             //gán rotation cho plank
             plankData.rotation = plank.transform.eulerAngles.z;
 
+            //scale x
+            plankData.scaleX = plank.transform.localScale.x;
+
+            //scale y
+            plankData.scaleY = plank.transform.localScale.y;
+
+            //nếu kiểu là square
+            //var plankComponent = plank.GetComponent<Plank>();
+            //if (plankComponent.plankType == PlankType.Square)
+            //{
+               
+            //}
+            plankData.sizeWidth = plank.GetWeight();
+            plankData.sizeHeight = plank.GetHight();
+
             //màu sắc
-
             plankData.hexColor = plank.ColorToString();
-            //sử dụng sorting group  : để cho sprie mask của hole chỉ có hiệu lực trong plank này chứ ko đi ra chỗ 
 
-            //sorting goup layer
-            //var plankObj = plank.gameObject;
+            //sử dụng sorting group  : để cho sprie mask của hole chỉ có hiệu lực trong plank này chứ ko đi ra chỗ 
             var sortingGroupRef = plank.GetComponent<SortingGroup>();
             plankData.sortingLayerName = sortingGroupRef.sortingLayerName;
 
             //type cua plank
             plankData.plankType = plank.plankType;
 
-            // tìm kiếm  danh sách các componenet hole trong danh sách các con của plank
+            // tìm kiếm danh sách các componenet hole trong danh sách các con của plank
             var listHole_Plank = plank.GetComponentsInChildren<Hole>();
 
             //duyệt danh sách các hole trên
@@ -278,9 +271,6 @@ public class LevelExporter : EditorWindow
 
                 // xet id cho chole
                 holeData.holeId = holePlank.holeId;
-
-                //plank pảent
-
 
                 //xet possition cho hole
                 holeData.positionLocal = holePlank.transform.localPosition;
