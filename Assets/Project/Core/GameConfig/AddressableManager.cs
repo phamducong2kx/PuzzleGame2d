@@ -53,7 +53,7 @@ public class AddressableManager : MonoBehaviour
 
     public async Task LoadBundleAssetAsync(string keyLabel, Action<float> setupPregressBar)
     {
-
+        //kiểm tra xem các bundle đã có sẵn trong cache máy người dùng hay chưa
         var totalBytes = await Addressables.GetDownloadSizeAsync(keyLabel).Task;
         if (totalBytes > 0)
         {

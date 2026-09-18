@@ -8,5 +8,7 @@ public static class AddressableLabels
     public const string PRELOAD = "Preload";
 
     //tài nguyên prefab;
-   
+    public const string ICONITEMREWARD = "IconItemReward";
+
+
 }

@@ -78,14 +78,14 @@ public class HomeManager : MonoBehaviour
             //set active gameobejct popup
             dailyRewardPopup.gameObject.SetActive(true);
 
-            //neu mo lan dau thi ko can refresh
-            if (dailyRewardPopup.isFirstOpen == false)
-            {
-                //refresh lai cac pannel nhan qua
-                dailyRewardPopup.RefreshPannelDayItem();
-            }
+            ////neu mo lan dau thi ko can refresh
+            //if (dailyRewardPopup.isFirstOpen == false)
+            //{
+            //    //refresh lai cac pannel nhan qua
+            //    dailyRewardPopup.RefreshPannelDayItem();
+            //}
 
-            dailyRewardPopup.isFirstOpen = false;
+            //dailyRewardPopup.isFirstOpen = false;
 
         });
     }

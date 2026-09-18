@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: MaterialAsset
+  m_Name: item
   m_EditorClassIdentifier: 
-  m_GroupName: MaterialAsset
+  m_GroupName: item
   m_Data:
     m_SerializedData: []
-  m_GUID: 53ac75b7a57b82e49b774f4a259ec6da
+  m_GUID: cbd1d466214692f429ddc16d07f661ea
   m_SerializeEntries:
-  - m_GUID: 9f8bf609132f66042881aaa7f4520128
-    m_Address: Assets/Project/VFX/Material/material_plankl.mat
+  - m_GUID: 2348ffaa325092947827fac8430bcee5
+    m_Address: itemreward
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - IconItemReward
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ae20b8d3db7a0064ca482eed9588c7c9, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: c4a5815ab37a9104195da25e54125dca, type: 2}
-    - {fileID: 11400000, guid: bff67a2b4d30f494ebe99885ccc1af39, type: 2}
+    - {fileID: 11400000, guid: 3b5ca0efdc37eb04996b8f09530fcda2, type: 2}
+    - {fileID: 11400000, guid: 622ebe5702b9ff64da9280c283b5294d, type: 2}

@@ -71,8 +71,8 @@ public class PlayerData
     public List<SkillProgress> listSkill = new List<SkillProgress>();
 
 
-    //check xemn đang ở ngày mấy nhận quà 
-    public int currentDailyReward = 0;
+    //ngày cuối cùng nhận quà là ngày máy 
+    public int lastDayGetDailyReward = 0;
 
     public long lastClaimOSTicks = 0;
 
@@ -86,7 +86,10 @@ public class PlayerData
         userId = Guid.NewGuid().ToString();
         currentLevel = 1;
         highestUnlockLevel = 1;
-        coint = 0;
+        coint = 1000;
+        lastDayGetDailyReward = 0;
+        lastClaimOSTicks = 0;
+        lastClaimDateTime = 0;
     }
 }
 

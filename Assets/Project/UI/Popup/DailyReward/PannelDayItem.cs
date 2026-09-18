@@ -55,30 +55,24 @@ public class PannelDayItem : MonoBehaviour
 
     public void SetUpPannel(int dayNumber)
     {
-        day = dayNumber;
+        // day = dayNumber;
 
-        textDay.text = $"Ngày {day}";
+        textDay.text = $"Ngày {dayNumber}";
 
-        RefreshPannel();
-
-
-
-
+        RefreshPannel(dayNumber);
     }
 
-    public void RefreshPannel()
+    public void RefreshPannel(int dayNumber)
     {
 
         StopAnimation();
-        int currentDay = SaveManager.Data.currentDailyReward;
+
+        int lastDay = SaveManager.Data.lastDayGetDailyReward;
 
 
-        if (day == currentDay + 1)
+        if (dayNumber == lastDay + 1)
         {
             Animation();
-
-
-
         }
 
     }

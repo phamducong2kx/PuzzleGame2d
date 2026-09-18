@@ -58,6 +58,7 @@ public class ShopPopup : MonoBehaviour
             foreach (var x in listSprite)
             {
                 dictionary[x.name] = x;
+                Debug.Log("x.name co gia tri la " + x.name);
             }
 
         }

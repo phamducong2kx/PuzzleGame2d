@@ -10,14 +10,10 @@ public class DrillSkillState : ISKillState
     public int solantapBolt = 0;
 
 
-    //public DrillSkillState(Skill skill)
-    //{
-    //    this.skill = skill;
-    //}
+
     public DrillSkillState()
     {
-        //skill = InputHandler.Instance.currentSkill;
-        //  Debug.Log("skill hien tại la " + skill.name);
+
     }
 
 
@@ -73,6 +69,7 @@ public class DrillSkillState : ISKillState
     {
         ++solantapBolt;
         if (solantapBolt > 1) return;
+
         //animation
         GameConfigManager.Instance.skillLogic.InvokeDrillSKillEvent(bolt);
 

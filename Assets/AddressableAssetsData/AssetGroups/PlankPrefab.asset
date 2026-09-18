@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: PrefabAsset
+  m_Name: PlankPrefab
   m_EditorClassIdentifier: 
-  m_GroupName: PrefabAsset
+  m_GroupName: PlankPrefab
   m_Data:
     m_SerializedData: []
-  m_GUID: 5b1f2b3790d07ca449db597c9951197d
+  m_GUID: f733654f099ae5a47bd44db8592b55ae
   m_SerializeEntries:
   - m_GUID: 25fd648322cb46546b22b5d03854faeb
     m_Address: square
@@ -36,5 +36,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: ae20b8d3db7a0064ca482eed9588c7c9, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 62b0f469bacfce34788c979306d10680, type: 2}
-    - {fileID: 11400000, guid: 1a9c80e61f267524ab18b58e4dafe00f, type: 2}
+    - {fileID: 11400000, guid: aa1fca3caa67cca46b6d95374299fd61, type: 2}
+    - {fileID: 11400000, guid: cb0d091e443d64e43b8fe0c937e4079d, type: 2}

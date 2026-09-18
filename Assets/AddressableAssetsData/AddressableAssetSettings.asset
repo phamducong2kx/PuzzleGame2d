@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468a46d0ae32c3544b7d98094e6448a9, type: 3}
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
-  m_DefaultGroup: 1ecdcb3f9e036334e9aefe957c096a81
+  m_DefaultGroup: 74bde5202aeef4448aa6a1d51729c69b
   m_currentHash:
     serializedVersion: 2
-    Hash: 5904e29b6e80fb919ca8dabe2c28424f
+    Hash: 9f7ca652f36eab928db16f4aef673130
   m_OptimizeCatalogSize: 0
-  m_BuildRemoteCatalog: 0
+  m_BuildRemoteCatalog: 1
   m_BundleLocalCatalog: 0
   m_CatalogRequestsTimeout: 0
   m_DisableCatalogUpdateOnStart: 1
@@ -35,19 +35,20 @@ MonoBehaviour:
   m_CheckForContentUpdateRestrictionsOption: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: 503e8e3858a12924ebbbc4bb5c81bb97
+    m_Id: 974cc89b21fe7e94b93e88dc189e2a96
   m_RemoteCatalogLoadPath:
-    m_Id: 3bd0345056649d84d9c540c019694e03
+    m_Id: 77cbaae62005966459a51e1d14f6df5e
   m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
-  - {fileID: 11400000, guid: 9ffbd96f3232a0b4fae623c070595437, type: 2}
+  - {fileID: 11400000, guid: f4d1f7ec17297b84993df90a7a5d8776, type: 2}
+  - {fileID: 11400000, guid: e53476cf7aed78d41b07e744faec82fb, type: 2}
   - {fileID: 11400000, guid: d963fb9e54ac159498f7496a8f6a988d, type: 2}
-  - {fileID: 11400000, guid: d76c791994158de468f8040740ad8c1e, type: 2}
-  - {fileID: 11400000, guid: 9b9bec8e17616484eb84d830e38017bb, type: 2}
+  - {fileID: 11400000, guid: 7f3192747b7748445b3c48c45507307b, type: 2}
+  - {fileID: 11400000, guid: 223d6f5e5986b9d4b8919d8a13405670, type: 2}
   - {fileID: 11400000, guid: 4b5024daae4409f428b3636ec66a60f3, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
@@ -57,40 +58,41 @@ MonoBehaviour:
   m_ProfileSettings:
     m_Profiles:
     - m_InheritedParent: 
-      m_Id: 3b523e846f69b274e8f0e828961fcd12
+      m_Id: 01719e39671739f46bb8a17c60e9fe44
       m_ProfileName: Default
       m_Values:
-      - m_Id: 3bd0345056649d84d9c540c019694e03
+      - m_Id: 77cbaae62005966459a51e1d14f6df5e
         m_Value: https://screwpuzzlegame-b256e.web.app/[BuildTarget]
-      - m_Id: 503e8e3858a12924ebbbc4bb5c81bb97
+      - m_Id: 974cc89b21fe7e94b93e88dc189e2a96
         m_Value: ServerData/[BuildTarget]
-      - m_Id: 941992ec6f820d4499b64bc69e78f87f
-        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
-      - m_Id: d04513caaffecb448aeae8bcdc6ccddc
-        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
-      - m_Id: d8e8d82bec82ff246b9090e364c62902
+      - m_Id: 98ebe77c81e3e704ab0a1b0428a599be
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+      - m_Id: f14eb6e3abb22094196fb8fb2ba43023
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
+      - m_Id: faa0c35448e5ed448abd9cd8f3036b81
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
     m_ProfileEntryNames:
-    - m_Id: 3bd0345056649d84d9c540c019694e03
+    - m_Id: 77cbaae62005966459a51e1d14f6df5e
       m_Name: Remote.LoadPath
       m_InlineUsage: 0
-    - m_Id: 503e8e3858a12924ebbbc4bb5c81bb97
+    - m_Id: 974cc89b21fe7e94b93e88dc189e2a96
       m_Name: Remote.BuildPath
       m_InlineUsage: 0
-    - m_Id: 941992ec6f820d4499b64bc69e78f87f
-      m_Name: BuildTarget
+    - m_Id: 98ebe77c81e3e704ab0a1b0428a599be
+      m_Name: Local.LoadPath
       m_InlineUsage: 0
-    - m_Id: d04513caaffecb448aeae8bcdc6ccddc
+    - m_Id: f14eb6e3abb22094196fb8fb2ba43023
       m_Name: Local.BuildPath
       m_InlineUsage: 0
-    - m_Id: d8e8d82bec82ff246b9090e364c62902
-      m_Name: Local.LoadPath
+    - m_Id: faa0c35448e5ed448abd9cd8f3036b81
+      m_Name: BuildTarget
       m_InlineUsage: 0
     m_ProfileVersion: 1
   m_LabelTable:
     m_LabelNames:
     - default
     - Preload
+    - IconItemReward
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 06f69a2e5f72a6e4eb89ab5fce17f1eb, type: 2}
@@ -104,11 +106,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: be9c865b2b03d8c4fb12e34df43acdbd, type: 2}
   - {fileID: 11400000, guid: b42a178a8213d9d4d8d64bf2122ae9e6, type: 2}
   - {fileID: 11400000, guid: e4809f09d2d951c49a9f7f38d76e448b, type: 2}
-  m_ActiveProfileId: 3b523e846f69b274e8f0e828961fcd12
+  m_ActiveProfileId: 01719e39671739f46bb8a17c60e9fe44
   m_HostingServicesManager:
     m_HostingServiceInfos: []
     m_Settings: {fileID: 11400000}
     m_NextInstanceId: 0
-    m_RegisteredServiceTypeRefs:
-    - UnityEditor.AddressableAssets.HostingServices.HttpHostingService, Unity.Addressables.Editor
+    m_RegisteredServiceTypeRefs: []
     m_PingTimeoutInMilliseconds: 5000

@@ -13,6 +13,21 @@ MonoBehaviour:
   m_Name: SkillDatabase
   m_EditorClassIdentifier: 
   skillDatas:
-  - {fileID: 11400000, guid: a1d603574d7a5cc45bf832f9f3e10ce1, type: 2}
-  - {fileID: 11400000, guid: 6800a4c210fc45a41b7adfe19bc8e60c, type: 2}
-  - {fileID: 11400000, guid: 1972903a2dc15644ba2f673b71d383dc, type: 2}
+  - idItem: 
+    Cooldown: 0
+    price: 0
+    selectTiming: 0
+    desscribeSkill: 
+    skillType: 0
+  - idItem: 
+    Cooldown: 0
+    price: 0
+    selectTiming: 0
+    desscribeSkill: 
+    skillType: 0
+  - idItem: 
+    Cooldown: 0
+    price: 0
+    selectTiming: 0
+    desscribeSkill: 
+    skillType: 0

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public static class SaveManager
 {
-    private const string SAVE_KEY = "PLAYER_DATA_SAVE";
+    private const string SAVE_KEY = "PLAYER_DATA_SAVE_2";
     //du lioeu nguoi choi tren ram
     public static PlayerData Data { get; private set; }
 
@@ -17,30 +17,57 @@ public static class SaveManager
         {
             string json = PlayerPrefs.GetString(SAVE_KEY);
             Data = JsonUtility.FromJson<PlayerData>(json);
-            Data.highestUnlockLevel = 1;
-            for (int i = 0; i < 8; ++i)
-            {
-                Data.levelProgresses[i].isPlaying = false;
-                Data.levelProgresses[i].isUnlock = false;
-                Data.levelProgresses[i].star = 0;
-                Data.levelProgresses[i].isPass = false;
+            //Data.highestUnlockLevel = 1;
+            //for (int i = 0; i < 8; ++i)
+            //{
+            //    Data.levelProgresses[i].isPlaying = false;
+            //    Data.levelProgresses[i].isUnlock = false;
+            //    Data.levelProgresses[i].star = 0;
+            //    Data.levelProgresses[i].isPass = false;
 
 
-            }
-            Data.levelProgresses[0].isUnlock = true;
+            //}
+            //Data.levelProgresses[0].isUnlock = true;
             Data.coint = 50000;
 
-
-
+            // Data.currentChapter = 0;
+            SaveManager.Data.lastDayGetDailyReward = 1;
 
             SaveData();
         }
         else
-        {
+        {//khoiw taoj 1 data moiws
             Data = new PlayerData();
+
+            //khoi tao danh sachs cacs skill
+            IntitSkill();
+
+            //khoi tao level
+            IntitLevel();
 
             SaveData();
         }
+    }
+
+    public static void IntitSkill()
+    {
+        //danh sachs cacs skill kiem o
+        var listSKill = GameConfigManager.Instance.skillLogic.skillDatabase.skillDatas;
+        foreach (var x in listSKill)
+        {
+
+            Data.listSkill.Add(new SkillProgress()
+            {
+                idSkill = x.idItem,
+                amount = 0,
+                cooldownRemaining = 0,
+            });
+        }
+    }
+
+    public static void IntitLevel()
+    {
+
     }
 
     public static void SaveData()
@@ -133,11 +160,8 @@ public static class SaveManager
 
     public static void Save_Get_dailyReward_Successfull()
     {
-
-
-
         //luu ngay nhan qua
-        Data.currentDailyReward += 1;
+        Data.lastDayGetDailyReward = (Data.lastDayGetDailyReward + 1) % 7;
         //luu time
         Data.lastClaimDateTime = DateTime.UtcNow.Ticks;
         Data.lastClaimOSTicks = (uint)System.Environment.TickCount;

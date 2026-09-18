@@ -14,9 +14,8 @@ public class HomeState : IGameState
         //  }
 
         //set up home : ddAX SET UP TRONG START CUA HOMEpANNEL
-
-
-
+        int a = GameConfigManager.Instance.levelDatabaseLogic.GetChapterHighestOfCurrentWorld(1);
+        Debug.Log(a);
     }
 
     public void Existstate()

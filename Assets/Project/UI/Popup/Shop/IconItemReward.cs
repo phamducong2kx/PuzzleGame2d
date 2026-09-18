@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IconItemBuy : MonoBehaviour
+public class IconItemReward : MonoBehaviour
 {
     public Image imageBg;
     public TextMeshProUGUI textAmount;
@@ -16,6 +16,14 @@ public class IconItemBuy : MonoBehaviour
     public void Setup(Sprite iamge, int amount)
     {
         imageBg.sprite = iamge;
+        if (imageBg.sprite != null)
+        {
+            Debug.Log("anhr khacs null");
+        }
+        else
+        {
+            Debug.Log("anh == null");
+        }
         textAmount.text = amount.ToString();
     }
     void Start()

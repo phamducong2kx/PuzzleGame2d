@@ -8,7 +8,7 @@ using static UnityEngine.Rendering.ReloadAttribute;
 
 public class PopupConfirm : MonoBehaviour
 {
-    public IconItemBuy itemPrefab;
+    public IconItemReward itemPrefab;
     public PackageShopInfor packageXacNhanPrefab;
     public Button exxistButton;
     public RectTransform pannelList;
@@ -77,7 +77,7 @@ public class PopupConfirm : MonoBehaviour
             var itemReward = ObjectPooler.Instance.Spawn(itemPrefab.gameObject, new Vector3(0, 0, 0), itemPrefab.transform.rotation);
 
             //set up cho no
-            var componentItem = itemReward.GetComponent<IconItemBuy>();
+            var componentItem = itemReward.GetComponent<IconItemReward>();
             componentItem.Setup(item.icon, amount);
 
 

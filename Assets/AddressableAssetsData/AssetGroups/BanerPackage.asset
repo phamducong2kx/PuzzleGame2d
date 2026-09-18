@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: AssetBannerPackageShop
+  m_Name: BanerPackage
   m_EditorClassIdentifier: 
-  m_GroupName: AssetBannerPackageShop
+  m_GroupName: BanerPackage
   m_Data:
     m_SerializedData: []
-  m_GUID: 01f9fd42c2494d14eb68ce1edf7256f3
+  m_GUID: 1f7afe457d342d84ebdb686f5f9a6010
   m_SerializeEntries:
   - m_GUID: 07a651df27eefbd4ab88a1b132d3c319
     m_Address: icon_coint
@@ -57,5 +57,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: ae20b8d3db7a0064ca482eed9588c7c9, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 71962d92af233a1459a00f2aad8b9e02, type: 2}
-    - {fileID: 11400000, guid: 02f044368c139c546be5b4e85bc3c5a0, type: 2}
+    - {fileID: 11400000, guid: ac3c5c683ef2dba4b987cef838e6680f, type: 2}
+    - {fileID: 11400000, guid: 6c246e70b8a2bfd479858027a1c97575, type: 2}

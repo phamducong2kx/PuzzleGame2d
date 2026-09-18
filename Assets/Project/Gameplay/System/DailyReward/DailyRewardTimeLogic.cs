@@ -43,7 +43,7 @@ public static class DailyRewardTimeLogic
                 //  Debug.Log("vao day 1");
                 return TimeSpan.Zero;
             }
-
+            //trường hợp nhỏ hơn thì remian = thời gian 1 ngày tính thoe ticsk - thời gian đã trôi qua
 
             long remain_tick = TicksPerDay - tickElapse;
             return TimeSpan.FromMilliseconds(remain_tick);

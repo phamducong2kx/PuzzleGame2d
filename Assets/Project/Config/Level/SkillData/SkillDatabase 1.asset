@@ -12,4 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b94cf6f874ae0478a851880d528624, type: 3}
   m_Name: SkillDatabase 1
   m_EditorClassIdentifier: 
-  skillDatas: []
+  skillDatas:
+  - idItem: drill_index
+    Cooldown: 5
+    price: 0
+    selectTiming: 0
+    desscribeSkill: 
+    skillType: 2
+  - idItem: light_index
+    Cooldown: 5
+    price: 0
+    selectTiming: 0
+    desscribeSkill: 
+    skillType: 3
+  - idItem: time_index
+    Cooldown: 5
+    price: 0
+    selectTiming: 0
+    desscribeSkill: 
+    skillType: 1

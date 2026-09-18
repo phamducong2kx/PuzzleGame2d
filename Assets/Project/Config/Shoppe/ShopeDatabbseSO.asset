@@ -22,7 +22,7 @@ MonoBehaviour:
     priceCoint: 0
     iconAdressKey: icon_coint
     typePacakgaeShopee: 1
-    namePackageType: "Cung C\u1EA5p Xu"
+    namePackageType: CungCapXu
     hasBanner: 0
   - idPackage: 2
     listItemId:
@@ -33,7 +33,7 @@ MonoBehaviour:
     priceCoint: 0
     iconAdressKey: icon_coint
     typePacakgaeShopee: 1
-    namePackageType: "Cung C\u1EA5p Xu"
+    namePackageType: CungCapXu
     hasBanner: 0
   - idPackage: 3
     listItemId:
@@ -43,19 +43,19 @@ MonoBehaviour:
     priceDolar: 9.99
     priceCoint: 0
     iconAdressKey: icon_coint
-    typePacakgaeShopee: 1
-    namePackageType: "Cung C\u1EA5p Xu"
+    typePacakgaeShopee: 2
+    namePackageType: CungCapXu
     hasBanner: 0
   - idPackage: 4
     listItemId:
     - idItem: coint_index
       amount: 1
     amount: 50000
-    priceDolar: 19.99
+    priceDolar: 25.6
     priceCoint: 0
     iconAdressKey: icon_coint
-    typePacakgaeShopee: 1
-    namePackageType: "Cung C\u1EA5p Xu"
+    typePacakgaeShopee: 2
+    namePackageType: CungCapXu
     hasBanner: 0
   - idPackage: 5
     listItemId:
@@ -65,8 +65,8 @@ MonoBehaviour:
     priceDolar: 39.99
     priceCoint: 0
     iconAdressKey: icon_coint
-    typePacakgaeShopee: 1
-    namePackageType: "Cung C\u1EA5p Xu"
+    typePacakgaeShopee: 2
+    namePackageType: CungCapXu
     hasBanner: 0
   - idPackage: 6
     listItemId:
@@ -77,7 +77,7 @@ MonoBehaviour:
     priceCoint: 0
     iconAdressKey: icon_coint
     typePacakgaeShopee: 1
-    namePackageType: "Cung C\u1EA5p Xu"
+    namePackageType: CungCapXu
     hasBanner: 0
   - idPackage: 7
     listItemId:
@@ -88,7 +88,7 @@ MonoBehaviour:
     priceCoint: 1000
     iconAdressKey: icon_drill
     typePacakgaeShopee: 0
-    namePackageType: "V\u1EADt ph\u1EA9m xu"
+    namePackageType: VatPhamXu
     hasBanner: 0
   - idPackage: 8
     listItemId:
@@ -96,10 +96,10 @@ MonoBehaviour:
       amount: 1
     amount: 5
     priceDolar: 0
-    priceCoint: 2000
-    iconAdressKey: icon_light
+    priceCoint: 10000
+    iconAdressKey: icon_light_x5
     typePacakgaeShopee: 0
-    namePackageType: "V\u1EADt ph\u1EA9m xu"
+    namePackageType: VatPhamXu
     hasBanner: 0
   - idPackage: 9
     listItemId:
@@ -110,9 +110,9 @@ MonoBehaviour:
     priceCoint: 1000
     iconAdressKey: icon_time
     typePacakgaeShopee: 0
-    namePackageType: "V\u1EADt ph\u1EA9m xu"
+    namePackageType: VatPhamXu
     hasBanner: 0
-  - idPackage: 'sieu cap '
+  - idPackage: sieucap
     listItemId:
     - idItem: time_index
       amount: 15
@@ -129,7 +129,7 @@ MonoBehaviour:
     typePacakgaeShopee: 6
     namePackageType: sieucap
     hasBanner: 1
-  - idPackage: sieu cap_vip
+  - idPackage: sieucap_vip
     listItemId:
     - idItem: time_index
       amount: 15
@@ -159,7 +159,7 @@ MonoBehaviour:
     amount: 1
     priceDolar: 50
     priceCoint: 0
-    iconAdressKey: icon_banner_bn1
+    iconAdressKey: icon_banner_sieucap_bn1
     typePacakgaeShopee: 6
     namePackageType: sieucap
     hasBanner: 1
@@ -172,7 +172,7 @@ MonoBehaviour:
     priceCoint: 0
     iconAdressKey: icon_time
     typePacakgaeShopee: 2
-    namePackageType: "V\u1EADt ph\u1EA9m t\u0103ng c\u01B0\u1EDDng"
+    namePackageType: VatPhamTangCuong
     hasBanner: 0
   - idPackage: drill_tang_cuong
     listItemId:
@@ -183,7 +183,7 @@ MonoBehaviour:
     priceCoint: 0
     iconAdressKey: icon_drill
     typePacakgaeShopee: 2
-    namePackageType: "V\u1EADt ph\u1EA9m t\u0103ng c\u01B0\u1EDDng"
+    namePackageType: VatPhamTangCuong
     hasBanner: 0
   - idPackage: drill_tang_cuong_c1
     listItemId:
@@ -194,7 +194,7 @@ MonoBehaviour:
     priceCoint: 0
     iconAdressKey: icon_drill
     typePacakgaeShopee: 2
-    namePackageType: "V\u1EADt ph\u1EA9m t\u0103ng c\u01B0\u1EDDng"
+    namePackageType: VatPhamTangCuong
     hasBanner: 0
   - idPackage: lightning_tang_cuong_c1
     listItemId:
@@ -205,5 +205,5 @@ MonoBehaviour:
     priceCoint: 0
     iconAdressKey: icon_light
     typePacakgaeShopee: 2
-    namePackageType: "V\u1EADt ph\u1EA9m t\u0103ng c\u01B0\u1EDDng"
+    namePackageType: VatPhamTangCuong
     hasBanner: 0

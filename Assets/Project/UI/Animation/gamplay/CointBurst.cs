@@ -169,11 +169,13 @@ public class CointBurst : MonoBehaviour
             obj.SetParent(pannelList, false);
 
 
-
+            //di chuyển đến vị trí target ,
             sequence.Append(obj.DOMove(target.transform.position, 1f).SetEase(Ease.OutQuad));
 
+            //đi lên 10 đơn vị so với chính obj
             sequence.Append(obj.DOMoveY(10f, 0.01f).SetRelative(true).SetEase(Ease.OutQuad));
 
+            //sau khi đến nơi
             sequence.OnComplete(() =>
               {
                   //xu li event

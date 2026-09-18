@@ -12,9 +12,10 @@ public class ItemLogic : MonoBehaviour
     [SerializeField] private ItemData itemDataConfig;
     [SerializeField] private ShopeDatabaseSO itemShopeeConfig;
 
+
     //dư liệu trên ram
     public Dictionary<string, ItemInfo> itemDict = new Dictionary<string, ItemInfo>();
-    public List<PackageShoppe> runtimePackageList = new List<PackageShoppe>();
+    public List<PackageShoppe> listPackages = new List<PackageShoppe>();
 
 
 
@@ -48,10 +49,10 @@ public class ItemLogic : MonoBehaviour
         }
 
         //nap anh sasch cac gói package vào ram
-        runtimePackageList.Clear();
+        listPackages.Clear();
         if (itemShopeeConfig != null)
         {
-            runtimePackageList = itemShopeeConfig.listPackgeShoppe;
+            listPackages = itemShopeeConfig.listPackgeShoppe;
         }
 
 
@@ -59,7 +60,7 @@ public class ItemLogic : MonoBehaviour
 
 
 
-    #region GETTERS
+    #region Items
 
 
     //lay skill theo id
@@ -68,19 +69,21 @@ public class ItemLogic : MonoBehaviour
         if (itemDict.TryGetValue(id, out ItemInfo itemInfor)) return itemInfor;
         return null;
     }
+    #endregion
 
+    #region Package
 
     //lay danh sách các gói vật phẩm theo type
     public List<PackageShoppe> GetPackageByType(TypePackageShoppe type)
     {
-        return runtimePackageList.Where(x => x.typePacakgaeShopee == type).ToList();
+        return listPackages.Where(x => x.typePacakgaeShopee == type).ToList();
     }
 
 
     //lay danh sacsh cacs gois vat pham co banner
     public List<PackageShoppe> GetPackageByBanner()
     {
-        return runtimePackageList.Where(x => x.hasBanner).ToList();
+        return listPackages.Where(x => x.hasBanner).ToList();
     }
 
 
@@ -92,6 +95,9 @@ public class ItemLogic : MonoBehaviour
 
     }
 
+    #endregion
+
+    #region DailyReward
     #endregion
 
 
