@@ -76,6 +76,47 @@ public class LevelDatabaseLogic : MonoBehaviour
         return chapterId;
     }
 
+    //trar veef so luong levle co trong game
+    public int GetNumberLevelInGame()
+    {
+        int count = 0;
+        var world = levelDatabase.listWorldData;
+        //voiws moi word , xem danh sacsh cacs chaoter
+        foreach (var x in world)
+        {
+            var chapter = x.listChapterData;
+            foreach (var a in chapter)
+            {
+                count += a.listLevelData.Count();
+            }
+        }
+        return count;
+    }
+
+    //lay scale cua 1 plank thoe id
+    public Vector3 GetScaleByIDPLank(string idPlank, int currentLevel)
+    {
+        var x = GetLevelDataByLevelID(currentLevel).listPlankData.FirstOrDefault(x => x.plankId.Equals(idPlank));
+        return new Vector3(x.scaleX, x.scaleY, 0);
+    }
+
+    public void InitLevelProgress()
+    {
+        var numberLevel = GetNumberLevelInGame();
+        // SaveManager.Data.highestUnlockLevel = 1;
+        for (int i = 1; i <= numberLevel; ++i)
+        {
+            var newLevel = new LevelProgress();
+            newLevel.leveID = i;
+            newLevel.isPlaying = false;
+            newLevel.isUnlock = false;
+            newLevel.star = 0;
+            newLevel.isPass = false;
+            if (i == 1) newLevel.isUnlock = true;
+            SaveManager.Data.levelProgresses.Add(newLevel);
+        }
+    }
+
     void Start()
     {
 

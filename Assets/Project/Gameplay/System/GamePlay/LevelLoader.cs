@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
@@ -30,6 +31,7 @@ public class LevelLoader : MonoBehaviour
     private LevelData currentLevelData;
     private Dictionary<string, Hole> map = new Dictionary<string, Hole>();
     private Dictionary<PlankType, GameObject> dic = new Dictionary<PlankType, GameObject>();
+    private List<AsyncOperationHandle> listHandle = new List<AsyncOperationHandle>();
 
     public LevelData CurrentLevelData
     {
@@ -50,6 +52,14 @@ public class LevelLoader : MonoBehaviour
     {
 
     }
+
+    private void OnDestroy()
+    {
+        foreach (var x in listHandle)
+        {
+            Addressables.Release(x);
+        }
+    }
     private void Start()
     {
 
@@ -63,21 +73,21 @@ public class LevelLoader : MonoBehaviour
 
         //sau khi tìm xong thì xem trong level này có những loại prefab nào để chỉ tải lên 
         //những prefab đó từ ổ đĩa thay vì tải hết
-        await UpLoadPrefabPlank();
-
+        //await UpLoadPrefabPlank();
+        await UploadPrefabPlank2();
 
         //spawn các object trong game
         SpawnBackground(currentLevelData.bgData);
         SpawnPlanks(currentLevelData.listPlankData);
         SpawnBolts(currentLevelData.listBoltData);
-      
+
 
 
     }
     //lan 2 truy cap lay anh thi ssao ta
     private async Task UpLoadPrefabPlank()
     {
-       // var list = new List<string>();
+        // var list = new List<string>();
         //xet dnah sacsh plank data
         foreach (var a in currentLevelData.listPlankData)
         {
@@ -91,6 +101,7 @@ public class LevelLoader : MonoBehaviour
             var keyAddress = GameConfigManager.Instance.plankTypeLogic.GetKeyAddressFromType(a.plankType);
             // tải prefab tương ứng lên ram
             var handle = Addressables.LoadAssetAsync<GameObject>(keyAddress);
+            listHandle.Add(handle);
             var obj = await handle.Task;
             //sau khi tari xong thì đưa obj và keydaress vòa 1 cái map
             if (!dic.ContainsKey(a.plankType))
@@ -98,6 +109,23 @@ public class LevelLoader : MonoBehaviour
                 dic[a.plankType] = obj;
             }
 
+        }
+    }
+
+    //2 kiểu truy cập ,mở hết tất cả các dahnh sách prefab
+    private async Task UploadPrefabPlank2()
+    {
+        //duyêt dictionary
+        var map = GameConfigManager.Instance.plankTypeLogic.dictionary;
+        foreach (var entry in map)
+        {
+            if (dic.ContainsKey(entry.Key)) continue;
+            //tim key addressable            
+            var keyAddress = map[entry.Key];
+            var handle = Addressables.LoadAssetAsync<GameObject>(keyAddress);
+            listHandle.Add(handle);
+            var obj = await handle.Task;
+            dic[entry.Key] = obj;
         }
     }
     private void SpawnBackground(BackgroundData bgData)
@@ -138,6 +166,10 @@ public class LevelLoader : MonoBehaviour
             Hole hole = holeObj.GetComponent<Hole>();
             if (hole == null) hole = holeObj.AddComponent<Hole>();
 
+            // var x = holeData.scaleX;
+            // var y = holeData.scaleY;
+            hole.transform.localScale = new UnityEngine.Vector3(1, 1, 0);
+
             hole.holeId = holeData.holeId;
             hole.SetAsBackgroundHole();
 
@@ -176,7 +208,7 @@ public class LevelLoader : MonoBehaviour
             // Spawn holes trong plank
             if (plankData.listPlankHole == null) continue;
 
-            //duyệt danh sách các hole
+            //duyệt danh sách các hole, cho các hole là con của plank
             foreach (var holeData in plankData.listPlankHole)
             {
                 if (string.IsNullOrEmpty(holeData.holeId)) continue;
@@ -199,8 +231,14 @@ public class LevelLoader : MonoBehaviour
                 //them vao map
                 map[hole.holeId] = hole;
 
+                var x = 1 / plank.transform.localScale.x;
+                var y = 1 / plank.transform.localScale.y;
+                hole.transform.localScale = new UnityEngine.Vector3(x, y, 0);
+                hole.transform.localRotation = UnityEngine.Quaternion.Euler(0, 0, 0);
                 //set làm con của plank
                 hole.SetPlankParent(plank);
+
+
 
                 //add vào danh sách plank
                 plank.holes.Add(hole);
@@ -237,6 +275,8 @@ public class LevelLoader : MonoBehaviour
 
             //add comoponent hingjoined
             bolt.AttachConnectToHole_OfBolt(bolt.backgroundHole, bolt.plankHoles);
+            //cho thang bolt no ko phai oiispuck nua
+            //   bolt.isPickedUp = false;
 
             spawnedBolts.Add(bolt);
         }

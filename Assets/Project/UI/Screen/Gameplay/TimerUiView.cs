@@ -80,6 +80,7 @@ public class TimerUiView : MonoBehaviour
 
     private void HandleWarningSystemAction(float reamingtime)
     {
+
         label.color = warnColor;
         label.text = FormatWarningSystem(reamingtime);
 
@@ -87,7 +88,7 @@ public class TimerUiView : MonoBehaviour
         warningLabel.rectTransform.anchoredPosition = Vector2.MoveTowards(
              warningLabel.rectTransform.anchoredPosition,
              targetWarningText,
-             100 * Time.deltaTime);
+             1000 * Time.deltaTime);
         warningLabel.text = "Không còn khoảng trống !!";
 
 

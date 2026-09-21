@@ -39,7 +39,7 @@ public class InputHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("cuernt skill dang co gia tri la null");
+            // Debug.Log("cuernt skill dang co gia tri la null");
         }
 
         currentSkillState.OnEnterState();

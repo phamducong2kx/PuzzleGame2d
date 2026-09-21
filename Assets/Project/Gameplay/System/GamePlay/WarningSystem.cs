@@ -48,7 +48,7 @@ public class WarningSystem : MonoBehaviour
     public float timeDuration;
     public event Action<float> warningSystemAction;
     public bool isRuning;
-    private void FixedUpdate()
+    private void Update()
     {
         if (!isRuning) return;
         //check liên tục trong update , khi mà check = true thì đếm nguwocsj 2s, nếu như trong 
@@ -56,6 +56,7 @@ public class WarningSystem : MonoBehaviour
         var check = GameManager.Instance.holeSystem.AreAllHoleBackgroundCoverd();
         if (check == true)
         {
+            Debug.Log("các hole bag đã chưa bị lấp kín");
             if (isCountDown == false)
             {
 
@@ -73,6 +74,7 @@ public class WarningSystem : MonoBehaviour
             {
                 if (timeRemaing > 0)
                 {
+                    GameManager.Instance.timerSystem.isRunning = false;
                     timeRemaing -= Time.deltaTime;
                     //goi event
                     warningSystemAction?.Invoke(timeRemaing);
@@ -90,8 +92,10 @@ public class WarningSystem : MonoBehaviour
         }
         else
         {
+            GameManager.Instance.timerSystem.isRunning = true;
             SetupWarningTime();
             UIManager.Instance.gameplayPannel.timeView.SetupText();
+            Debug.Log("các hole bag chưa bị lấp kín");
         }
 
     }

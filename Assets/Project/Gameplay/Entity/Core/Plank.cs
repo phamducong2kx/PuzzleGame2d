@@ -37,7 +37,7 @@ public class Plank : MonoBehaviour
         plankType = plankData.plankType;
 
 
-        spriteRender.size = new Vector2(plankData.sizeWidth, plankData.sizeHeight);
+        // spriteRender.size = new Vector2(plankData.sizeWidth, plankData.sizeHeight);
 
 
         //rigibody
@@ -167,18 +167,18 @@ public class Plank : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
     }
 
-    public float GetHight()
-    {
-        if (spriteRender.size != null)
-            return spriteRender.size.y;
-        return 0;
-    }
-    public float GetWeight()
-    {
-        if (spriteRender.size != null)
-            return spriteRender.size.x;
-        return 0;
-    }
+    //public float GetHight()
+    //{
+    //    if (spriteRender.size != null)
+    //        return spriteRender.size.y;
+    //    return 0;
+    //}
+    //public float GetWeight()
+    //{
+    //    if (spriteRender.size != null)
+    //        return spriteRender.size.x;
+    //    return 0;
+    //}
 
     public void VisualDefaultSkill()
     {

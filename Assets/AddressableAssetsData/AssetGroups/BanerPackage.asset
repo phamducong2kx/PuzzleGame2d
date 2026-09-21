@@ -23,12 +23,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 38dab92bf947a104cbe10ef9f5fc4ec7
-    m_Address: icon_time
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Preload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 595cf7c60b40dfb43960524d71155462
     m_Address: icon_banner_bn1
     m_ReadOnly: 0

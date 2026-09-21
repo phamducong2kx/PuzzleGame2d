@@ -241,14 +241,10 @@ public class LevelExporter : EditorWindow
             //scale y
             plankData.scaleY = plank.transform.localScale.y;
 
-            //nếu kiểu là square
-            //var plankComponent = plank.GetComponent<Plank>();
-            //if (plankComponent.plankType == PlankType.Square)
-            //{
-               
+
             //}
-            plankData.sizeWidth = plank.GetWeight();
-            plankData.sizeHeight = plank.GetHight();
+            // plankData.sizeWidth = plank.GetWeight();
+            // plankData.sizeHeight = plank.GetHight();
 
             //màu sắc
             plankData.hexColor = plank.ColorToString();
@@ -274,6 +270,11 @@ public class LevelExporter : EditorWindow
 
                 //xet possition cho hole
                 holeData.positionLocal = holePlank.transform.localPosition;
+
+                //xet scale cho holeData
+                holeData.scaleX = holePlank.transform.localScale.x;
+                holeData.scaleY = holePlank.transform.localScale.y;
+
 
                 //them hoel vao danh sách các hole
                 plankData.listPlankHole.Add(holeData);
@@ -322,6 +323,11 @@ public class LevelExporter : EditorWindow
 
             //position
             holeData.positionLocal = hole.transform.localPosition;
+
+            //scale
+            holeData.scaleX = hole.transform.localScale.x;
+            holeData.scaleY = hole.transform.localScale.y;
+
 
             // thêm vào danh sách
             bgData.listHoleBg.Add(holeData);

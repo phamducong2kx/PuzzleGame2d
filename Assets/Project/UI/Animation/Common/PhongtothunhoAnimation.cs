@@ -14,12 +14,29 @@ public class PhongtothunhoAnimation
             .SetLink(button.gameObject, LinkBehaviour.KillOnDisable);
     }
 
+    public static void PlayEffectSmallToBig(Transform button, int delay, Vector3 vectorScale)
+    {
+
+        //  Debug.Log("no co chay vao day ko ");
+        button.transform.DOScale(vectorScale, 0.5f).SetEase(Ease.InQuad).SetLoops(-1, LoopType.Yoyo)
+            .SetLink(button.gameObject, LinkBehaviour.KillOnDisable);
+    }
+
     public static void KillAnimation(Transform transform)
     {
         if (transform != null)
         {
             transform.DOKill(false);
             transform.localScale = Vector3.one;
+        }
+    }
+
+    public static void KillAnimation(Transform transform, Vector3 originScale)
+    {
+        if (transform != null)
+        {
+            transform.DOKill(false);
+            transform.localScale = originScale;
         }
     }
 }

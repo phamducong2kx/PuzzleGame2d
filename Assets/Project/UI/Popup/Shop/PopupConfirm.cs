@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.ReloadAttribute;
@@ -13,10 +14,12 @@ public class PopupConfirm : MonoBehaviour
     public Button exxistButton;
     public RectTransform pannelList;
     public List<RectTransform> listiconItem;
+    public TextMeshProUGUI textNotice;
 
     void Start()
     {
         SetupButotnExist();
+        textNotice.gameObject.SetActive(false);
     }
 
     public void OpenPopup(PackageShoppe package)
@@ -41,6 +44,15 @@ public class PopupConfirm : MonoBehaviour
 
     public void HandleBuy(PackageShoppe package)
     {
+        //nếu k oddur tiền
+        var price = package.priceCoint;
+        var curretnCont = SaveManager.Data.coint;
+        if (curretnCont < price)
+        {
+            textNotice.gameObject.SetActive(true);
+            textNotice.text = "Khong du tien";
+        }
+
         //cho nut mua vi hieu hoa
         packageXacNhanPrefab.buytItemButton.enabled = false;
 

@@ -33,6 +33,7 @@ public enum PlankType
     Square,
     Triagle,
     Circle,
+    Circke_hole
 }
 
 [System.Serializable]
@@ -43,8 +44,6 @@ public class PlankData
     public float rotation;
     public float scaleX;
     public float scaleY;
-    public float sizeWidth;
-    public float sizeHeight;
     public string hexColor;
     public List<HoleData> listPlankHole = new List<HoleData>();
     public string sortingLayerName;
@@ -58,6 +57,8 @@ public class HoleData
 {
     public string holeId;
     public Vector3 positionLocal;
+    public float scaleX;
+    public float scaleY;
 
 }
 

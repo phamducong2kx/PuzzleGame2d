@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -30,12 +31,11 @@ public class Bolt : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.bodyType = RigidbodyType2D.Static;
         col = GetComponent<CircleCollider2D>();
-
-        //set up sprite ban đầu của bolt
+        sortingGroup = GetComponent<SortingGroup>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         // view ban dau
-        spriteRenderer.sprite = boltIdle;
+        //  spriteRenderer.sprite = boltIdle;
         sortingGroup = GetComponent<SortingGroup>();
         defaultSortingLayer = sortingGroup.sortingLayerName;
         drillSortingLayer = "top";
@@ -45,14 +45,25 @@ public class Bolt : MonoBehaviour
     }
     private void OnEnable()
     {
-        //dang ki skill drillSkill : khong nen dang ki su kien
-        col.enabled = true;
+        RefreshBolt();
+
     }
 
-    private void HandleDrillSkill()
+    public void RefreshBolt()
     {
-
+        // rb.bodyType = RigidbodyType2D.Static;
+        spriteRenderer.transform.DOLocalMove(Vector3.zero, 0.2f).SetEase(Ease.OutQuad);
+        isPickedUp = false;
+        col.enabled = true;
+        spriteRenderer.sprite = boltIdle;
+        //  sortingGroup.sortingLayerName = defaultSortingLayer;
+        //material binh thuong
+        // spriteRenderer.material = materialDefaultSkill;
+        // defaultSortingLayer = sortingGroup.sortingLayerName;
+        //  drillSortingLayer = "top";
     }
+
+
 
     private void Start()
     {

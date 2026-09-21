@@ -68,7 +68,16 @@ public class HoleSystem : MonoBehaviour
             var listCollider = Physics2D.OverlapCircleAll(hole.transform.position, hole.screwRadius);
 
             //nếu như lisColider chỉ có đúng 1 phần từ -> nó chỉ có hole, cho return về false luôn
-            if (listCollider.Count() == 1) return false;
+            if (listCollider.Count() == 1)
+            {
+                Debug.Log("no chi co 1 holenen chac chan la false");
+                return false;
+            }
+
+            //nếu như có count thì nextx luôn
+            var check = listCollider.Any(x => x.GetComponent<Bolt>() != null);
+            if (check) continue;
+
 
             //danh sách chứa các hole
             var listHole = new List<Hole>();
@@ -79,12 +88,7 @@ public class HoleSystem : MonoBehaviour
 
             foreach (var x in listCollider)
             {
-                //nếu lỗ đó đã dc đóng đinh
-                if (x.GetComponent<Bolt>())
-                {
-                    //break khoi for , check hole mới
-                    break;
-                }
+
                 //tim kiếm compoent hole
                 Hole a = x.GetComponent<Hole>();
                 if (a != null)
@@ -108,7 +112,7 @@ public class HoleSystem : MonoBehaviour
             //nếu số lượng plank không == số lượng hole thì tức là lỗ này đã bị lấp đầy , break khỏi for để check hoel khác
             if (plank != holePLank)
             {
-                break;
+                continue;
             }
             //bắt đầu check danh sách các hole
             else

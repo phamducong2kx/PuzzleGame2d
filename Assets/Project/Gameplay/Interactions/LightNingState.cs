@@ -113,7 +113,8 @@ public class LightNingState : ISKillState
         {
             x.VisualDefaultSkill();
             x.SetDynamicRigibody();
-            PhongtothunhoAnimation.KillAnimation(x.transform);
+            var originScale = GameConfigManager.Instance.levelDatabaseLogic.GetScaleByIDPLank(x.plankId, SaveManager.Data.currentLevel);
+            PhongtothunhoAnimation.KillAnimation(x.transform, originScale);
 
         }
 
@@ -137,7 +138,9 @@ public class LightNingState : ISKillState
         {
             x.VisualLightNingSkill();
             x.SetStaticRigibody();
-            PhongtothunhoAnimation.PlayEffectSmallToBig(x.transform, -1, 1.03f);
+            //phóng to thewo vector skill
+            var vector = new Vector3(x.transform.localScale.x * 1.2f, x.transform.localScale.y * 1.2f, 0);
+            PhongtothunhoAnimation.PlayEffectSmallToBig(x.transform, -1, vector);
         }
 
         //dung dem thoi gian

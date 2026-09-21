@@ -25,7 +25,7 @@ public class DailyRewardPopup : MonoBehaviour
     [SerializeField] private Button existButton;
     [SerializeField] private Button getRewardButton;
     [SerializeField] private TextMeshProUGUI countDownTime;
-    // [SerializeField] private List<PannelDayItem> dayList;
+
     private bool isWatingTime = true;
     public bool isFirstOpen = false;
 
@@ -144,32 +144,12 @@ public class DailyRewardPopup : MonoBehaviour
     }
 
 
-    //void Update()
-    //{
-    //    if (isWatingTime == false) return;
-    //    TimeSpan remainingTime = DailyRewardTimeLogic.GetRemainingTime();
-
-    //    if (remainingTime == TimeSpan.Zero)
-    //    {
-    //        isWatingTime = false;
-    //        getRewardButton.gameObject.SetActive(true);
-    //        countDownTime.transform.parent.gameObject.SetActive(false);
-    //        SetUpGetRewardButton();
-
-    //    }
-    //    else
-    //    {
-
-    //        //đếm ngược time
-    //        countDownTime.text = DailyRewardTimeLogic.ConvertTimeSpantoString(remainingTime);
-    //    }
 
 
 
 
-    //}
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (isWatingTime == false) return;
         //tinfh khoảng thời gian còn lại

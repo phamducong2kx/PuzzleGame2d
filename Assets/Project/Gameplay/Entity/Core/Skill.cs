@@ -117,40 +117,6 @@ public class Skill : MonoBehaviour
 
     }
 
-    //public void SetUp(SkillData _skillData)
-    //{
-    //    //skilldata
-    //    skillData = _skillData;
-
-    //    //id
-    //    idSkill = skillData.idItem;
-
-    //    //skillsate
-    //    skillState = skillData.GetSkillState(this);
-    //    GameConfigManager.Instance.playerDataLogic.AddSkillToList(idSkill);
-
-    //    //cooldown
-    //    coolDown = skillData.Cooldown;
-    //    coolDownText.text = "";
-    //    coolDownOverlay.fillAmount = 0;
-
-    //    //amount skill
-    //    amountSkill = GameConfigManager.Instance.skillLogic.GetAmountSkillById(idSkill);
-    //    amounttext.text = amountSkill.ToString();
-    //    SetUpButtonShoppe();
-
-    //    //price
-    //    price = skillData.price;
-    //    backgroundImage.sprite = GameConfigManager.Instance.itemLogic.GetItemInfoById(idSkill).icon;
-    //    isCoolDownRunning = false;
-    //    canvas.overrideSorting = false;
-    //    selectTiming = skillData.selectTiming;
-
-    //    //set up coooldonw reaming , còn dang dở ở level trước 
-    //    coolDownRemaining = SetUpCoolDown(idSkill);
-
-
-    //}
 
     public void SetUpButtonShoppe()
     {
@@ -168,9 +134,9 @@ public class Skill : MonoBehaviour
 
                 Time.timeScale = 0f;
                 //set up curent Skill cho popup shoppe
-                SkiillShopPopup.currentSkillRefrence = this;
-                UIManager.Instance.gameplayPannel.skiillShopPopup.ResetCurrentSkillData();
-                Debug.Log("curent skill dât hoen tai la " + SkiillShopPopup.currentSkillRefrence);
+                InputHandler.Instance.currentSkill = this;
+                UIManager.Instance.gameplayPannel.skiillShopPopup.ResetCurrentSkillData(this);
+
             });
         }
         else

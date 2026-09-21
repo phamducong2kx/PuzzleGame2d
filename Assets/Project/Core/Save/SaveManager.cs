@@ -6,7 +6,7 @@ using UnityEngine;
 
 public static class SaveManager
 {
-    private const string SAVE_KEY = "PLAYER_DATA_SAVE_2";
+    private const string SAVE_KEY = "PLAYER_DATA_SAVE_4";
     //du lioeu nguoi choi tren ram
     public static PlayerData Data { get; private set; }
 
@@ -28,17 +28,23 @@ public static class SaveManager
 
             //}
             //Data.levelProgresses[0].isUnlock = true;
-            Data.coint = 50000;
+            // Data.coint = 50000;
 
             // Data.currentChapter = 0;
-            SaveManager.Data.lastDayGetDailyReward = 1;
-
+            Data.lastDayGetDailyReward = 0;
+            // Data.lastClaimOSTicks = 0;
+            // Data.lastClaimDateTime = 0;
+            //danh sách các skill
+            foreach (var x in Data.listSkill)
+            {
+                x.amount = 0;
+            }
             SaveData();
         }
         else
         {//khoiw taoj 1 data moiws
             Data = new PlayerData();
-
+            Data.coint = 50000;
             //khoi tao danh sachs cacs skill
             IntitSkill();
 
@@ -67,6 +73,8 @@ public static class SaveManager
 
     public static void IntitLevel()
     {
+        GameConfigManager.Instance.levelDatabaseLogic.InitLevelProgress();
+
 
     }
 

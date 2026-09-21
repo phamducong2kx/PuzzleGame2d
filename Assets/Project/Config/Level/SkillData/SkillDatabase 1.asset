@@ -17,17 +17,19 @@ MonoBehaviour:
     Cooldown: 5
     price: 0
     selectTiming: 0
-    desscribeSkill: 
+    desscribeSkill: "skill gi\xFAp th\xF3a \xF4c v\xEDt ngay l\u1EADp t\u1EE9c"
     skillType: 2
   - idItem: light_index
     Cooldown: 5
     price: 0
     selectTiming: 0
-    desscribeSkill: 
+    desscribeSkill: "skill t\u1EA1o 1 tia set v\xE0 \u0111\xE1nh v\xE0o t\u1EA5m
+      g\u1ED7 b\u1EA5t k\xEC"
     skillType: 3
   - idItem: time_index
     Cooldown: 5
     price: 0
     selectTiming: 0
-    desscribeSkill: 
+    desscribeSkill: "gi\xFAp b\u1EA1n t\u0103ng th\xEAm th\u1EDDi gian khi ch\u01A1i
+      game"
     skillType: 1

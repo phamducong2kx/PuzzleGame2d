@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -7,18 +7,36 @@ using UnityEngine.UI;
 public class SkiillShopPopup : MonoBehaviour
 {
     public Button shoppePannelButton;
-    public static Skill currentSkillRefrence;
+    public Skill currentSkillRefrence;
     public Image imageSkill;
     public TextMeshProUGUI textDescribe;
     public TextMeshProUGUI textPrice;
     public Button buySkill;
     public TextMeshProUGUI totalCoint;
+    public TextMeshProUGUI kocotien;
+
 
     // Start is called before the first frame update
     private void Awake()
     {
+        SetupCoint();
         SetupShoppePannel();
         SetupBuyButton();
+        kocotien.text = "Không đủ tiền , vòa shop mà mua !";
+    }
+    private void OnEnable()
+    {
+
+    }
+    private void OnDisable()
+    {
+        InputHandler.Instance.currentSkill = null;
+        kocotien.gameObject.SetActive(false);
+    }
+    private void SetupCoint()
+    {
+        var coint = GameConfigManager.Instance.playerDataLogic.GetCoint(SaveManager.Data);
+        totalCoint.text = coint.ToString();
     }
     private void SetupShoppePannel()
     {
@@ -36,6 +54,7 @@ public class SkiillShopPopup : MonoBehaviour
 
         buySkill.onClick.AddListener(() =>
         {
+            currentSkillRefrence = InputHandler.Instance.currentSkill;
             var coint = GameConfigManager.Instance.playerDataLogic.GetCoint(SaveManager.Data);
             if (coint >= currentSkillRefrence.price)
             {
@@ -46,19 +65,31 @@ public class SkiillShopPopup : MonoBehaviour
                 //refresh lai skill;
                 Time.timeScale = 1f;
             }
+            else
+            {
+                // mở ra của hàng 
+                kocotien.gameObject.SetActive(true);
+            }
 
-            //logic + amount
-            //aniamtion?
         });
 
     }
 
-    public void ResetCurrentSkillData()
+    public void ResetCurrentSkillData(Skill x)
     {
-        //imageSkill.sprite = GameConfigManager.Instance.itemLogic.GetItemInfoById(currentSkillRefrence.skillData.idItem).icon;
-        //textDescribe.text = currentSkillRefrence.skillData.desscribeSkill;
-        //textPrice.text = "Gi�: " + currentSkillRefrence.skillData.price.ToString() + " xu";
-        //totalCoint.text = GameConfigManager.Instance.playerDataLogic.GetCoint(SaveManager.Data).ToString();
+        if (x == null)
+        {
+            Debug.Log("skill data dang co gia tri la null");
+        }
+        else
+        {
+            Debug.Log("skill data dang co gia tri khacs null");
+        }
+        var skillData = GameConfigManager.Instance.skillLogic.GetSkilLData(x.idSkill);
+        imageSkill.sprite = GameConfigManager.Instance.itemLogic.GetItemInfoById(skillData.idItem).icon;
+        textDescribe.text = skillData.desscribeSkill;
+        textPrice.text = "Giá: " + skillData.price.ToString() + " xu";
+        totalCoint.text = GameConfigManager.Instance.playerDataLogic.GetCoint(SaveManager.Data).ToString();
     }
     void Start()
     {
