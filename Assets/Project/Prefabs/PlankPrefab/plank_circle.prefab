@@ -91,7 +91,6 @@ MonoBehaviour:
   holes: []
   groundY: -15
   hasFallen: 0
-  spriteRenderer: {fileID: 0}
   defaultSortingLayer: 
   lightningSortingLayer: 
   sortingGroup: {fileID: 0}
@@ -206,7 +205,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f5d950c2a61b12746b8e6e65a35e3129, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9811321, g: 0.9579922, b: 0.9579922, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

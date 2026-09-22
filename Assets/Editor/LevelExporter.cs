@@ -253,6 +253,8 @@ public class LevelExporter : EditorWindow
             var sortingGroupRef = plank.GetComponent<SortingGroup>();
             plankData.sortingLayerName = sortingGroupRef.sortingLayerName;
 
+            plankData.sortingOrder = sortingGroupRef.sortingOrder;
+
             //type cua plank
             plankData.plankType = plank.plankType;
 

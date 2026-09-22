@@ -24,7 +24,16 @@ public class Plank : MonoBehaviour
         sortingGroup = GetComponent<SortingGroup>();
         defaultSortingLayer = sortingGroup.sortingLayerName;
         lightningSortingLayer = "top";
-        spriteRender = GetComponent<SpriteRenderer>();
+        if (GetComponent<SpriteRenderer>() != null)
+        {
+            spriteRender = GetComponent<SpriteRenderer>();
+
+        }
+        else
+        {
+            spriteRender = GetComponentInChildren<SpriteRenderer>();
+        }
+
 
     }
 
@@ -73,7 +82,7 @@ public class Plank : MonoBehaviour
 
     public string ColorToString()
     {
-
+        if (spriteRender == null) return "helo";
         var color = spriteRender.color;
         var colorString = $"#{ColorUtility.ToHtmlStringRGBA(color)}";
         return colorString;
