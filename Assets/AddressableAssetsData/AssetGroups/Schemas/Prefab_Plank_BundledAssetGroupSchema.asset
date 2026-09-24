@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d17a21594effb4e9591490b009e7aa, type: 3}
-  m_Name: Content Update2_BundledAssetGroupSchema
+  m_Name: Prefab_Plank_BundledAssetGroupSchema
   m_EditorClassIdentifier: 
-  m_Group: {fileID: 11400000, guid: abcdfb29ed8e9b443ae699ce4134a1c3, type: 2}
+  m_Group: {fileID: 11400000, guid: 6818f1cde33cef64d9fb37a4be7fd756, type: 2}
   m_InternalBundleIdMode: 1
   m_Compression: 1
   m_IncludeAddressInCatalog: 1
@@ -34,9 +34,9 @@ MonoBehaviour:
   m_RedirectLimit: -1
   m_RetryCount: 0
   m_BuildPath:
-    m_Id: 974cc89b21fe7e94b93e88dc189e2a96
+    m_Id: f14eb6e3abb22094196fb8fb2ba43023
   m_LoadPath:
-    m_Id: 77cbaae62005966459a51e1d14f6df5e
+    m_Id: 98ebe77c81e3e704ab0a1b0428a599be
   m_BundleMode: 0
   m_AssetBundleProviderType:
     m_AssemblyName: Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null

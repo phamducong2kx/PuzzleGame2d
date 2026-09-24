@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 38dab92bf947a104cbe10ef9f5fc4ec7
+    m_Address: icon_time
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 595cf7c60b40dfb43960524d71155462
     m_Address: icon_banner_bn1
     m_ReadOnly: 0
@@ -43,6 +49,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d4727ed805eda02479290f643e3f7efd
     m_Address: icon_drill
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: da155f1fd824a9f45892c3c05db2f423
+    m_Address: icon_light_x5
     m_ReadOnly: 0
     m_SerializedLabels:
     - Preload

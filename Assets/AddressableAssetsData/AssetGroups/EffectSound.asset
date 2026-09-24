@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Content Update2
+  m_Name: EffectSound
   m_EditorClassIdentifier: 
-  m_GroupName: Content Update2
+  m_GroupName: EffectSound
   m_Data:
     m_SerializedData: []
-  m_GUID: b9693f5e1df890a44b93f975c9ddc130
+  m_GUID: 078d14621ebbf6849b35ddcf2e1ceb07
   m_SerializeEntries:
   - m_GUID: 398311e5ef42a2949a14f3ec77a62012
     m_Address: SoundButton
@@ -98,5 +98,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: ae20b8d3db7a0064ca482eed9588c7c9, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 592dc308e4c03124c84766aa889d6406, type: 2}
-    - {fileID: 11400000, guid: edbcb417812674a4a892ef29d6ed3f16, type: 2}
+    - {fileID: 11400000, guid: 035c7f23e4e21b142aa2a5828a254664, type: 2}
+    - {fileID: 11400000, guid: b389208163f961943a4a06a22464e81a, type: 2}

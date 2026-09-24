@@ -10,34 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Content Update
+  m_Name: Prefab_Plank
   m_EditorClassIdentifier: 
-  m_GroupName: Content Update
+  m_GroupName: Prefab_Plank
   m_Data:
     m_SerializedData: []
-  m_GUID: 6d773efaf4818c243b7946ef477c74b4
+  m_GUID: 1f58332aa53a3364296255b4c39964f3
   m_SerializeEntries:
-  - m_GUID: 2348ffaa325092947827fac8430bcee5
-    m_Address: itemreward
+  - m_GUID: 25fd648322cb46546b22b5d03854faeb
+    m_Address: square
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - IconItemReward
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 38dab92bf947a104cbe10ef9f5fc4ec7
-    m_Address: icon_time
+  - m_GUID: 87c3d3f45c06b024e89c7875be99bb8e
+    m_Address: circle
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Preload
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: da155f1fd824a9f45892c3c05db2f423
-    m_Address: icon_light_x5
+  - m_GUID: c8bae6eecab340847b7c30dbd955d5ba
+    m_Address: triagle
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Preload
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dede0310904c1fd4faef1a359b7ff13f
+    m_Address: circle_hole
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ae20b8d3db7a0064ca482eed9588c7c9, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 13037c83bddcf8144b82f63fa863f28d, type: 2}
-    - {fileID: 11400000, guid: b16d51f95c075f440b03be36dbebb159, type: 2}
+    - {fileID: 11400000, guid: 2b629e173abfefc4288f67a4e7def9b8, type: 2}
+    - {fileID: 11400000, guid: 471a92bceff0ca746b5f5770dc48e481, type: 2}
