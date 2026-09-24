@@ -23,8 +23,8 @@ public class LoadingManager : MonoBehaviour
         //tải catalog
         await GameConfigManager.Instance.addressableManager.LoadCatalogUpdate();
 
-        //tải bundle
-        await GameConfigManager.Instance.addressableManager.LoadBundleAssetAsync(AddressableLabels.PRELOAD, (float x) =>
+        //tải bundle về cache nếu có 
+        await GameConfigManager.Instance.addressableManager.DownloadBundleAssetAsyncToCache(AddressableLabels.PRELOAD, (float x) =>
         {
             loadingBar.fillAmount = x;
             progressText.text = $"{Math.Round(x * 100, 0)}%...";

@@ -117,6 +117,12 @@ public class Skill : MonoBehaviour
 
     }
 
+    public void Setup(string idSkill)
+    {
+        amountSkill = GameConfigManager.Instance.skillLogic.GetAmountSkillById(idSkill);
+        amounttext.text = amountSkill.ToString();
+    }
+
 
     public void SetUpButtonShoppe()
     {

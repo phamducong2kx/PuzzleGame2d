@@ -10,7 +10,7 @@ public class WinState : IGameState
     private int newStar = 0;
     public void EnterSate()
     {
-
+        AudioManagement.Instance.PlaySound(AddressableLabels.WIN, 1, 1.5f);
         winCoroutine = GameStateManager.Instance.StartCoroutine(WinRoutine());
 
     }

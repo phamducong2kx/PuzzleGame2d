@@ -79,6 +79,7 @@ public class LevelLoader : MonoBehaviour
         //spawn các object trong game
         SpawnBackground(currentLevelData.bgData);
         SpawnPlanks(currentLevelData.listPlankData);
+        // SpawnBackground(currentLevelData.bgData);
         SpawnBolts(currentLevelData.listBoltData);
 
 

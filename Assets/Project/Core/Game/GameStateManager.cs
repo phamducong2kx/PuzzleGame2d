@@ -61,7 +61,7 @@ public class GameStateManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("current game state là : " + currentGameState);
+      //  Debug.Log("current game state là : " + currentGameState);
     }
 
 

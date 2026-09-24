@@ -21,7 +21,14 @@ public class SkillView : MonoBehaviour
     //generrate danh sacsh cac cskill
     public void GenerateListSkill()
     {
-        if (listSkill.Count > 0) return;
+        if (listSkill.Count > 0)
+        {
+            foreach (var x in listSkill)
+            {
+                x.Setup(x.idSkill);
+            }
+            return;
+        }
 
         //duyet danh sách các skill trong skilldatabase
         var list = GameConfigManager.Instance.skillLogic.GetList();

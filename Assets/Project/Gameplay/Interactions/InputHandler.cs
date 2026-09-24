@@ -72,8 +72,10 @@ public class InputHandler : MonoBehaviour
         Vector2 mousePos2D = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
 
 
-        //tìm kiếm collider trong phạm vi 0,02f, nó sẽ đi theo hướng z
-        Collider2D hitCollider = Physics2D.OverlapCircle(mousePos2D, 0.02f);
+        //tìm kiếm collider trong phạm vi 0,02f,tim kiếm 
+        var hitCollider = Physics2D.OverlapCircle(mousePos2D, 0.15f);
+
+
 
         if (hitCollider == null)
         {
@@ -84,14 +86,17 @@ public class InputHandler : MonoBehaviour
         if (hitBolt != null)
         {
             currentSkillState.OntapBolt(hitBolt);
+            return;
         }
 
 
-        var hitHole = hitCollider.GetComponent<Hole>();
-        if (hitHole != null)
-        {
-            currentSkillState.OntapHole(hitHole);
-        }
+        //var hitHole = hitCollider.GetComponent<Hole>();
+        //if (hitHole != null)
+        //{
+        //    currentSkillState.OntapHole(hitHole);
+        //    //  Debug.Log("check day la hole");
+        //    return;
+        //}
 
 
 
@@ -99,7 +104,20 @@ public class InputHandler : MonoBehaviour
         if (hitPlank != null)
         {
             currentSkillState.OntapPlank(hitPlank);
+            Debug.Log("check day la plank");
+            return;
         }
+
+
+        var hitHole = hitCollider.GetComponent<Hole>();
+        if (hitHole != null)
+        {
+            currentSkillState.OntapHole(hitHole);
+            //  Debug.Log("check day la hole");
+            return;
+        }
+
+
     }
 
 

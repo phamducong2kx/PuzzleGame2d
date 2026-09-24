@@ -10,9 +10,22 @@ public class TopZone : MonoBehaviour
     public TextMeshProUGUI cointText;
 
 
+    private void Awake()
+    {
 
+    }
 
     void Start()
+    {
+        Setting();
+        ButtonSetting();
+    }
+
+    private void OnEnable()
+    {
+        //  cointText.text = SaveManager.Data.coint.ToString();
+    }
+    public void Setting()
     {
         cointText.text = SaveManager.Data.coint.ToString();
     }
@@ -29,6 +42,14 @@ public class TopZone : MonoBehaviour
         cointText.text = SaveManager.Data.coint.ToString();
     }
 
+    void ButtonSetting()
+    {
+        setting.onClick.AddListener(() =>
+        {
+            UIManager.Instance.settingManager.OnActive();
+        });
+
+    }
 
 
     void Update()

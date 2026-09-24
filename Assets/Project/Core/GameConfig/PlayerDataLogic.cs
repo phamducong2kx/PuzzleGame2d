@@ -52,11 +52,11 @@ public class PlayerDataLogic : MonoBehaviour
         var skill = skillProgress.FirstOrDefault(x => x.idSkill.Equals(idSkill));
         if (skill != null)
         {
-            Debug.Log("skill nay da ton tai ");
+            //  Debug.Log("skill nay da ton tai ");
         }
         else
         {
-            Debug.Log("skill nay chua  ton tai ");
+            //  Debug.Log("skill nay chua  ton tai ");
             //tao 1 skill moi va them vao
             var a = new SkillProgress();
             a.idSkill = idSkill;
@@ -134,6 +134,18 @@ public class PlayerDataLogic : MonoBehaviour
     public float GetCoint(PlayerData data)
     {
         return data.coint;
+    }
+
+    //chaneg mute
+    public void ChangMute(PlayerData data)
+    {
+        if (data.mute == false) data.mute = true;
+        else data.mute = false;
+        SaveManager.SaveData();
+    }
+    public bool StatusMute(PlayerData data)
+    {
+        return data.mute;
     }
 
     //thay avatar cho player

@@ -1,7 +1,9 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -16,6 +18,8 @@ public class DefaultState : ISKillState
             InputHandler.Instance.pickedBolt = null;
             //goi ham pickdonw
             PickDownNormal(bolt);
+            //am thanh
+            AudioManagement.Instance.PlaySound(AddressableLabels.PICKDOWNBOLT, 1, 1);
         }
         else
         {
@@ -28,27 +32,28 @@ public class DefaultState : ISKillState
 
             //sau do chuyen sang state pick up
             PickUpNormal(bolt);
+            AudioManagement.Instance.PlaySound(AddressableLabels.PICKUPBOLT, 1, 1);
 
         }
     }
 
     public void OntapHole(Hole hole)
     {
-        //Lấy danh sách sau khi physic.overlapCircleAll
+        if (!hole.isBackgroundHole || InputHandler.Instance.pickedBolt == null) return;
+
+        //Lấy danh sách cac collider timf thayas sau khi bắn tia 
         var listHole = GameManager.Instance.holeSystem.CheckConnectBoltToHole(hole);
 
-        if (listHole == null) return;
-
-        Hole bgHole = null;
-        foreach (var x in listHole)
+        if (listHole == null)
         {
-            if (x.isBackgroundHole)
-            {
-                bgHole = x;
-                listHole.Remove(x);
-                break;
-            }
+            AudioManagement.Instance.PlaySound(AddressableLabels.HOLEWARNING, 1, 2);
+            return;
         }
+
+        //tim kiem bg
+        var bgHole = listHole.FirstOrDefault(x => x.isBackgroundHole == true);
+        listHole.Remove(bgHole);
+
         if (GameManager.Instance.holeSystem.HandleHoleCollider(bgHole, listHole, 0.04f))
         {
             //xoas danh sacsh hole cũ mà bolt đính vào 
@@ -60,8 +65,19 @@ public class DefaultState : ISKillState
             //chuiyen sang trang thai pick doen cho cai dinh o vi tri moi
             PickDownNormal(InputHandler.Instance.pickedBolt);
 
+            //am thanh
+            AudioManagement.Instance.PlaySound(AddressableLabels.PICKDOWNBOLT, 1, 1);
+
             //set up lai thm chieu toi null
             InputHandler.Instance.pickedBolt = null;
+
+
+        }
+        else
+        {
+            //am thanh khong thnah cong khi nham voa
+            AudioManagement.Instance.PlaySound(AddressableLabels.HOLEWARNING, 1, 2);
+            //  Debug.Log("toi chuwahieu saio o dau ae oi");
         }
 
 

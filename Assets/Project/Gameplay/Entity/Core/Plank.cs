@@ -118,11 +118,16 @@ public class Plank : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Static;
             hasFallen = true;
 
+            //phát âm thanh
+            AudioManagement.Instance.PlaySound(AddressableLabels.PLANKFALL, 1, 1.5f);
+
             //phat plank rơi
             AnimationManager.Instance.gamePlayAnimation.cointBurst
                 .PlayAnimationPlankFell(transform.position, 3, 0.3f, UIManager.Instance.gameplayPannel.coinview.transform, () =>
                 {
                     UIManager.Instance.gameplayPannel.coinview.UpdateTextCoin();
+                    //phast ama thanh coint
+                    AudioManagement.Instance.PlaySound(AddressableLabels.GETCOINT, 1, 1.5f);
                 });
 
 

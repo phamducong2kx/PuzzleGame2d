@@ -6,7 +6,7 @@ using UnityEngine;
 public class WinLoseSystem : MonoBehaviour
 {
 
-    // private bool _ended;
+    public bool _ended = false;
 
     private void Start()
     {
@@ -17,6 +17,10 @@ public class WinLoseSystem : MonoBehaviour
 
     }
 
+    public void Setting()
+    {
+        _ended = false;
+    }
     public void Evaluate()
     {
 
@@ -26,7 +30,7 @@ public class WinLoseSystem : MonoBehaviour
 
         if (checkPlank)
         {
-
+            _ended = true;
 
             GameStateManager.Instance.ChangeSate(GameStateCache.winGameState);
 
@@ -35,6 +39,7 @@ public class WinLoseSystem : MonoBehaviour
 
         else if (GameManager.Instance.timerSystem != null && GameManager.Instance.timerSystem.timeRemaining <= 0f)
         {
+            _ended = true;
             //chua xu li trunog hop nay
             //GameManager.Instance.timerSystem.isRunning = false;
             GameStateManager.Instance.ChangeSate(GameStateCache.lossState);
@@ -55,6 +60,7 @@ public class WinLoseSystem : MonoBehaviour
                 return false;
             }
         }
+
 
         return true;
     }

@@ -6,6 +6,8 @@ public class LossState : IGameState
 {
     public void EnterSate()
     {
+        //am thanh
+        AudioManagement.Instance.PlaySound(AddressableLabels.LOSE, 1, 1.5f);
         GameManager.Instance.timerSystem.isRunning = false;
         //hient thi casi lossPOPup la xong
         UIManager.Instance.gameplayPannel.lossPopup.gameObject.SetActive(true);

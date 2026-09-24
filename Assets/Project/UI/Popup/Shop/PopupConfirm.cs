@@ -109,6 +109,10 @@ public class PopupConfirm : MonoBehaviour
         {
             //thay doi tetx trong tarrget
             target.text = (SaveManager.Data.coint).ToString();
+            //thay doi text trong topbazonr
+            UIManager.Instance.topBarZone.Setting();
+            //am thanh coitn cho moi vat pham duoc nhan
+            AudioManagement.Instance.PlaySound(AddressableLabels.GETCOINT, 1, 1);
         },
             () =>
             {

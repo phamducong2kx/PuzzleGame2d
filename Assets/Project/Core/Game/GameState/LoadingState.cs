@@ -10,6 +10,9 @@ public class LoadingState : IGameState
         //tỉa dữ liều về máy.
         await UIManager.Instance.loadingManager.SetupLoading();
 
+        //đưa danh sách các prefab sound lên ram
+        await AudioManagement.Instance.PushSoundOnRam(AddressableLabels.SOUND);
+
         //tỉa xong chuyển hướng sang home
         GameStateManager.Instance.ChangeSate(GameStateCache.homeState);
     }

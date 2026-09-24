@@ -34,6 +34,10 @@ public class HomeManager : MonoBehaviour
         SetupAvatarButton();
         SetupShoppeButton();
     }
+    private void OnEnable()
+    {
+
+    }
     public void ActiveSelf()
     {
         gameObject.SetActive(true);
@@ -50,6 +54,8 @@ public class HomeManager : MonoBehaviour
     {
         buttonLevel.onClick.AddListener(() =>
         {
+            //kich hoat am thanh
+            AudioManagement.Instance.PlaySound(AddressableLabels.SOUNDBUTTON, 1, 1);
             GameStateManager.Instance.ChangeSate(GameStateCache.levelMapState);
         });
     }
@@ -66,6 +72,7 @@ public class HomeManager : MonoBehaviour
 
         buttonAvatar.onClick.AddListener(() =>
         {
+            AudioManagement.Instance.PlaySound(AddressableLabels.SOUNDBUTTON, 1, 1);
             //hien thi popupAvatar
             avatarPopup.gameObject.SetActive(true);
         });
@@ -75,17 +82,10 @@ public class HomeManager : MonoBehaviour
     {
         dailyReward.onClick.AddListener(() =>
         {
+            AudioManagement.Instance.PlaySound(AddressableLabels.SOUNDBUTTON, 1, 1);
             //set active gameobejct popup
             dailyRewardPopup.gameObject.SetActive(true);
 
-            ////neu mo lan dau thi ko can refresh
-            //if (dailyRewardPopup.isFirstOpen == false)
-            //{
-            //    //refresh lai cac pannel nhan qua
-            //    dailyRewardPopup.RefreshPannelDayItem();
-            //}
-
-            //dailyRewardPopup.isFirstOpen = false;
 
         });
     }
@@ -112,6 +112,7 @@ public class HomeManager : MonoBehaviour
     {
         shoppe.onClick.AddListener(() =>
         {
+            AudioManagement.Instance.PlaySound(AddressableLabels.SOUNDBUTTON, 1, 1);
             shopPopup.gameObject.SetActive(true);
             shopPopup.SetupCoint();
             UIManager.Instance.topBarZone.gameObject.SetActive(false);

@@ -6,8 +6,8 @@ public class LevelSelectState : IGameState
 {
     public void EnterSate()
     {
-
-
+        //clear âm thnah
+        AudioManagement.Instance.ClearAudioSource();
         //reset lại time
         Time.timeScale = 1;
         GameManager.Instance.timerSystem.isRunning = false;
@@ -33,7 +33,7 @@ public class LevelSelectState : IGameState
 
     public void Existstate()
     {//thoat map hien tai
-        Debug.Log("1");
+        //Debug.Log("1");
         UIManager.Instance.pannelLevelSelect.HideSelf();
     }
 }

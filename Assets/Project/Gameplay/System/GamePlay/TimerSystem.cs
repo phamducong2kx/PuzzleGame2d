@@ -118,7 +118,7 @@ public class TimerSystem : MonoBehaviour
             OnTimeWarning?.Invoke(timeRemaining);
 
         }
-       
+
 
 
 
@@ -147,30 +147,6 @@ public class TimerSystem : MonoBehaviour
         }
     }
 
-
-
-
-    //private void Update()
-    //{
-    //    if (!isRunning) return;
-    //    timeRemaining -= Time.deltaTime;
-    //    HandleMocSao();
-    //    if (timeRemaining < duration && isEventTimeCall == false)
-    //    {
-    //        OnTimerTick?.Invoke(timeRemaining, timeState);
-    //    }
-    //    if (timeRemaining <= warnThreshold)
-    //    {
-    //        timeState = TimeState.Warning;
-    //    }
-    //    if (timeRemaining <= 0)
-    //    {
-    //        timeState = TimeState.TimeOut;
-    //        isRunning = false;
-    //    }
-
-    //    OnTimerTick?.Invoke(timeRemaining, timeState);
-    //}
 
 
 

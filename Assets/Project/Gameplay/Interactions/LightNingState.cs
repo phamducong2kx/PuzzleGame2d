@@ -73,6 +73,8 @@ public class LightNingState : ISKillState
 
         //phat event lightningKSill
         GameConfigManager.Instance.skillLogic.InvokeLightNingSkill(plank);
+        //am thanh
+        AudioManagement.Instance.PlaySound(AddressableLabels.LIGHTNINGSKILL, 1f, 1f);
 
         //duyet danh sahcs cac hole cua plank
         foreach (var hole in plank.holes)

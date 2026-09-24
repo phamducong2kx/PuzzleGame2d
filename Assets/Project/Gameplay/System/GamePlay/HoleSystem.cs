@@ -31,9 +31,9 @@ public class HoleSystem : MonoBehaviour
             if (x.GetComponent<Plank>()) ++plank;
 
         }
-        Debug.Log("plank = " + plank);
-        Debug.Log("holeBg  = " + holeBg);
-        Debug.Log("holePlank = " + holePlank);
+        //  Debug.Log("plank = " + plank);
+        //  Debug.Log("holeBg  = " + holeBg);
+        //   Debug.Log("holePlank = " + holePlank);
         if (holeBg == 1 && plank == holePlank) return list;
         return null;
 
@@ -70,7 +70,7 @@ public class HoleSystem : MonoBehaviour
             //nếu như lisColider chỉ có đúng 1 phần từ -> nó chỉ có hole, cho return về false luôn
             if (listCollider.Count() == 1)
             {
-                Debug.Log("no chi co 1 holenen chac chan la false");
+                //  Debug.Log("no chi co 1 holenen chac chan la false");
                 return false;
             }
 

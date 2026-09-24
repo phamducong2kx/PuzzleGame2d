@@ -51,7 +51,7 @@ public class AddressableManager : MonoBehaviour
         }
     }
 
-    public async Task LoadBundleAssetAsync(string keyLabel, Action<float> setupPregressBar)
+    public async Task DownloadBundleAssetAsyncToCache(string keyLabel, Action<float> setupPregressBar)
     {
         //kiểm tra xem các bundle đã có sẵn trong cache máy người dùng hay chưa
         var totalBytes = await Addressables.GetDownloadSizeAsync(keyLabel).Task;
@@ -72,6 +72,12 @@ public class AddressableManager : MonoBehaviour
                 Debug.Log("Tải xuống asset từ remote thành công");
             }
             Addressables.Release(downloadResource);
+
+            //tair lên ram dữ liệu về âm thanh
+
+
+            //sau đó return hàm
+            return;
         }
         else
         {

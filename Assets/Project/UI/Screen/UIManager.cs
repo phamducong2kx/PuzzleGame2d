@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject pannelWingame;
     public LevelMapManager levelMapManager;
     public LoadingManager loadingManager;
+    public SettingManager settingManager;
 
     public static UIManager Instance;
 

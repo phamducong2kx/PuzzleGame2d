@@ -20,7 +20,7 @@ public class LevelMenu : MonoBehaviour
     public Button goLeft;
     public SnapScrolling snapScroliing;
     public List<LevelButton> ListLevelButton = new List<LevelButton>();
-
+    private bool checkFirstGoPage = false;
 
 
 
@@ -35,8 +35,20 @@ public class LevelMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        //if (checkFirstGoPage == false)
+        //{
+        //    SetUpChapterCenter();
+        //    checkFirstGoPage = true;
 
-        SetUpChapterCenter();
+        //}
+        //else
+        //{
+        //    var currentChapter = SaveManager.Data.currentChapter;
+        //    RefreshButtonIcon(currentChapter);
+        //}
+
+
+
 
     }
     private void OnDisable()
@@ -46,6 +58,7 @@ public class LevelMenu : MonoBehaviour
     void Start()
     {
         SetupOnClickButtonChanegPage();
+        SetUpChapterCenter();
     }
 
     void Update()
@@ -53,15 +66,7 @@ public class LevelMenu : MonoBehaviour
 
     }
 
-    //taoj trước 10 button có sẵn
-    //private void Generate_LevelButton()
-    //{
-    //    for (int i = 1; i <= 10; ++i)
-    //    {
 
-    //        var LevelButton = Instantiate(buttonPrefab, gridPannelItem);
-    //    }
-    //}
 
     //gen ra danh sách các chapter và levelData tương ứng
     private void Generate_Chapter()
@@ -127,6 +132,7 @@ public class LevelMenu : MonoBehaviour
         returnHomeButton.onClick.RemoveAllListeners();
         returnHomeButton.onClick.AddListener(() =>
         {
+            AudioManagement.Instance.PlaySound(AddressableLabels.SOUNDBUTTON, 1, 1);
             //chuyen ve trang chọn các world
             GameStateManager.Instance.ChangeSate(GameStateCache.levelMapState);
 
@@ -261,7 +267,7 @@ public class LevelMenu : MonoBehaviour
 
         goRight.onClick.AddListener(() =>
         {
-
+            AudioManagement.Instance.PlaySound(AddressableLabels.SOUNDBUTTON, 1, 1);
             ++snapScroliing.targetChapterIndex;
             //lay thong tin cua chapter nay
             var chapter = snapScroliing.chapters[snapScroliing.targetChapterIndex];
@@ -275,7 +281,7 @@ public class LevelMenu : MonoBehaviour
 
         goLeft.onClick.AddListener(() =>
         {
-
+            AudioManagement.Instance.PlaySound(AddressableLabels.SOUNDBUTTON, 1, 1);
             --snapScroliing.targetChapterIndex;
             var chapter = snapScroliing.chapters[snapScroliing.targetChapterIndex];
             int idCahpter = chapter.chapterID;

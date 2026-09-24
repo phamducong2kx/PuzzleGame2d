@@ -12,14 +12,14 @@ public class LevelMapManager : MonoBehaviour
 
     private void Awake()
     {
-
+        SetUpExistButton();
     }
 
 
     private void OnEnable()
     {
         SetUpLevelMap();
-        SetUpExistButton();
+
     }
 
     private void OnDisable()
@@ -41,7 +41,9 @@ public class LevelMapManager : MonoBehaviour
     private void SetUpExistButton()
     {
         buttonExist.onClick.AddListener(() =>
-        {
+        {//am thanh
+            AudioManagement.Instance.PlaySound(AddressableLabels.SOUNDBUTTON, 1, 1);
+
             //disable cái popup này
             gameObject.SetActive(false);
 

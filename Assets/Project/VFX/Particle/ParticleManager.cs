@@ -60,8 +60,6 @@ public class ParticleManager : MonoBehaviour
     {
 
         var obj = ObjectPooler.Instance.Spawn(pickDownDrillPrefab.gameObject, bolt.transform.position, pickDownDrillPrefab.transform.rotation);
-        // var x = obj.GetComponent<ParticleSystem>();
-        // listParticlePlankFell.Add(x);
         StartCoroutine(DespawnRoutine(pickDownDrillPrefab.gameObject, obj, 0.5f));
 
     }

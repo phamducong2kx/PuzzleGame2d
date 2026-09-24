@@ -72,6 +72,9 @@ public class DrillSkillState : ISKillState
 
         //animation
         GameConfigManager.Instance.skillLogic.InvokeDrillSKillEvent(bolt);
+        //am thanh
+        AudioManagement.Instance.PlaySound(AddressableLabels.DRILLSKILL, 1f, 1f);
+
 
         await System.Threading.Tasks.Task.Delay(1000);
 

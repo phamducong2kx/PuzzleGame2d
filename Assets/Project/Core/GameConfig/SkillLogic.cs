@@ -80,6 +80,10 @@ public class SkillLogic : MonoBehaviour
     public int GetAmountSkillById(string id)
     {
         var listSkillProgress = SaveManager.Data.listSkill;
+        // foreach (var x in listSkillProgress)
+        // {
+        //     Debug.Log("so luong tung skill tring danh sach skill la :  " + x.amount);
+        // }
         var skill = listSkillProgress.FirstOrDefault(x => x.idSkill.Equals(id));
         if (skill == null) return -1;
         return skill.amount;

@@ -47,6 +47,7 @@ public class GameplayPannel : MonoBehaviour
         var listStar = LevelLoader.Instance.CurrentLevelData.ListMocTimeStar;
         GameManager.Instance.timerSystem.SetupTimeLevel(timeLimit, timeWarn, listStar);
         GameManager.Instance.warningSystem.SetupWarningTime();
+        GameManager.Instance.winLoseSystem.Setting();
 
 
         //set up starview

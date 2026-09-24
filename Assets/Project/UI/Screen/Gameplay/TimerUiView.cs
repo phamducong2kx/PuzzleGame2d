@@ -80,6 +80,9 @@ public class TimerUiView : MonoBehaviour
 
     private void HandleWarningSystemAction(float reamingtime)
     {
+        //âm thanh kêu, theem 1 biến bool
+
+
 
         label.color = warnColor;
         label.text = FormatWarningSystem(reamingtime);

@@ -62,6 +62,7 @@ public class LevelConWorld : MonoBehaviour
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() =>
         {
+            AudioManagement.Instance.PlaySound(AddressableLabels.SOUNDBUTTON, 1, 1);
             //chuyen sang state levelselect , khoa man hinh maplevel lai
             UIManager.Instance.levelMapManager.HideSelf();
 
