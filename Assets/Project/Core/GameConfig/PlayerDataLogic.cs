@@ -137,16 +137,8 @@ public class PlayerDataLogic : MonoBehaviour
     }
 
     //chaneg mute
-    public void ChangMute(PlayerData data)
-    {
-        if (data.mute == false) data.mute = true;
-        else data.mute = false;
-        SaveManager.SaveData();
-    }
-    public bool StatusMute(PlayerData data)
-    {
-        return data.mute;
-    }
+
+
 
     //thay avatar cho player
     public void ChangeAvatar(PlayerData data, string idAvatar)

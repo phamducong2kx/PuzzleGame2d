@@ -62,7 +62,7 @@ public class PlayerData
     public int coint;
 
     //âm thanh hiện tại
-    public bool mute = false;
+    //public bool mute = false;
 
     //id avatar cua player
     public string currentIdAvatar;
@@ -93,7 +93,7 @@ public class PlayerData
         lastDayGetDailyReward = 0;
         lastClaimOSTicks = 0;
         lastClaimDateTime = 0;
-        mute = false;
+
     }
 }
 

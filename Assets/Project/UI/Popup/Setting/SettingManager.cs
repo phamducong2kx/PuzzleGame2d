@@ -13,7 +13,7 @@ public class SettingManager : MonoBehaviour
     public Image imageBackground;
     private void Awake()
     {
-        SetMute();
+        // SetMute();
         SetupButtonExist();
         SetupButtonChangeSound();
     }
@@ -21,21 +21,21 @@ public class SettingManager : MonoBehaviour
     public void SetMute()
     {
         //nếu nod dang khong mute
-        if (GameConfigManager.Instance.playerDataLogic.StatusMute(SaveManager.Data))
+        if (AudioListener.volume == 0f)
         {
             // doi ảnh
-            imageBackground.sprite = muteSound;
+            imageBackground.sprite = normalSound;
             //bat am thanh
-            AudioListener.volume = 0f;
+            AudioListener.volume = 1f;
 
         }
         else
         {
             //doi ảnh
-            imageBackground.sprite = normalSound;
+            imageBackground.sprite = muteSound;
             //tat am thanh
             // AudioManagement.Instance.PlaySound(AddressableLabels.WIN, 1f, 1f);
-            AudioListener.volume = 1f;
+            AudioListener.volume = 0f;
         }
         // muteSound
     }
@@ -50,8 +50,7 @@ public class SettingManager : MonoBehaviour
         changeSound.onClick.AddListener(() =>
         {
             SetMute();
-            // muteSound
-            GameConfigManager.Instance.playerDataLogic.ChangMute(SaveManager.Data);
+
 
         });
     }
