@@ -18,7 +18,7 @@ public class IconItemReward : MonoBehaviour
         imageBg.sprite = iamge;
         if (imageBg.sprite != null)
         {
-            Debug.Log("anhr khacs null");
+            //  Debug.Log("anhr khacs null");
         }
         else
         {

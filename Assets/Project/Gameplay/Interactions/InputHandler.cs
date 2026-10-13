@@ -10,7 +10,7 @@ public class InputHandler : MonoBehaviour
 
     public Bolt pickedBolt;
 
-    public LayerMask layerMask;
+    //  public LayerMask layerMask;
 
     public ISKillState currentSkillState = new DefaultState();
     public Skill currentSkill = null;

@@ -3,11 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//[CreateAssetMenu(fileName = "DrillSkill", menuName = "ScrewPuzzle/DrillSkill")]
-//public class DrillSkill : SkillData
-//{
-//    //public override ISKillState GetSkillState(Skill skill)
-//    //{
-//    //    return new DrillSkillState(skill);
-//    //}
-//}
+public abstract class A
+{
+    public virtual void helo()
+    {
+
+    }
+}
+
+public class B : A
+{
+    public override void helo()
+    {
+        A x = new B();
+    }
+}
+
+public interface C
+{
+
+}

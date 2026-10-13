@@ -60,6 +60,8 @@ public class DailyRewardAnimation : MonoBehaviour
                 coint = list[i].amount;
                 isCoint = true;
             }
+
+            Debug.Log("so lunog listItem la " + listItem.Count);
         }
 
         //duyet danh sachs cac thamc hieu den compoenent

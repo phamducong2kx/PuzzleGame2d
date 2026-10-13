@@ -31,9 +31,9 @@ public static class SaveManager
             // Data.coint = 50000;
 
             // Data.currentChapter = 0;
-            //Data.lastDayGetDailyReward = 0;
-            // Data.lastClaimOSTicks = 0;
-            // Data.lastClaimDateTime = 0;
+            Data.lastDayGetDailyReward = 0;
+            Data.lastClaimOSTicks = 0;
+            Data.lastClaimDateTime = 0;
             //danh sách các skill
             //foreach (var x in Data.listSkill)
             //{

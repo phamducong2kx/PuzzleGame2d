@@ -187,7 +187,7 @@ public class DailyRewardPopup : MonoBehaviour
     private void SetUpGetRewardButton()
     {
         getRewardButton.onClick.RemoveAllListeners();
-        Debug.Log("ngay hien tai là " + SaveManager.Data.lastDayGetDailyReward);
+        //  Debug.Log("ngay hien tai là " + SaveManager.Data.lastDayGetDailyReward);
         getRewardButton.onClick.AddListener(() =>
         {
             //vô hiệu hóa nút exist
@@ -198,9 +198,11 @@ public class DailyRewardPopup : MonoBehaviour
 
             //lay danh sách quà của ngày nhận thưởng
             int reward = SaveManager.Data.lastDayGetDailyReward + 1;
+            Debug.Log("ngay nhan thuong la " + reward);
 
             //laays danh sacsh qua cua ngay nhan thưởng
             var listReward = dailyRewardConfig.dailyRewards[reward - 1].listRewardItem;
+            Debug.Log("so luong qua la " + listReward.Count);
 
             //tạo 1 cái list chứa danh sách các ảnh
             var listRewardObject = new List<RectTransform>();
@@ -210,7 +212,7 @@ public class DailyRewardPopup : MonoBehaviour
             {
                 //tu id tim ra items
                 var item = GameConfigManager.Instance.itemLogic.GetItemInfoById(x.idItem);
-
+                Debug.Log("name item la " + item.type);
 
                 //nếu item ko phải coint thì cộng như này
                 if (item.type == ItemType.Skill)

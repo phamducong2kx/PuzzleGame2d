@@ -16,7 +16,10 @@ MonoBehaviour:
   timerLimit: 180
   timerWanr: 10
   coint: 0
-  ListMocTimeStar: []
+  ListMocTimeStar:
+  - 80
+  - 100
+  - 150
   listPlankData:
   - plankId: 1
     position: {x: 0.0038477439, y: 5.038719, z: -0.10341765}

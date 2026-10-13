@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 23.8, y: 0}
   m_SizeDelta: {x: 20, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &3206488343270961589
@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -28.400024, y: 0}
   m_SizeDelta: {x: 20, y: 30}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &8901129078459775162
@@ -278,7 +278,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 370, y: 300}
+  m_SizeDelta: {x: 680.85, y: 360.87}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &5489296238873791772
 CanvasRenderer:
@@ -334,4 +334,4 @@ MonoBehaviour:
   next: {fileID: 3538206109347216964}
   indexList: 0
   packBanner: {fileID: 0}
-  packageShopInfoBannerPrefab: {fileID: 1659421336227714989, guid: 8c8f563790e6eed478987c03bf153126, type: 3}
+  packageShopInfoBannerPrefab: {fileID: 911943685313557402, guid: e62f0c03e07830e4a8e6cad22928a60d, type: 3}
